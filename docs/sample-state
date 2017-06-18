@@ -52,7 +52,7 @@
       45: {
         id: 45,
         spot_id: 5,
-        start_date: "2017-08-26T18:09:16Z", // for availability in date selectors
+        start_date: "2017-08-26T18:09:16Z",      // for availability in date selectors
         end_date: "2017-08-27T18:09:16Z"
       },
       ...
@@ -68,6 +68,12 @@
       ...
     },
     listed_spot_ids: [67, 98],
-    booking_ids: [5, 768, 45, 345]
+    booking_ids: [5, 768, 45, 345],
+    currentSearchBounds {
+      lat: ,
+      lon: ,
+      ...
+    },
+    reviewToggleState: false,
   }
 }
