@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import SessionForm from './session/session_form_container';
+import LoginForm from './session/login_form_container';
+import SignupForm from './session/Signup_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Navbar from './navbar_container';
 
@@ -9,8 +10,8 @@ const App = () => {
   <div>
    <header>
      <Navbar />
-     <AuthRoute path='/login' component={SessionForm} />
-     <AuthRoute path='/signup' component={SessionForm} />
+     <AuthRoute path='/login' component={LoginForm} />
+     <AuthRoute path='/signup' component={SignupForm} />
    </header>
  </div>
  );
