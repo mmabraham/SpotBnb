@@ -1,15 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from '../actions/session_actions';
 
 const Navbar = (props) => {
   if (props.currentUser) {
     return (
       <nav className="main-nav nav-logged-in">
-        <ul className="right-nav-links">
+        <ul className="left-nav-items">
+          <li className="img-container logo-container">
+            <img src="" />
+          </li>
+        </ul>
+        <ul className="right-nav-items">
           <li>
-            <NavLink to="#">Host</NavLink>
+            <NavLink to="#">Become a Host</NavLink>
           </li>
           <li>
             <NavLink to="#">Trips</NavLink>
@@ -19,8 +22,8 @@ const Navbar = (props) => {
               Logout
             </button>
           </li>
-          <li>
-            <img src="" />
+          <li className="img-container profile-pic-container">
+            <img src="https://www.peerspace.com/web-templates/assets/images/no_avatar_placeholder.png" />
           </li>
         </ul>
       </nav>
@@ -28,9 +31,14 @@ const Navbar = (props) => {
   } else {
     return (
       <nav className="main-nav nav-logged-out">
-        <ul className="right-nav-links">
+        <ul className="left-nav-items">
+          <li className="img-container logo-container">
+            <img src="" />
+          </li>
+        </ul>
+        <ul className="right-nav-items">
           <li>
-            <NavLink to="#">Host</NavLink>
+            <NavLink to="#">Become a Host</NavLink>
           </li>
           <li>
             <NavLink to="#">Trips</NavLink>
@@ -47,21 +55,4 @@ const Navbar = (props) => {
   }
 };
 
-// export default Navbar;
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    currentUser: state.session.user,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(logout())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Navbar);
+export default Navbar;
