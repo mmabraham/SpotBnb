@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class SignupForm extends React.Component {
 	constructor(props) {
@@ -26,8 +26,9 @@ class SignupForm extends React.Component {
   }
   render() {
     return (
-      <form className="auth-form" onSubmit={this.handleSubmit}>
-        <label className="input-group">
+      <form className="auth-form signup-form" onSubmit={this.handleSubmit}>
+        <label><NavLink to="/">╳</NavLink></label>
+        <label>
           <input
 						placeholder="Username"
 						onChange={this.handleChange('username')}
@@ -36,7 +37,7 @@ class SignupForm extends React.Component {
 					/>
 					<span className="errors" >{this.props.errors.username}</span>
         </label>
-        <label className="input-group">
+        <label>
           <input
 						placeholder="Password"
 						type='password'
@@ -46,12 +47,12 @@ class SignupForm extends React.Component {
 					/>
 					<span className="errors" >{this.props.errors.password}</span>
         </label>
-        <button className="input-group btn">Sign Up</button>
+        <button className="btn">Sign Up</button>
 				<hr />
-				<label className="alt-form input-group ">
+				<div className="alt-form">
 					<span>Already have an ------ account?</span>
-					<Link to="/login" className="green-link">Log in</Link>
-				</label>
+					<NavLink to="/login" className="green-link">Log in</NavLink>
+				</div>
       </form>
   );
   }

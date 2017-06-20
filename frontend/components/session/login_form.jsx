@@ -33,9 +33,10 @@ class LoginForm extends React.Component {
     return (
       <form className="auth-form login-form" onSubmit={this.handleSubmit}>
 				<label><Link to="/">╳</Link></label>
-				<button onClick={this.demoLogin} className="input-group btn">Sign in as guest</button>
+				<h2>Log in to continue</h2>
+				<button onClick={this.demoLogin} className="btn">Sign in as guest</button>
 				<div className="rule-container"><span className="rule">or</span></div>
-        <label className="input-group">
+        <label>
           <input
 						placeholder="Username"
 						onChange={this.handleChange('username')}
@@ -44,7 +45,7 @@ class LoginForm extends React.Component {
 					/>
 					<span className="errors" >{this.props.errors.username}</span>
         </label>
-        <label className="input-group">
+        <label>
           <input
 						placeholder="Password"
 						type='password'
@@ -54,12 +55,12 @@ class LoginForm extends React.Component {
 					/>
 					<span className="errors" >{this.props.errors.password}</span>
         </label>
-        <button className="input-group btn">Log in</button>
+        <button className="btn">Log in</button>
 				<hr />
-				<label className="alt-form input-group ">
+				<div className="alt-form">
 					<span>Don't have an account?</span>
 					<Link to="/signup" className="green-link">Sign Up</Link>
-				</label>
+				</div>
       </form>
   	);
   }

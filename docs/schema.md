@@ -19,8 +19,8 @@ title | string | not null
 description | text | not null
 price | integer | not null
 image_url | string | not null
-latitude | decimal | not null
-longitude | decimal | not null
+lat | decimal | not null
+lng | decimal | not null
 
 ## bookings
 column name | data type | details

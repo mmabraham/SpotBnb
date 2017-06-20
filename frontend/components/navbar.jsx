@@ -23,7 +23,9 @@ const Navbar = (props) => {
             </button>
           </li>
           <li className="img-container profile-pic-container">
-            <img src="https://www.peerspace.com/web-templates/assets/images/no_avatar_placeholder.png" />
+            <img
+              className="profile-pic"
+              src="https://www.peerspace.com/web-templates/assets/images/no_avatar_placeholder.png" />
           </li>
         </ul>
       </nav>

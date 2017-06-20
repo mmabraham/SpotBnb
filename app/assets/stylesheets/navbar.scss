@@ -21,7 +21,7 @@
   font-size: 14px;
 }
 
-.main-nav > ul > li {
+nav > ul > li {
   padding: 8px 0;
   margin: 30px;
   border-bottom: solid 2px transparent;
@@ -67,8 +67,8 @@
     position: relative;
     overflow: hidden;
     border-radius: 50%;
+    padding: 0px;
 }
 
-.profile-pic-container > img {
-  padding: 0;
+.profile-pic-container > img.profile-pic {
 }
