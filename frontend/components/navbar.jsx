@@ -1,8 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Avatar from 'material-ui/Avatar';
 
 const Navbar = (props) => {
   if (props.currentUser) {
+    const avatar = props.currentUser.image_url ? (
+      <Avatar size={30} src={props.currentUser.image_url} />
+    ) : (
+      <Avatar size={30}>{props.currentUser.username[0].toUpperCase()}</Avatar>
+    )
+
     return (
       <nav className="main-nav nav-logged-in">
         <ul className="left-nav-items">
@@ -22,10 +29,8 @@ const Navbar = (props) => {
               Logout
             </button>
           </li>
-          <li className="img-container profile-pic-container">
-            <img
-              className="profile-pic"
-              src="https://www.peerspace.com/web-templates/assets/images/no_avatar_placeholder.png" />
+          <li>
+            {avatar}
           </li>
         </ul>
       </nav>
