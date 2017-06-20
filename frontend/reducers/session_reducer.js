@@ -2,7 +2,7 @@ import { RECEIVE_USER, RECEIVE_ERRORS } from '../actions/session_actions';
 
 const _defaultState = Object.freeze({
     user: null,
-    errors: []
+    errors: {},
   }
 );
 

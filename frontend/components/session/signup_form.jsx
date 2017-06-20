@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
 	constructor(props) {
@@ -25,21 +26,32 @@ class SignupForm extends React.Component {
   }
   render() {
     return (
-      <form  className="auth-form signup-form" onSubmit={this.handleSubmit}>
-        <label>Username
-          <input onChange={this.handleChange('username')} value={this.state.username} />
-          <span className="username-errors" >{this.props.errors}</span>
+      <form className="auth-form" onSubmit={this.handleSubmit}>
+        <label className="input-group">
+          <input
+						placeholder="Username"
+						onChange={this.handleChange('username')}
+						value={this.state.username}
+						className={`${this.props.errors.username ? 'invalid' : ''}`}
+					/>
+					<span className="errors" >{this.props.errors.username}</span>
         </label>
-        <br/>
-        <label>Password
-          <input onChange={this.handleChange('password')} type='password' value={this.state.password} />
+        <label className="input-group">
+          <input
+						placeholder="Password"
+						type='password'
+						onChange={this.handleChange('password')}
+						className={`${this.props.errors.password ? 'invalid' : ''}`}
+						value={this.state.password}
+					/>
+					<span className="errors" >{this.props.errors.password}</span>
         </label>
-        <br />
-        <button>Sign up</button>
-        <div className="alt-form">
-          <span></span>
-          <button value="Log in" />
-        </div>
+        <button className="input-group btn">Sign Up</button>
+				<hr />
+				<label className="alt-form input-group ">
+					<span>Already have an ------ account?</span>
+					<Link to="/login" className="green-link">Log in</Link>
+				</label>
       </form>
   );
   }
