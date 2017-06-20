@@ -6,74 +6,80 @@
       profile_image_url: '/53452662.jpg',
     },
     errors: [],
-  }
-  entities: {
-    spots {
-      4: {
-        id: 4,
-        type: 'entire home',
-        capacity: 5,
-        num_reviews: 18,
-        avg_rating: 4.2,
-        image_url: '/23345245.jpg',
-        price: 95,
-        location: {
-          lat: 41.2028,
-          lon: -122.33
-        }
-      },
-      5: {
-        id: 5,
-        type: 'shared space',
-        capacity: 2,
-        num_reviews: 9,
-        avg_rating: 3.4,
-        image_url: '/23363645.jpg',
-        price: 45,
-        location: {
-          lat: 46.2028,
-          lon: -122.33
-        },
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.',
-        host_id: 45,
-        booking_ids: [45, 88, 34, 18],
-        review_ids: [567, 34, 5645, 236, 345, 2344, 981, 31, 789]
-      },
-      ...
+  },
+  spots {
+    4: {
+      id: 4,
+      type: 'entire home',
+      capacity: 5,
+      num_reviews: 18,
+      avg_rating: 4.2,
+      image_url: '/23345245.jpg',
+      price: 95,
+      location: {
+        lat: 41.2028,
+        lon: -122.33
+      }
     },
-    current_spot_id: 5,
-    bookings: {
-      45: {
-        id: 45,
-        spot_id: 5,
-        start_date: "2017-08-26T18:09:16Z",      // for availability in date selectors
-        end_date: "2017-08-27T18:09:16Z"
+    5: {
+      id: 5,
+      type: 'shared space',
+      capacity: 2,
+      num_reviews: 9,
+      avg_rating: 3.4,
+      image_url: '/23363645.jpg',
+      price: 45,
+      location: {
+        lat: 46.2028,
+        lon: -122.33
       },
-      ...
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.',
+      host_id: 45,
+      booking_ids: [45, 88, 34, 18],
+      review_ids: [567, 34, 5645, 236, 345, 2344, 981, 31, 789]
     },
-    reviews: {
-      567: {
-        spot_id: 5,
-        user_id: 24,
-        user_profile_image_url: '/23534532.jpg',
-        rating: 4,
-        body: 'Great place!!!'
+    ...
+  },
+  bookings: {
+    45: {
+      id: 45,
+      spot_id: 5,
+      start_date: "2017-08-26T18:09:16Z",      // for availability in date selectors
+      end_date: "2017-08-27T18:09:16Z"
+    },
+    ...
+  },
+  reviews: {
+    567: {
+      spot_id: 5,
+      user_id: 24,
+      user_profile_image_url: '/23534532.jpg',
+      rating: 4,
+      body: 'Great place!!!'
+    },
+    ...
+  },
+  listed_spot_ids: [67, 98],
+  booking_ids: [5, 768, 45, 345],
+  filters {
+    bounds: {
+      northEast: {
+        lat: ,
+        lng: ,
       },
-      ...
-    },
-    listed_spot_ids: [67, 98],
-    booking_ids: [5, 768, 45, 345],
-    currentSearchBounds {
-      lat: ,
-      lon: ,
-      ...
-    },
-    reviewToggleState: false,
-  }
+      southWest: {
+        lat: ,
+        lng: ,
+      }
+    }
+
+  },
+  reviewToggleState: false,
+}
 }
