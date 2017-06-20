@@ -37,7 +37,7 @@ sufficient CSS styling:
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (2 days)
+### Phase 1: Backend setup and Front End User Authentication (1 day)
 
 **Objective:** Functioning rails project with front-end Authentication, forms for signing up, logging in and a guest login button
 
