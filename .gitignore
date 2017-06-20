@@ -89,6 +89,7 @@ bundle.js.map
 logs
 *.log
 npm-debug.log*
+r.txt
 
 # Runtime data
 pids
