@@ -14,12 +14,14 @@ const Navbar = (props) => {
       <nav className="main-nav nav-logged-in">
         <ul className="left-nav-items">
           <li className="img-container logo-container">
-            <img src="" />
+            <NavLink to="/">
+              <img src="" />
+            </NavLink>
           </li>
         </ul>
         <ul className="right-nav-items">
           <li>
-            <NavLink to="#">Become a Host</NavLink>
+            <NavLink to="/spots/new">Become a Host</NavLink>
           </li>
           <li>
             <NavLink to="#">Trips</NavLink>

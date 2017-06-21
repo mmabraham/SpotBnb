@@ -4,12 +4,16 @@ import React from 'react';
 export default class SpotForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
+      host_id: this.props.currentUser.id,
+      spot_type: '',
+      title: '',
       description: '',
-      seating: 0,
+      price: 0,
+      capacity: 0,
+      img: '',
       lat: '',
-      lng: ''
+      lng: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,21 +31,28 @@ export default class SpotForm extends React.Component {
   }
 
   render() {
+    debugger
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="new-spot-form">
+        <label>Type
+          <input onChange={this.handleChange('spot_type')} value={this.state.spot_type} />
+        </label>
+        <label>Title
+          <input onChange={this.handleChange('title')} value={this.state.title} />
+        </label>
         <label>Description
           <input onChange={this.handleChange('description')} value={this.state.description} />
         </label>
-        <br />
+        <label>price
+          <input onChange={this.handleChange('price')} value={this.state.price} />
+        </label>
         <label>Latitude
           <input onChange={this.handleChange('lat')} value={this.state.lat} />
         </label>
-        <br />
-
         <label>Longitude
           <input onChange={this.handleChange('lng')} value={this.state.lng} />
         </label>
-        <br />
+
         <button>Add Spot</button>
       </form>
     );

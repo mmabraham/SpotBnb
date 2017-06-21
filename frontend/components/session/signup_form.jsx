@@ -20,10 +20,9 @@ class SignupForm extends React.Component {
   }
 
   handleChange(field) {
-    return (e) => { this.setState({[field]: e.target.value});
-  };
-
+    return (e) => this.setState({[field]: e.target.value});
   }
+
   render() {
 		const errors = this.props.errors;
 

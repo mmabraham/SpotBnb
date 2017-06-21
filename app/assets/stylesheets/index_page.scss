@@ -2,23 +2,30 @@
   display: 'flex';
   flex-wrap: 'wrap';
   justify-content: 'space-around';
+  width: 1400px;
+  height: 4500px;
+  padding: 24px;
 }
 
-.gridList {
-  width: 700;
-  height: 450;
+.grid-list {
   overflow-y: 'auto';
+}
+
+.grid-list-item {
+  margin: 17px;
 }
 
 #outer-map-container {
   position: fixed;
   top: 98px;
+  bottom: -5px;
   right: -5px;
+  width: 650px;
 }
 
 #map-container {
-  height: 750px;
-  width: 500px;
+  height: 100%;
+  width: 100%
 }
 
 .index-page-main {
