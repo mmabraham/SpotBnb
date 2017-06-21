@@ -11,6 +11,12 @@
 }
 
 #map-container {
-  height: 500px;
+  height: 100%;
   width: 500px;
+}
+
+.index-page-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

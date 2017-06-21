@@ -8,7 +8,7 @@ export const receiveSpots = (spots) => {
   }
 }
 
-export const fetchAllSpots = () => dispatch => {
-  return APIUtil.fetchAllSpots()
+export const fetchAllSpots = (filters) => dispatch => {
+  return APIUtil.fetchAllSpots(filters)
     .then((spots) => dispatch(receiveSpots(spots)))
 }

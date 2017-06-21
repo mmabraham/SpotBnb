@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllSpots: () => dispatch(fetchAllSpots()),
-    // updateBounds: bounds => dispatch(updateBounds(bounds)),
+    updateBounds: bounds => dispatch(updateBounds(bounds)),
   };
 };
 
