@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { asArray } from '../reducers/selectors';
 import { fetchAllSpots } from '../actions/spot_actions';
-// import { updateBounds } from '../../actions/filter_actions';
+import { updateBounds } from '../actions/filter_actions';
 import IndexPage from './index_page';
 
 const mapStateToProps = (state) => {

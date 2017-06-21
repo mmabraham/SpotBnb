@@ -7,5 +7,5 @@ export const updateBounds = bounds => (dispatch, getState) => {
     type: UPDATE_BOUNDS,
     bounds,
   });
-  fetchAllBenches(getState().filters)(dispatch);
+  fetchAllSpots(getState().filters)(dispatch);
 };

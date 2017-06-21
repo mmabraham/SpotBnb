@@ -15,7 +15,7 @@ export default class MarkerManager {
   }
 
   updateMarkers(newSpots) {
-    this.addNewSpoots(newSpots);
+    this.addNewSpots(newSpots);
     this.removeOldSpots(newSpots);
   }
 
@@ -23,7 +23,7 @@ export default class MarkerManager {
     newSpots.forEach(spot => {
       if (!this.markers[spot.id]) {
         // new spot is not yet on the map
-        this.createMarkerFromBench(spot);
+        this.createMarkerFromSpot(spot);
       }
     });
   }
