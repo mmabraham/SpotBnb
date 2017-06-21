@@ -36,7 +36,6 @@ export default class SpotForm extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <form onSubmit={this.handleSubmit} className="new-spot-form auth-form">
         <TextField
