@@ -9,7 +9,8 @@ export const fetchAllSpots = (filters) => {
 export const createSpot = (spot) => {
   return $.ajax({
     method: 'POST',
-    url: `api/spots/${spot.id}`,
+    url: 'api/spots',
     data: { spot },
+    error: (err) => console.log(err),
   })
 }

@@ -28,7 +28,7 @@ class Api::SpotsController < ApplicationController
       render :show
     else
       @errors = @spot.errors
-      render :errors, status: 422
+      render json: @errors, status: 422
     end
   end
 
