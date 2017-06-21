@@ -4,6 +4,8 @@ import LoginForm from './session/login_form_container';
 import SignupForm from './session/Signup_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Navbar from './navbar_container';
+import IndexPage from './index_page_container';
+
 
 const App = () => {
   return (
@@ -12,6 +14,7 @@ const App = () => {
      <Navbar />
      <AuthRoute path='/login' component={LoginForm} />
      <AuthRoute path='/signup' component={SignupForm} />
+     <Route exact path='/' component={IndexPage} />
    </header>
  </div>
  );
