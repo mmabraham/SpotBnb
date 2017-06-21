@@ -19,7 +19,7 @@ class Api::SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    @spot.host = current_user
+    @spot.host_id = current_user.id
     if @spot.save
       render :show
     else
@@ -29,11 +29,26 @@ class Api::SpotsController < ApplicationController
   end
 
   def update
-
+    @spot = Spot.find(params[:id])
+    if @spot.nil?
+      render json: {spot: 'Not found'}, status: 404
+    elsif @spot.host_id != current_user.id
+      render json: {spot: 'You can only update your own spots'},
+        status: 401
+    elsif @spot.update(spot_params)
+      render :show
+    else
+      render json: @spot.errors, status: 422
+    end
   end
 
   def destroy
-
+    @spot = Spot.find(params[:id])
+    if @spot && @spot.host_id == current_user.id
+      render json: {}
+    else
+      render json: {spot: 'not found'}, status: 404
+    end
   end
 
   private
