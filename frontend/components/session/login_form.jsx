@@ -30,6 +30,7 @@ class LoginForm extends React.Component {
 	}
 
   render() {
+		const errors = this.props.errors;
     return (
       <form className="auth-form login-form" onSubmit={this.handleSubmit}>
 				<label><Link to="/">╳</Link></label>
@@ -41,19 +42,19 @@ class LoginForm extends React.Component {
 						placeholder="Username"
 						onChange={this.handleChange('username')}
 						value={this.state.username}
-						className={`${this.props.errors.username ? 'invalid' : ''}`}
+						className={`${errors && errors.username ? 'invalid' : ''}`}
 					/>
-					<span className="errors" >{this.props.errors.username}</span>
+					<span className="errors" >{errors.username}</span>
         </label>
         <label>
           <input
 						placeholder="Password"
 						type='password'
 						onChange={this.handleChange('password')}
-						className={`${this.props.errors.password ? 'invalid' : ''}`}
+						className={`${errors && errors.password ? 'invalid' : ''}`}
 						value={this.state.password}
 					/>
-					<span className="errors" >{this.props.errors.password}</span>
+					<span className="errors" >{errors.password}</span>
         </label>
         <button className="btn">Log in</button>
 				<hr />

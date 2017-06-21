@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :spots
+  has_many :spots,
+    primary_key: :id,
+    foreign_key: :host_id,
+    class_name: Spot
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
