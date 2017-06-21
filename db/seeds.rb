@@ -5,7 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-40.times do
+Spot.destroy_all
+
+20.times do
   Spot.create(
     spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
     title: Faker::Book.title,
@@ -14,6 +16,32 @@
     lng: Faker::Address.longitude,
     capacity: rand(1..15),
     price: rand(1..2000),
-    host_id: User.first.id
+    host_id: 1
+  )
+end
+
+20.times do
+  Spot.create(
+    spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph,
+    lat: Faker::Address.latitude,
+    lng: Faker::Address.longitude,
+    capacity: rand(1..15),
+    price: rand(1..2000),
+    host_id: 2
+  )
+end
+
+20.times do
+  Spot.create(
+    spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph,
+    lat: Faker::Address.latitude,
+    lng: Faker::Address.longitude,
+    capacity: rand(1..15),
+    price: rand(1..2000),
+    host_id: 3
   )
 end
