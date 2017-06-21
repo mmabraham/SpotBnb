@@ -23,4 +23,15 @@ class Spot < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :host_id,
     class_name: User
+
+  def self.in_bounds(spots, bounds)
+    return spots unless bounds
+
+    spots.where('lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?',
+      bounds[:southWest][:lat],
+      bounds[:northEast][:lat],
+      bounds[:southWest][:lng],
+      bounds[:northEast][:lng]
+    ).limit(20)
+  end
 end

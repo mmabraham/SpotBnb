@@ -11,7 +11,6 @@ export default class SpotIndex extends React.Component {
   }
 
   render() {
-    debugger
     const spots = this.props.spots.map(spot => (<GridTile key={spot.id} title={spot.title} />));
     return (
       <div className="grid-list-container">
