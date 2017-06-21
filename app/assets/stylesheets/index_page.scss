@@ -1,26 +1,29 @@
 .grid-list-container {
-  // display: 'flex';
-  // flex-wrap: 'wrap';
-  // justify-content: 'space-around';
+  display: 'flex';
+  flex-wrap: 'wrap';
+  justify-content: 'space-around';
 }
 
 .gridList {
   width: 700;
   height: 450;
-  // overflow-y: 'auto';
+  overflow-y: 'auto';
 }
 
-#map-container {
+#outer-map-container {
   position: fixed;
   top: 98px;
   right: -5px;
+}
+
+#map-container {
   height: 750px;
   width: 500px;
 }
 
 .index-page-main {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   float: left;
 }
