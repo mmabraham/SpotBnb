@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import LoginForm from './session/login_form_container';
-import SignupForm from './session/Signup_form_container';
+import SignupForm from './session/signup_form_container';
 import SpotForm from './spots/spot_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Navbar from './navbar_container';

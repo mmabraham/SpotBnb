@@ -4,7 +4,7 @@
 
 [Trello link][trello]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://spotbnb.herokuapp.com/
 [trello]: https://trello.com/b/Vw50ERB4/airbnb
 
 ## Minimum Viable Product
