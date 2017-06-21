@@ -32,6 +32,7 @@ gem 'figaro'
 gem 'aws-sdk', '>= 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -43,7 +44,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'faker'
 end
 
 group :development do

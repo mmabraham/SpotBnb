@@ -17,8 +17,9 @@ export const login = (user) => (dispatch) => {
 
 export const signup = (user) => (dispatch) => {
   return sessionApiUtil.signup(user)
-    .then((fetchedUser) => dispatch(receiveUser(fetchedUser)))
-    .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
+    .then((fetchedUser) => dispatch(receiveUser(fetchedUser)),
+      (errors) => dispatch(receiveErrors(errors.responseJSON)));
+    // .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const logout = () => (dispatch) => {

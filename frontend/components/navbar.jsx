@@ -27,7 +27,7 @@ const Navbar = (props) => {
             <NavLink to="#">Trips</NavLink>
           </li>
           <li>
-            <button onClick={props.logout}>
+            <button onClick={() => props.logout().then(() => props.history.push('/login'))}>
               Logout
             </button>
           </li>

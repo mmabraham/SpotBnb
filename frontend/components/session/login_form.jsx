@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
 						value={this.state.username}
 						className={`${errors && errors.username ? 'invalid' : ''}`}
 					/>
-					<span className="errors" >{errors.username}</span>
+				<span className="errors" >{errors ? errors.username : ''}</span>
         </label>
         <label>
           <input
@@ -54,7 +54,7 @@ class LoginForm extends React.Component {
 						className={`${errors && errors.password ? 'invalid' : ''}`}
 						value={this.state.password}
 					/>
-					<span className="errors" >{errors.password}</span>
+				<span className="errors" >{errors ? errors.password : ''}</span>
         </label>
         <button className="btn">Log in</button>
 				<hr />
