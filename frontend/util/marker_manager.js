@@ -4,14 +4,16 @@ export default class MarkerManager {
     this.markers = {};
   }
 
-  createMarkerFromSpot({ id, lat, lng, title }) {
+  createMarkerFromSpot({ id, lat, lng, title, price }) {
     const options = {
       position: { lat, lng },
       map: this.map,
+      label: `$${price}`,
       title,
     };
 
     this.markers[id] = new google.maps.Marker(options);
+    this.markers[id].value = id;
   }
 
   updateMarkers(newSpots) {
