@@ -15,7 +15,7 @@
 #
 
 class Spot < ActiveRecord::Base
-  validates :host, :type, :title, :description, :price, :lat, :lng,
+  validates :host, :spot_type, :title, :description, :price, :lat, :lng,
     presence: true
 
   belongs_to :host,
