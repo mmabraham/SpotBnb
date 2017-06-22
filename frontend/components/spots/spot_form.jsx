@@ -88,7 +88,6 @@ class SpotForm extends React.Component {
   }
 
   errorsFor(field) {
-    debugger;
     if (this.props.errors && this.props.errors[field]) {
       return this.props.errors[field][0];
     }
@@ -106,7 +105,6 @@ class SpotForm extends React.Component {
   }
 
   step1() {
-    debugger
     return (
       <section>
         <input ref={ref => this.place = ref} />
@@ -174,7 +172,7 @@ class SpotForm extends React.Component {
       case 1:
         return this.step2.bind(this)();
       case 2:
-        return 'Add a picture...';
+        return (<input type="file" id="input" />);
       default:
         return null;
     }
