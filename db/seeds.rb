@@ -19,21 +19,21 @@ users = []
   )
 end
 
-30.times do
-  Spot.create(
-    spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
-    title: Faker::Book.title,
-    description: Faker::Lorem.paragraph,
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude,
-    capacity: rand(1..15),
-    price: rand(1..999),
-    host_id: users.sample.id,
-    img: File.open('app/assets/images/background1 copy.jpg')
-  )
-end
+# 30.times do
+#   Spot.create(
+#     spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
+#     title: Faker::Book.title,
+#     description: Faker::Lorem.paragraph,
+#     lat: Faker::Address.latitude,
+#     lng: Faker::Address.longitude,
+#     capacity: rand(1..15),
+#     price: rand(1..999),
+#     host_id: users.sample.id,
+#     img: File.open('app/assets/images/background1 copy.jpg')
+#   )
+# end
 
-30.times do
+90.times do
   Spot.create(
     spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
     title: Faker::Book.title,

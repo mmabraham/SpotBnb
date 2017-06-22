@@ -1,8 +1,5 @@
 import React from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
 import { Link } from 'react-router-dom';
-import IconButton from 'material-ui/IconButton';
-import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 export default class SpotIndex extends React.Component {
   constructor(props) {
@@ -15,23 +12,20 @@ export default class SpotIndex extends React.Component {
 
   render() {
     const spots = this.props.spots.map(spot => (
-        <GridTile
-          className="grid-list-item"
-          key={spot.id}
-          title={`$${spot.price} * ${spot.title}`}
-          subtitle={spot.type}
-          actionIcon={<IconButton><FavoriteBorder color="white" /></IconButton>}
-        >
+        <div className="grid-list-item" key={spot.id}>
           <Link to={`/spots/${spot.id}`}><img src={spot.img} /></Link>
-          <div></div>
-        </GridTile>
+          <div className="list-item-info">
+            {`$${spot.price} * ${spot.title}`}
+            {spot.type}{${spot.capacity}}
+          </div>
+        </div>
       )
     );
     return (
-      <div className="grid-list-container">
-        <GridList cols={3} className="grid-list" cellHeight={260} >
+      <div className="grid-list-container col-2-3">
+        <div className="grid-list" >
           {spots}
-        </GridList>
+        </div>
       </div>
     )
   }

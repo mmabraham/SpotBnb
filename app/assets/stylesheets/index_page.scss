@@ -1,18 +1,27 @@
 .grid-list-container {
-  display: 'flex';
-  flex-wrap: 'wrap';
-  justify-content: 'space-around';
-  width: 1200px;
+  width: 68%;
   height: 4500px;
   padding: 24px;
+  margin-top: 100px;
 }
 
 .grid-list {
-  overflow-y: 'auto';
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
 }
 
 .grid-list-item {
-  margin: 17px;
+  box-sizing: border-box;
+  width: 31%;
+  min-width: 280px;
+  padding: 10px;
+}
+
+.list-item-info {
+  font-weight: 700;
+  color: #4848484;
 }
 
 #outer-map-container {
@@ -20,7 +29,8 @@
   top: 98px;
   bottom: -5px;
   right: -5px;
-  width: 650px;
+  width: 30%;
+  min-width: 390px;
 }
 
 #map-container {
