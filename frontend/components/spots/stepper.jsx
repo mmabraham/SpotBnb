@@ -33,6 +33,10 @@ class SpotForm extends React.Component {
     this.handleSlide = this.handleSlide.bind(this);
   }
 
+  componentDidMount() {
+    this.setupAutocomplete.bind(this)();
+  }
+
   handleSlide(formType) {
     return (e, value) => this.setState({[formType]: value});
   }
@@ -42,7 +46,6 @@ class SpotForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.createSpot(this.state)
       .then(() => this.setState(this.defaultForm()));
@@ -70,7 +73,26 @@ class SpotForm extends React.Component {
   };
 
   allTypes() {
-    return ['full_home', 'shared', 'mattress on floor', 'private'];
+    return ['full home', 'shared home', 'mattress on the floor', 'private home'];
+  }
+
+  validCapacities() {
+    const MAX_CAPACITY = 20, items = [];
+    for (let i = 0; i < MAX_CAPACITY; i++) {
+      items.push(<MenuItem key={i} value={i} primaryText={`${i} guests`} />)
+    }
+    return items;
+  }
+
+  setupAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(this.place);
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      debugger
+      const location = autocomplete.getPlace().geometry.location;
+      const lat = location.lat();
+      const lng = location.lng();
+      this.setState({lat, lng});
+    });
   }
 
   step1() {
@@ -86,15 +108,16 @@ class SpotForm extends React.Component {
           ))}
         </SelectField>
         <SelectField
-          floatingLabelText="How big is your place?"
+          floatingLabelText="Place for"
           value={this.state.capacity}
           onChange={this.handleSelect('capacity')}
+          maxHeight={150}
           >
-
+          {this.validCapacities()}
         </SelectField>
 
         <label>Latitude
-          <input onChange={this.handleChange('lat')} value={this.state.lat} />
+          <input ref={ref => this.place = ref} onChange={this.handleChange('lat')} value={this.state.lat} />
         </label>
         <label>Longitude
           <input onChange={this.handleChange('lng')} value={this.state.lng} />
@@ -102,6 +125,7 @@ class SpotForm extends React.Component {
       </section>
     );
   }
+
 
   step2() {
     return (
@@ -121,7 +145,9 @@ class SpotForm extends React.Component {
             />
         </div>
 
-        <div>price
+        <div>
+          price
+          <br />
           {`$${this.state.price}`}
           <Slider
             min={0}

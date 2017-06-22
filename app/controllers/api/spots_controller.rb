@@ -60,6 +60,6 @@ class Api::SpotsController < ApplicationController
   def spot_params
     params
       .require(:spot)
-      .permit(:type, :title, :description, :capacity, :price, :lat, :lng)
+      .permit(:type, :title, :description, :capacity, :price, :lat, :lng, :spot_type)
   end
 end

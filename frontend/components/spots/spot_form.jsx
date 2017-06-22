@@ -71,13 +71,13 @@ export default class SpotForm extends React.Component {
 }
 
 
-// const autocomplete = new google.maps.places.Autocomplete(inputText);
-// autocomplete.bindTo('bounds', map);
-// google.maps.event.addListener(autocomplete, 'place_changed', function() {
-//     const location = autocomplete.getPlace().geometry.location;
-//     const lat = location.lat();
-//     const lng = location.lng();
-//     this.setState({lat, lng}),
-//     map.setCenter(location);
-//     // marker.setPosition(latlng);
-// });
+const autocomplete = new google.maps.places.Autocomplete(inputText);
+autocomplete.bindTo('bounds', map);
+google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    const location = autocomplete.getPlace().geometry.location;
+    const lat = location.lat();
+    const lng = location.lng();
+    this.setState({lat, lng}),
+    map.setCenter(location);
+    // marker.setPosition(latlng);
+});
