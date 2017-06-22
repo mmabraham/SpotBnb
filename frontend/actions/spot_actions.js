@@ -2,7 +2,7 @@ import * as APIUtil from '../util/spots_api_util';
 
 
 export const RECEIVE_SPOTS = 'RECEIVE_SPOTS';
-export const RECIEVE_SPOT = 'RECIEVE_SPOT';
+export const RECEIVE_SPOT = 'RECEIVE_SPOT';
 
 export const receiveSpots = (spots) => {
   return {
@@ -30,5 +30,5 @@ export const createSpot = spot => dispatch => {
 
 export const fetchSpot = (id) => dispatch => {
   return APIUtil.fetchSpot(id)
-    .then((spotdetails) => dispatch(receiveSpot(spotDetails)))
+    .then((spotDetails) => dispatch(receiveSpot(spotDetails)))
 }

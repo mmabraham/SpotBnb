@@ -184,7 +184,7 @@ class SpotForm extends React.Component {
 
   step3() {
     return (
-      <input type="file" id="input" onloadstart={this.handleUpload}/>
+      <input type="file" id="input" onLoadStart={this.handleUpload}/>
     )
   }
 

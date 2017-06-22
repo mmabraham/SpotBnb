@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import LoginForm from './session/login_form_container';
 import SignupForm from './session/signup_form_container';
 import SpotForm from './spots/spot_form_container';
@@ -14,11 +14,13 @@ const App = () => {
   <div>
   <header>
     <Navbar />
-    <AuthRoute path='/login' component={LoginForm} />
-    <AuthRoute path='/signup' component={SignupForm} />
-    <ShowPage />
-    <Route exact path='/' component={IndexPage} />
-    <ProtectedRoute path='/new/spot' component={SpotForm} />
+    <Switch>
+      <AuthRoute path='/login' component={LoginForm} />
+      <AuthRoute path='/signup' component={SignupForm} />
+      <ProtectedRoute path='/spots/new' component={SpotForm} />
+      <Route path='/spots/:id' component={ShowPage} />
+      <Route exact path='/' component={IndexPage} />
+    </Switch>
   </header>
  </div>
  );
