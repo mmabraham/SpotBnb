@@ -17,7 +17,6 @@ class SpotForm extends React.Component {
     this.state = {
       finished: false,
       stepIndex: 0,
-      host_id: this.props.currentUser.id,
       spot_type: '',
       title: '',
       description: '',
@@ -31,9 +30,19 @@ class SpotForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.handleSlide = this.handleSlide.bind(this);
+  }
+
+  handleSlide(formType) {
+    return (e, value) => this.setState({[formType]: value});
+  }
+
+  handleSelect(formType) {
+    return (e, idx, value) => this.setState({[formType]: value});
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     this.props.createSpot(this.state)
       .then(() => this.setState(this.defaultForm()));
@@ -70,17 +79,20 @@ class SpotForm extends React.Component {
         <SelectField
           floatingLabelText="Type"
           value={this.state.spot_type}
-          onChange={this.handleChange('spot_type')}
+          onChange={this.handleSelect('spot_type')}
         >
           {this.allTypes().map((t, i) => (
             <MenuItem key={i} value={t} primaryText={t} />
           ))}
         </SelectField>
-        <TextField
-          floatingLabelText="Title"
-          onChange={this.handleChange('title')}
-          value={this.state.title}
-          />
+        <SelectField
+          floatingLabelText="How big is your place?"
+          value={this.state.capacity}
+          onChange={this.handleSelect('capacity')}
+          >
+
+        </SelectField>
+
         <label>Latitude
           <input onChange={this.handleChange('lat')} value={this.state.lat} />
         </label>
@@ -94,29 +106,31 @@ class SpotForm extends React.Component {
   step2() {
     return (
       <section>
-        <TextField
-          floatingLabelText="Description"
-          multiLine={true}
-          rows={2}
-          onChange={this.handleChange('description')}
-          value={this.state.description}
-          />
-        <SelectField
-          floatingLabelText="How big is your place?"
-          value={this.state.capacity}
-          onChange={this.handleChange('capacity')}
-          >
+        <div>
+          <TextField
+            floatingLabelText="Title"
+            onChange={this.handleChange('title')}
+            value={this.state.title}
+            />
+          <TextField
+            floatingLabelText="Description"
+            multiLine={true}
+            rows={2}
+            onChange={this.handleChange('description')}
+            value={this.state.description}
+            />
+        </div>
 
-        </SelectField>
-        <label>price
+        <div>price
+          {`$${this.state.price}`}
           <Slider
             min={0}
-            max={500}
+            max={999}
             step={1}
             value={this.state.price}
-            onChange={this.handleChange('price')}
+            onChange={this.handleSlide('price')}
           />
-        </label>
+      </div>
       </section>
     )
   }
@@ -124,9 +138,9 @@ class SpotForm extends React.Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return this.step1();
+        return this.step1.bind(this)();
       case 1:
-        return this.step2();
+        return this.step2.bind(this)();
       case 2:
         return 'Add a picture...';
       default:
@@ -139,9 +153,7 @@ class SpotForm extends React.Component {
     const contentStyle = {margin: '0 16px'};
 
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        style={{width: '100%', maxWidth: 700, marginTop: '200px'}}>
+      <form style={{width: '100%', maxWidth: 700, marginTop: '200px'}}>
         <Stepper activeStep={stepIndex}>
           <Step>
             <StepLabel>What kind of spot...</StepLabel>
@@ -154,26 +166,27 @@ class SpotForm extends React.Component {
           </Step>
         </Stepper>
         <div style={contentStyle}>
-          {finished ? (
-            <button className="btn">Add Spot</button>
-          ) : (
-            <div>
-              {this.getStepContent(stepIndex)}
-              <div style={{marginTop: 12}}>
-                <FlatButton
-                  label="Back"
-                  disabled={stepIndex === 0}
-                  onTouchTap={this.handlePrev}
-                  style={{marginRight: 12}}
-                />
-                <RaisedButton
-                  label={stepIndex === 2 ? 'Submit' : 'Next'}
-                  primary={true}
-                  onTouchTap={this.handleNext}
-                />
-              </div>
+
+          <div className="form-step">
+            {this.getStepContent(stepIndex)}
+            <div style={{marginTop: 12}}>
+              <FlatButton
+                label="Back"
+                disabled={stepIndex === 0}
+                onTouchTap={this.handlePrev}
+                style={{marginRight: 12}}
+              />
+              {finished ? (
+                <h1>Please wait</h1>
+              ) : (
+              <RaisedButton
+                label={stepIndex === 2 ? 'Submit' : 'Next'}
+                primary={true}
+                onTouchTap={stepIndex <= 1 ? this.handleNext : this.handleSubmit}
+              />
+              )}
             </div>
-          )}
+          </div>
         </div>
       </form>
     );

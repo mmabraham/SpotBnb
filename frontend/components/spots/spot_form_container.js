@@ -1,7 +1,8 @@
 
 import { connect } from 'react-redux';
-import SpotForm from './spot_form';
+import SpotForm from './stepper';
 import { createSpot } from '../../actions/spot_actions';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,4 +16,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpotForm);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SpotForm)
+);

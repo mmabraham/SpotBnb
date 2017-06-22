@@ -19,7 +19,6 @@ export const signup = (user) => (dispatch) => {
   return sessionApiUtil.signup(user)
     .then((fetchedUser) => dispatch(receiveUser(fetchedUser)),
       (errors) => dispatch(receiveErrors(errors.responseJSON)));
-    // .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const logout = () => (dispatch) => {

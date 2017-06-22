@@ -1,1 +1,10 @@
 
+.form-step > section {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  margin: auto;
+  margin-top: 200px;
+}

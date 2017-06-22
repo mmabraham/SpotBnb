@@ -1,5 +1,6 @@
 import React from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
+import { Link } from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
@@ -21,7 +22,8 @@ export default class SpotIndex extends React.Component {
           subtitle={spot.type}
           actionIcon={<IconButton><FavoriteBorder color="white" /></IconButton>}
         >
-          <img src={spot.img} />
+          <Link to={`/spots/${spot.id}`}><img src={spot.img} /></Link>
+          <div></div>
         </GridTile>
       )
     );
