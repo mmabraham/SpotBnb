@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux';
-import SpotForm from './stepper';
+import SpotForm from './spot_form';
 import { createSpot } from '../../actions/spot_actions';
 import { withRouter } from 'react-router-dom';
 

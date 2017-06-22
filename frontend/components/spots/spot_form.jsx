@@ -1,26 +1,49 @@
 import React from 'react';
+import {
+  Step,
+  Stepper,
+  StepLabel,
+} from 'material-ui/Stepper';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import Slider from 'material-ui/Slider';
 
-
-export default class SpotForm extends React.Component {
+class SpotForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.defaultForm();
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  defaultForm() {
-    return {
-      host_id: this.props.currentUser.id,
+    this.state = {
+      finished: false,
+      stepIndex: 0,
       spot_type: '',
       title: '',
       description: '',
       price: 0,
       capacity: 0,
       img: '',
+      loc_text: '',
       lat: '',
       lng: '',
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleSlide = this.handleSlide.bind(this);
+  }
+
+  componentDidMount() {
+    this.setupAutocomplete.bind(this)();
+  }
+
+  handleSlide(formType) {
+    return (e, value) => this.setState({[formType]: value});
+  }
+
+  handleSelect(formType) {
+    return (e, idx, value) => this.setState({[formType]: value});
   }
 
   handleSubmit(e) {
@@ -35,49 +58,160 @@ export default class SpotForm extends React.Component {
     };
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="new-spot-form auth-form">
-        <TextField
-          hintText="Testing"
-        />
-        <label>Type
-          <input onChange={this.handleChange('spot_type')} value={this.state.spot_type} />
-        </label>
-        <label>Title
-          <input onChange={this.handleChange('title')} value={this.state.title} />
-        </label>
-        <TextField
-          floatingLabelText="Description"
-          multiLine={true}
-          rows={2}
-          onChange={this.handleChange('description')}
-          value={this.state.description}
-        />
-        <label>price
-          <input onChange={this.handleChange('price')} value={this.state.price} />
-        </label>
-        <label>Latitude
-          <input onChange={this.handleChange('lat')} value={this.state.lat} />
-        </label>
-        <label>Longitude
-          <input onChange={this.handleChange('lng')} value={this.state.lng} />
-        </label>
+  handleNext() {
+    const { stepIndex } = this.state;
+    this.setState({
+      stepIndex: stepIndex + 1,
+      finished: stepIndex >= 2,
+    });
+  };
 
-        <button className="btn">Add Spot</button>
+  handlePrev() {
+    const {stepIndex} = this.state;
+    if (stepIndex > 0) {
+      this.setState({stepIndex: stepIndex - 1});
+    }
+  };
+
+  allTypes() {
+    return ['full home', 'shared home', 'mattress on the floor', 'private home'];
+  }
+
+  validCapacities() {
+    const MAX_CAPACITY = 20, items = [];
+    for (let i = 0; i < MAX_CAPACITY; i++) {
+      items.push(<MenuItem key={i} value={i} primaryText={`${i} guests`} />)
+    }
+    return items;
+  }
+
+  setupAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(this.place);
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      const location = autocomplete.getPlace().geometry.location;
+      const lat = location.lat();
+      const lng = location.lng();
+      this.setState({lat, lng, loc_text: this.place.value});
+      console.log(this.state.lat);
+    });
+  }
+
+  step1() {
+    return (
+      <section>
+        <input ref={ref => this.place = ref} />
+        <SelectField
+          floatingLabelText="Type"
+          value={this.state.spot_type}
+          onChange={this.handleSelect('spot_type')}
+        >
+          {this.allTypes().map((t, i) => (
+            <MenuItem key={i} value={t} primaryText={t} />
+          ))}
+        </SelectField>
+        <SelectField
+          floatingLabelText="Place for"
+          value={this.state.capacity}
+          onChange={this.handleSelect('capacity')}
+          maxHeight={150}
+          >
+          {this.validCapacities()}
+        </SelectField>
+      </section>
+    );
+  }
+
+
+  step2() {
+    return (
+      <section>
+        <div>
+          <TextField
+            floatingLabelText="Title"
+            onChange={this.handleChange('title')}
+            value={this.state.title}
+            />
+          <TextField
+            floatingLabelText="Description"
+            multiLine={true}
+            rows={2}
+            onChange={this.handleChange('description')}
+            value={this.state.description}
+            />
+        </div>
+
+        <div>
+          price
+          <br />
+          {`$${this.state.price}`}
+          <Slider
+            min={0}
+            max={999}
+            step={1}
+            value={this.state.price}
+            onChange={this.handleSlide('price')}
+          />
+      </div>
+      </section>
+    )
+  }
+
+  getStepContent(stepIndex) {
+    switch (stepIndex) {
+      case 0:
+        return this.step1.bind(this)();
+      case 1:
+        return this.step2.bind(this)();
+      case 2:
+        return 'Add a picture...';
+      default:
+        return null;
+    }
+  }
+
+  render() {
+    const {finished, stepIndex} = this.state;
+    const contentStyle = {margin: '0 16px'};
+
+    return (
+      <form style={{width: '100%', maxWidth: 700, marginTop: '200px'}}>
+        <Stepper activeStep={stepIndex}>
+          <Step>
+            <StepLabel>What kind of spot...</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Tell us more...</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Add a picture...</StepLabel>
+          </Step>
+        </Stepper>
+        <div style={contentStyle}>
+
+          <div className="form-step">
+            {this.getStepContent(stepIndex)}
+            <div style={{marginTop: 12}}>
+              <FlatButton
+                label="Back"
+                disabled={stepIndex === 0}
+                onTouchTap={this.handlePrev}
+                style={{marginRight: 12}}
+              />
+              {finished ? (
+                <h1>Please wait</h1>
+              ) : (
+              <RaisedButton
+                label={stepIndex === 2 ? 'Submit' : 'Next'}
+                primary={true}
+                onTouchTap={stepIndex <= 1 ? this.handleNext : this.handleSubmit}
+              />
+              )}
+            </div>
+          </div>
+        </div>
       </form>
     );
   }
 }
 
-
-const autocomplete = new google.maps.places.Autocomplete(inputText);
-autocomplete.bindTo('bounds', map);
-google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    const location = autocomplete.getPlace().geometry.location;
-    const lat = location.lat();
-    const lng = location.lng();
-    this.setState({lat, lng}),
-    map.setCenter(location);
-    // marker.setPosition(latlng);
-});
+export default SpotForm;
