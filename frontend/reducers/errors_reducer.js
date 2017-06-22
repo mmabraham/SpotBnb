@@ -6,7 +6,9 @@ const sessionReducer = (state = {}, action) => {
     case RECEIVE_ERRORS:
     return action.errors;
     case RECEIVE_USER:
+      return {};
     case RECIEVE_SPOT:
+      return {};
     case RECEIVE_SPOTS:
       return {};
     default:

@@ -17,7 +17,7 @@ export default class ShowPage extends React.Component {
     if (!spot ) return null;
 
     return (
-      <main>
+      <main className="container">
         <div>
           <img src={spot.img}/>
         </div>

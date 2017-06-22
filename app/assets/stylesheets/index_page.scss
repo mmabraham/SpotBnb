@@ -14,12 +14,16 @@
 
 .grid-list-item {
   box-sizing: border-box;
-  width: 31%;
+  width: 33%;
   min-width: 280px;
   padding: 10px;
 }
 
 .list-item-info {
+  height: 66px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   font-weight: 700;
   color: #4848484;
 }
