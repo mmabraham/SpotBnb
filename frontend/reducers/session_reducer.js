@@ -9,9 +9,7 @@ const _defaultState = Object.freeze({
 const sessionReducer = (state = _defaultState, action) => {
   switch (action.type) {
     case RECEIVE_USER:
-      return Object.assign({}, state, { user: action.user });
-    case RECEIVE_ERRORS:
-      return Object.assign({}, _defaultState, { errors: action.errors });
+      return Object.assign({}, state, { user: action.user });  
     default:
       return state;
   }

@@ -32,6 +32,7 @@ class SpotForm extends React.Component {
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleSlide = this.handleSlide.bind(this);
+    this.errorsFor = this.errorsFor.bind(this);
   }
 
   componentDidMount() {
@@ -49,7 +50,8 @@ class SpotForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createSpot(this.state)
-      .then(() => this.setState(this.defaultForm()));
+      .then(() => this.setState(this.defaultForm()))
+      .fail((res) => this.props.receiveErrors(res.responseJSON));
   }
 
   handleChange(formType) {
@@ -85,6 +87,13 @@ class SpotForm extends React.Component {
     return items;
   }
 
+  errorsFor(field) {
+    debugger;
+    if (this.props.errors && this.props.errors[field]) {
+      return this.props.errors[field][0];
+    }
+  }
+
   setupAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.place);
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
@@ -97,6 +106,7 @@ class SpotForm extends React.Component {
   }
 
   step1() {
+    debugger
     return (
       <section>
         <input ref={ref => this.place = ref} />
@@ -121,7 +131,6 @@ class SpotForm extends React.Component {
     );
   }
 
-
   step2() {
     return (
       <section>
@@ -130,12 +139,14 @@ class SpotForm extends React.Component {
             floatingLabelText="Title"
             onChange={this.handleChange('title')}
             value={this.state.title}
+            errorText={this.errorsFor('title')}
             />
           <TextField
             floatingLabelText="Description"
             multiLine={true}
             rows={2}
             onChange={this.handleChange('description')}
+            errorText={this.errorsFor('description')}
             value={this.state.description}
             />
         </div>

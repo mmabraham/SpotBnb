@@ -4,7 +4,7 @@ import { RECEIVE_SPOTS, RECIEVE_SPOT } from '../actions/session_actions';
 const sessionReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ERRORS:
-    return Object.assign({}, _defaultState, { errors: action.errors });
+    return action.errors;
     case RECEIVE_USER:
     case RECIEVE_SPOT:
     case RECEIVE_SPOTS:
