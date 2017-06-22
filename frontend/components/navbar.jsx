@@ -21,7 +21,7 @@ const Navbar = (props) => {
         </ul>
         <ul className="right-nav-items">
           <li>
-            <NavLink to="/new/spot">Become a Host</NavLink>
+            <NavLink to="/spots/new">Become a Host</NavLink>
           </li>
           <li>
             <NavLink to="#">Trips</NavLink>
@@ -47,7 +47,7 @@ const Navbar = (props) => {
         </ul>
         <ul className="right-nav-items">
           <li>
-            <NavLink to="/new/spot">Become a Host</NavLink>
+            <NavLink to="/spots/new">Become a Host</NavLink>
           </li>
           <li>
             <NavLink to="#">Trips</NavLink>

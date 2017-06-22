@@ -16,6 +16,9 @@
  */
 
  @import "reset.scss";
+ @import "base/fonts";
+ @import "base/core";
+
  @import "navbar.scss";
  @import "auth_form.scss";
  @import "index_page.scss";

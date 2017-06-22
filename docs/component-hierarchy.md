@@ -86,4 +86,4 @@ props:
 | "spots/:id" | ShowPageContainer |
 | "/mytrips" | TripsIndexContainer |
 | "/host" | ListingIndexContainer|
-| "/new/spot" | ListingForm|
+| "/spots/new" | ListingForm|
