@@ -27,16 +27,25 @@ class SpotForm extends React.Component {
       lat: '',
       lng: '',
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleSlide = this.handleSlide.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.errorsFor = this.errorsFor.bind(this);
   }
 
   componentDidMount() {
     this.setupAutocomplete.bind(this)();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createSpot(this.state)
+    .then(() => this.setState(this.defaultForm()))
+    .fail((res) => this.props.receiveErrors(res.responseJSON));
   }
 
   handleSlide(formType) {
@@ -47,11 +56,19 @@ class SpotForm extends React.Component {
     return (e, idx, value) => this.setState({[formType]: value});
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.createSpot(this.state)
-      .then(() => this.setState(this.defaultForm()))
-      .fail((res) => this.props.receiveErrors(res.responseJSON));
+  handleUpload(e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () => {
+      this.setState({ imageUrl: reader.result, imageFile: file});
+    }
+
+    // QUESTION -- what is this doing?
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
   }
 
   handleChange(formType) {
@@ -165,6 +182,12 @@ class SpotForm extends React.Component {
     )
   }
 
+  step3() {
+    return (
+      <input type="file" id="input" onloadstart={this.handleUpload}/>
+    )
+  }
+
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
@@ -172,7 +195,7 @@ class SpotForm extends React.Component {
       case 1:
         return this.step2.bind(this)();
       case 2:
-        return (<input type="file" id="input" />);
+        return this.step3.bind(this)();
       default:
         return null;
     }
