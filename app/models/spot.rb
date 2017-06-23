@@ -17,6 +17,7 @@
 #  img_content_type :string
 #  img_file_size    :integer
 #  img_updated_at   :datetime
+#  location         :string
 #
 
 class Spot < ActiveRecord::Base
@@ -32,6 +33,7 @@ class Spot < ActiveRecord::Base
     class_name: User
 
   has_many :reviews
+  has_many :bookings
 
   def self.in_bounds(spots, bounds)
     return spots unless bounds

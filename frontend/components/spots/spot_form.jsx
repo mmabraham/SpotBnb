@@ -51,7 +51,6 @@ class SpotForm extends React.Component {
     }
   }
   handleSubmit(e) {
-    console.log(this.state)
     e.preventDefault();
     this.props.createSpot(this.state)
     .then(() => this.setState(this.defaultForm()))

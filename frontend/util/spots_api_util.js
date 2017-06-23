@@ -14,7 +14,6 @@ export const fetchSpot = (id) => {
 };
 
 export const createSpot = (spot) => {
-  console.log( spot );
   return $.ajax({
     method: 'POST',
     url: 'api/spots',

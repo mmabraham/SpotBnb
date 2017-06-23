@@ -1,20 +1,20 @@
 # == Schema Information
 #
-# Table name: reviews
+# Table name: bookings
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
 #  spot_id    :integer          not null
-#  body       :text
-#  rating     :integer          not null
+#  start_date :datetime         not null
+#  end_date   :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Review < ActiveRecord::Base
+require 'test_helper'
 
-  validates :user, :spot, :rating, presence: true
-
-  belongs_to :user
-  belongs_to :spot
+class BookingTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

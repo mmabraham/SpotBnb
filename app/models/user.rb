@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :spots,
-    primary_key: :id,
-    foreign_key: :host_id,
-    class_name: Spot
+  has_many :spots
+  has_many :bookings
+
+
 
 
   def self.generate_session_token
