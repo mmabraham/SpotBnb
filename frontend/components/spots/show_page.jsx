@@ -8,7 +8,6 @@ export default class ShowPage extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchSpot(this.props.id);
   }
 
@@ -17,8 +16,8 @@ export default class ShowPage extends React.Component {
     if (!spot ) return null;
 
     return (
-      <main className="container">
-        <div>
+      <main className="full-width">
+        <div className="full-width-image">
           <img src={spot.img}/>
         </div>
         <div className="details">
@@ -27,6 +26,6 @@ export default class ShowPage extends React.Component {
           <p>{spot.description}</p>
         </div>
       </main>
-    )
+    );
   }
 }

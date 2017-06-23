@@ -12,19 +12,19 @@ export const receiveUser = (user) => {
 export const login = (user) => (dispatch) => {
   return sessionApiUtil.login(user)
     .then((res) => dispatch(receiveUser(res)))
-    .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
+    .fail((errors) => dispatch(receiveErrors(errors)));
 };
 
 export const signup = (user) => (dispatch) => {
   return sessionApiUtil.signup(user)
     .then((fetchedUser) => dispatch(receiveUser(fetchedUser)),
-      (errors) => dispatch(receiveErrors(errors.responseJSON)));
+      (errors) => dispatch(receiveErrors(errors)));
 };
 
 export const logout = () => (dispatch) => {
   return sessionApiUtil.logout(null)
     .then(() => dispatch(receiveUser(null)))
-    .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
+    .fail((errors) => dispatch(receiveErrors(errors)));
 };
 
 export const receiveErrors = (errors) => {

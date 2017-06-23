@@ -16,12 +16,18 @@
   top: 180px;
   bottom: 0;
   background-color: white;
+  z-index: 2;
 }
 
 .auth-form > label {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.auth-form input {
+  font-size: 19px;
+  line-height: 24px;
 }
 
 input {
@@ -43,6 +49,7 @@ input {
   font-size: 19px;
   line-height: 22px;
   border: 2px solid transparent;
+  background-color: #FF5A5F;
   padding: 12px;
   border-radius: 4px;
   width: 60px;

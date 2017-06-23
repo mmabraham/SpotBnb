@@ -4,6 +4,12 @@ export default class MarkerManager {
     this.markers = {};
   }
 
+  handleHover(id) {
+    return (e) => {
+
+    };
+  }
+
   createMarkerFromSpot({ id, lat, lng, title, price }) {
     const options = {
       position: { lat, lng },

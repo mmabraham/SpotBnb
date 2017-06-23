@@ -41,6 +41,11 @@ class SpotForm extends React.Component {
     this.setupAutocomplete.bind(this)();
   }
 
+  componentDidUpdate() {
+    if (this.state.stepIndex == 0) {
+      this.setupAutocomplete.bind(this)();
+    }
+  }
   handleSubmit(e) {
     e.preventDefault();
     this.props.createSpot(this.state)
@@ -117,14 +122,13 @@ class SpotForm extends React.Component {
       const lat = location.lat();
       const lng = location.lng();
       this.setState({lat, lng, loc_text: this.place.value});
-      console.log(this.state.lat);
     });
   }
 
   step1() {
     return (
       <section>
-        <input ref={ref => this.place = ref} />
+        <input ref={ref => this.place = ref} placeholder={this.state.loc_text}/>
         <SelectField
           floatingLabelText="Type"
           value={this.state.spot_type}

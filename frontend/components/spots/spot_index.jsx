@@ -6,12 +6,7 @@ export default class SpotIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    // this.props.fetchAllSpots();
-  }
-
   render() {
-    debugger;
     const spots = this.props.spots.map(spot => (
         <div className="grid-list-item" key={spot.id}>
           <Link to={`/spots/${spot.id}`}><img src={spot.img} /></Link>
@@ -28,6 +23,6 @@ export default class SpotIndex extends React.Component {
           {spots}
         </div>
       </div>
-    )
+    );
   }
 }

@@ -14,8 +14,9 @@
  *
  *= require_self
  */
- // @import "font-awesome-sprockets";
- // @import "font-awesome";
+ 
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
  @import "reset.scss";
  @import "base/fonts";
  @import "base/core";

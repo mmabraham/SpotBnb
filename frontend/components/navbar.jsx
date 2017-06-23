@@ -8,7 +8,7 @@ const Navbar = (props) => {
       <Avatar size={30} src={props.currentUser.image_url} />
     ) : (
       <Avatar size={30}>{props.currentUser.username[0].toUpperCase()}</Avatar>
-    )
+    );
 
     return (
       <nav className="main-nav nav-logged-in">
@@ -27,7 +27,9 @@ const Navbar = (props) => {
             <NavLink to="#">Trips</NavLink>
           </li>
           <li>
-            <button onClick={() => props.logout().then(() => props.history.push('/login'))}>
+            <button
+              className="logout-button"
+              onClick={() => props.logout().then(() => props.history.push('/login'))}>
               Logout
             </button>
           </li>
