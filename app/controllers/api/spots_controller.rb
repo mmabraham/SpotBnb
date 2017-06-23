@@ -14,8 +14,8 @@ class Api::SpotsController < ApplicationController
     if params[:host_id]
       @spots = current_user.spots
     else
-      @spots = Spot.all
-      @spots = Spot.in_bounds(@spots, params[:bounds])
+      # @spots = Spot.all
+      @spots = Spot.in_bounds(params[:bounds])
       # more filters here ...
     end
     render :index

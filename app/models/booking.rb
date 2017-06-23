@@ -19,5 +19,6 @@ class Booking < ActiveRecord::Base
     foreign_key: :user_id,
     class_name: User
 
-  belongs_to :spot, dependant: :destroy
+  belongs_to :spot, dependent: :destroy
+  belongs_to :user
 end

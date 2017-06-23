@@ -29,9 +29,6 @@ class User < ActiveRecord::Base
   has_many :spots
   has_many :bookings
 
-
-
-
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end

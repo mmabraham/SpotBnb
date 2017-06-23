@@ -1,5 +1,6 @@
 import React from 'react';
 import Rating from 'react-rating';
+import Picker from '../bookings/booking_form';
 
 export default class ShowPage extends React.Component {
   constructor(props) {
@@ -62,7 +63,7 @@ export default class ShowPage extends React.Component {
           <h2>About this listing</h2>
           <p>{spot.description}</p>
           <div className="booking-form">
-
+            
           </div>
         </div>
       </main>

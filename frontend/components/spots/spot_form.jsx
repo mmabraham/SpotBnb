@@ -42,14 +42,17 @@ class SpotForm extends React.Component {
   }
 
   componentDidMount() {
-    this.setupAutocomplete.bind(this)();
+    this.setupAutocomplete();
   }
 
   componentDidUpdate() {
     if (this.state.stepIndex == 0) {
-      this.setupAutocomplete.bind(this)();
+      this.setupAutocomplete();
+    } else {
+
     }
   }
+
   handleSubmit(e) {
     const redirectTo = this.redirectTo.bind(this);
     e.preventDefault();
@@ -137,7 +140,7 @@ class SpotForm extends React.Component {
   step1() {
     return (
       <section>
-        <input ref={ref => this.place = ref} placeholder={this.state.loc_text}/>
+        <input ref={ref => this.place = ref} placeholder={this.state.location}/>
         <SelectField
           floatingLabelText="Type"
           value={this.state.spot_type}
@@ -168,7 +171,7 @@ class SpotForm extends React.Component {
             onChange={this.handleChange('title')}
             value={this.state.title}
             errorText={this.errorsFor('title')}
-            />
+          />
           <TextField
             floatingLabelText="Description"
             multiLine={true}
@@ -176,7 +179,7 @@ class SpotForm extends React.Component {
             onChange={this.handleChange('description')}
             errorText={this.errorsFor('description')}
             value={this.state.description}
-            />
+          />
         </div>
 
         <div>
@@ -204,11 +207,11 @@ class SpotForm extends React.Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return this.step1.bind(this)();
+        return this.step1();
       case 1:
-        return this.step2.bind(this)();
+        return this.step2();
       case 2:
-        return this.step3.bind(this)();
+        return this.step3();
       default:
         return null;
     }

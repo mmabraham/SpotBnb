@@ -10,7 +10,7 @@ User.destroy_all
 Spot.destroy_all
 Review.destroy_all
 
-User.create(username: 'Guest', password: 'password')
+guest = User.create(username: 'Guest', password: 'password')
 
 users = []
 20.times do
@@ -56,4 +56,25 @@ end
     rating: rand(1..5)
   )
 
+end
+
+20.times do
+  end_date = Faker::Time.forward(200)
+  Booking.create(
+    user_id: guest.id,
+    spot_id: spots.sample.id,
+    start_date: Faker::Time.between(Date.today, end_date),
+    end_date: end_date
+  )
+end
+
+
+300.times do
+  end_date = Faker::Time.forward(200)
+  Booking.create(
+    user_id: users.sample.id,
+    spot_id: spots.sample.id,
+    start_date: Faker::Time.between(Date.today, end_date),
+    end_date: end_date
+  )
 end

@@ -35,8 +35,8 @@ class Spot < ActiveRecord::Base
   has_many :reviews
   has_many :bookings
 
-  def self.in_bounds(spots, bounds)
-    return spots unless bounds
+  def self.in_bounds(bounds)
+    return Spot.all unless bounds
     # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)
     #
     # if bounds[:southWest][:lng] < bounds[:northEast][:lng]
@@ -44,7 +44,7 @@ class Spot < ActiveRecord::Base
     #   bounds[:northEast][:lng], bounds[:southWest][:lng] =  bounds[:southWest][:lng], bounds[:northEast][:lng]
     # end
 
-    spots.where('lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?',
+    Spot.where('lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?',
       bounds[:southWest][:lat],
       bounds[:northEast][:lat],
       bounds[:southWest][:lng],
