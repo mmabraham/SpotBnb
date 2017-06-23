@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from 'react-rating';
 
 export default class ShowPage extends React.Component {
   constructor(props) {
@@ -16,24 +17,51 @@ export default class ShowPage extends React.Component {
     if (!spot ) return null;
 
     return (
-      <main className="full-width">
-        <div className="full-width-image">
-          <img src={spot.img}/>
+      <main>
+        <div className="full-width">
+          <div className="full-width-image">
+            <img src={spot.img}/>
+          </div>
         </div>
-        <div className="details">
-          <h2>{spot.title}</h2>
-          <h6>`${spot.type}  --  ${spot.capacity}`}</h6>
+        <div className="spot-details col-2-3">
+          <div className="info">
+            <div className="links">
+              <a>Overview </a><span> · </span>
+              <a>Reviews </a><span> · </span>
+              <a>The Host </a><span> · </span>
+              <a>Location </a>
+            </div>
+            <hr />
+            <h1>{spot.title}</h1>
+            <div className="reviews-container" onClick={this.props.handleToggle}>
+              <div>
+                <Rating
+                  className="rating-stars"
+                  placeholderRate={parseFloat(spot.rating)}
+                  placeholder="fa fa-star fa-2x"
+                  empty="fa fa-star-o fa-2x"
+                  full="fa fa-star fa-2x"
+                  readonly={true}
+                />
+              <span>{spot.num_reviews} Reviews</span>
+              </div>
+              {
+                this.props.toggleState === 'on' ?
+                (<ReviewIndex
+                  reviews={this.props.reviews}
+                  fetchReviews={this.props.fetchReviews}
+                />) :
+                null
+              }
+              </div>
+            </div>
+          <h6>{`${spot.spot_type}  --  ${spot.capacity}`}</h6>
+          <hr />
+          <h2>About this listing</h2>
           <p>{spot.description}</p>
-        </div>
-        <div className="reviews-container" onClick={this.handleToggle}>
-          {
-            this.props.toggleState === 'on' ?
-              (<ReviewIndex
-                reviews={this.props.reviews}
-                fetchReviews={this.props.fetchReviews}
-              />) :
-              null
-          }
+          <div className="booking-form">
+
+          </div>
         </div>
       </main>
     );

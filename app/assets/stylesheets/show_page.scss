@@ -6,3 +6,58 @@
 .full-width-image {
   height: 650px;
 }
+
+.spot-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.booking-form {
+  border: 1px solid $gray-1;
+  width: 315px;
+  height: 430px;
+}
+
+.spot-details > .info> h1 {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 44px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  word-wrap: break-word;
+  color: $gray-1;
+}
+
+.spot-details > .info {
+  width: 60%;
+  min-width: 680px;
+  margin-right: 18px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.links > span, .links > a:nth-child(1){
+  padding-right: 5px;
+  font-weight: bold;
+  color: $gray-1;
+}
+
+.links > a {
+  padding-right: 5px;
+  color: $blue-1;
+  font-weight: normal;
+  border-bottom: 2px solid transparent;
+}
+
+.links > a:hover {
+  border-bottom: solid 2px $blue-1;
+}

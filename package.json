@@ -38,6 +38,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-geosuggest": "^2.3.3",
+    "react-rating": "^0.8.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",

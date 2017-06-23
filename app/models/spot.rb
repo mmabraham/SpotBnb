@@ -72,6 +72,12 @@ class Spot < ActiveRecord::Base
     Spot.in_bounds(spots, west_bounds).merge(Spot.in_bounds(spots, east_bounds))
   end
 
+  def average_rating
+    self.reviews.average(:rating)
+  end
 
+  def num_reviews
+    self.reviews.count
+  end
 
 end

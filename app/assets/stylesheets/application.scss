@@ -14,15 +14,17 @@
  *
  *= require_self
  */
- 
+
  @import "font-awesome-sprockets";
  @import "font-awesome";
- @import "reset.scss";
+ @import "reset";
  @import "base/fonts";
+ @import "base/colors";
  @import "base/core";
 
- @import "navbar.scss";
- @import "auth_form.scss";
- @import "index_page.scss";
- @import "spot_form.scss";
- @import "show_page.scss";
+ @import "navbar";
+ @import "auth_form";
+ @import "index_page";
+ @import "spot_form";
+ @import "show_page";
+ @import "reviews";

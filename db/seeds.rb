@@ -8,11 +8,12 @@
 
 User.destroy_all
 Spot.destroy_all
+Review.destroy_all
 
 User.create(username: 'Guest', password: 'password')
 
 users = []
-10.times do
+20.times do
   users << User.create(
     username: Faker::Internet.user_name,
     password: Faker::Internet.password
@@ -34,7 +35,7 @@ end
 # end
 
 spots = []
-5.times do
+150.times do
   spots << Spot.create(
     spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
     title: Faker::Book.title,
@@ -47,7 +48,7 @@ spots = []
   )
 end
 
-100.times do
+1000.times do
   Review.create(
     user_id: users.sample.id,
     spot_id: spots.sample.id,
