@@ -25,6 +25,16 @@ export default class ShowPage extends React.Component {
           <h6>`${spot.type}  --  ${spot.capacity}`}</h6>
           <p>{spot.description}</p>
         </div>
+        <div className="reviews-container" onClick={this.handleToggle}>
+          {
+            this.props.toggleState === 'on' ?
+              (<ReviewIndex
+                reviews={this.props.reviews}
+                fetchReviews={this.props.fetchReviews}
+              />) :
+              null
+          }
+        </div>
       </main>
     );
   }
