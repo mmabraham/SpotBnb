@@ -51,10 +51,15 @@ class SpotForm extends React.Component {
     }
   }
   handleSubmit(e) {
+    const redirectTo = this.redirectTo.bind(this);
     e.preventDefault();
     this.props.createSpot(this.state)
-    .then(() => this.setState(this.defaultForm()))
+    .then(redirectTo)
     .fail((res) => this.props.receiveErrors(res.responseJSON));
+  }
+
+  redirectTo(id) {
+    this.props.history.push(`/spots/${id}`);
   }
 
   handleSlide(formType) {

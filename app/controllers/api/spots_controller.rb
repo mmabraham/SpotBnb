@@ -25,7 +25,7 @@ class Api::SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.host_id = current_user.id
     if @spot.save
-      render :show
+      render json: @spot.id
     else
       @errors = @spot.errors
       render json: @errors, status: 422
