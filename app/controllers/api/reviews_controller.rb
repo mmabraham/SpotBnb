@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Api::ReviewsController < ApplicationController
   def index
     @reviews = Review.where(spot_id: params[:spot_id])
   end

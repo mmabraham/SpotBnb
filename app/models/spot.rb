@@ -31,6 +31,8 @@ class Spot < ActiveRecord::Base
     foreign_key: :host_id,
     class_name: User
 
+  has_many :reviews
+
   def self.in_bounds(spots, bounds)
     return spots unless bounds
     # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)
@@ -53,8 +55,6 @@ class Spot < ActiveRecord::Base
 #  sw 174    |
 #     sw -58 |
 
-  private
-
   def self.split?(bounds)
     bounds[:northEast][:lng].to_s.to_i <= 0 && bounds[:southWest][:lng].to_s.to_i < 0
   end
@@ -71,4 +71,7 @@ class Spot < ActiveRecord::Base
 
     Spot.in_bounds(spots, west_bounds).merge(Spot.in_bounds(spots, east_bounds))
   end
+
+
+
 end
