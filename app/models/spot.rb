@@ -80,4 +80,14 @@ class Spot < ActiveRecord::Base
     self.reviews.count
   end
 
+  def city
+    return ' ' unless self.location
+    self.location.split(',')[-3..-1]
+  end
+
+  def address
+    return ' ' unless self.location
+    self.location.split(',')[0...-3]
+  end
+
 end

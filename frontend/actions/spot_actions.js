@@ -25,6 +25,7 @@ export const fetchAllSpots = (filters) => dispatch => {
 }
 
 export const createSpot = spot => dispatch => {
+  console.log(spot)
   return APIUtil.createSpot(spot)
 }
 

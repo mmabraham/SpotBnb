@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- FOR TESTING ONLY ----------
   //   == REMOVE == BEFORE == FLIGHT ==
 
-  window.dispatch = store.dispatch;
-  window.spotActions = store.spotActions;
-  window.sessionActions = store.sessionActions;
-  window.filterActions = store.filterActions;
+  // window.dispatch = store.dispatch;
+  // window.spotActions = store.spotActions;
+  // window.sessionActions = store.sessionActions;
+  // window.filterActions = store.filterActions;
 
 
 

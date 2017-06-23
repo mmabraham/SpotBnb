@@ -35,6 +35,8 @@ export default class ShowPage extends React.Component {
             <h1>{spot.title}</h1>
             <div className="reviews-container" onClick={this.props.handleToggle}>
               <div>
+                {spot.location || null}
+                <span>{`$`}</span>
                 <Rating
                   className="rating-stars"
                   placeholderRate={parseFloat(spot.rating)}
@@ -43,7 +45,7 @@ export default class ShowPage extends React.Component {
                   full="fa fa-star fa-2x"
                   readonly={true}
                 />
-              <span>{spot.num_reviews} Reviews</span>
+              <span>{`${spot.num_reviews} Reviews`}</span>
               </div>
               {
                 this.props.toggleState === 'on' ?

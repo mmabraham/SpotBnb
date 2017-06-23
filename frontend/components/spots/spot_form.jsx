@@ -14,19 +14,7 @@ import Slider from 'material-ui/Slider';
 class SpotForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      finished: false,
-      stepIndex: 0,
-      spot_type: '',
-      title: '',
-      description: '',
-      price: 0,
-      capacity: 0,
-      img: '',
-      loc_text: '',
-      lat: '',
-      lng: '',
-    };
+    this.state = this.defaultForm();
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
@@ -35,6 +23,22 @@ class SpotForm extends React.Component {
     this.handleSlide = this.handleSlide.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.errorsFor = this.errorsFor.bind(this);
+  }
+
+  defaultForm() {
+    return {
+      finished: false,
+      stepIndex: 0,
+      spot_type: '',
+      title: '',
+      description: '',
+      price: 0,
+      capacity: 0,
+      img: '',
+      location: '',
+      lat: '',
+      lng: '',
+    };
   }
 
   componentDidMount() {
@@ -47,6 +51,7 @@ class SpotForm extends React.Component {
     }
   }
   handleSubmit(e) {
+    console.log(this.state)
     e.preventDefault();
     this.props.createSpot(this.state)
     .then(() => this.setState(this.defaultForm()))
@@ -121,7 +126,7 @@ class SpotForm extends React.Component {
       const location = autocomplete.getPlace().geometry.location;
       const lat = location.lat();
       const lng = location.lng();
-      this.setState({lat, lng, loc_text: this.place.value});
+      this.setState({lat, lng, location: this.place.value});
     });
   }
 

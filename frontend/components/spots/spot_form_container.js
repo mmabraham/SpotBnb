@@ -9,15 +9,15 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.session.user,
     errors: state.errors,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createSpot: (spot) => dispatch(createSpot(spot)),
     receiveErrors: (errors) => dispatch(receiveErrors(errors)),
   };
-}
+};
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(SpotForm)

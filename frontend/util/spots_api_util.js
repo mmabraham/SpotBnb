@@ -14,12 +14,10 @@ export const fetchSpot = (id) => {
 };
 
 export const createSpot = (spot) => {
-  debugger
+  console.log( spot );
   return $.ajax({
     method: 'POST',
     url: 'api/spots',
-    processData: false,
-    contentType: false,
     dataType: 'json',
     data: { spot },
   });
