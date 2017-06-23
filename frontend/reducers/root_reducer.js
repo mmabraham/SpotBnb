@@ -3,6 +3,7 @@ import spots from './spots_reducer';
 import filters from './filters_reducer';
 import errors from './errors_reducer';
 import users from './users_reducer';
+import reveiws from './reveiws_reducer';
 
 import { combineReducers } from 'redux';
 
@@ -12,4 +13,5 @@ export default combineReducers({
   filters,
   errors,
   users,
+  reviews,
 });
