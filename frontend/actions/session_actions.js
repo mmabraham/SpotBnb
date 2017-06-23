@@ -12,13 +12,13 @@ export const receiveUser = (user) => {
 export const login = (user) => (dispatch) => {
   return sessionApiUtil.login(user)
     .then((res) => dispatch(receiveUser(res)))
-    .fail((errors) => dispatch(receiveErrors(errors)));
+    .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const signup = (user) => (dispatch) => {
   return sessionApiUtil.signup(user)
     .then((fetchedUser) => dispatch(receiveUser(fetchedUser)),
-      (errors) => dispatch(receiveErrors(errors)));
+      (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const logout = () => (dispatch) => {
