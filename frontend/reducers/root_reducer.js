@@ -16,4 +16,5 @@ export default combineReducers({
   users,
   reviews,
   reviewToggleState,
+  bookings,
 });
