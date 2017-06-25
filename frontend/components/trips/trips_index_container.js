@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { fetchTrips } from '../../actions/booking_actions';
-import { bookingsInfo } from '../../reducers/selectors';
+import { tripsInfo } from '../../reducers/selectors';
 import TripsIndex from './trips_index';
 
 const mapStateToProps = state => {
   return {
-    bookings: () => bookingsInfo(state),
+    trips: tripsInfo(state),
   };
 };
 

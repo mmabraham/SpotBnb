@@ -1,6 +1,6 @@
 export const asArray = obj => Object.keys(obj).map((key) => obj[key]);
 
-export const bookingsInfo = ({bookings, users, spots}) => {
+export const tripsInfo = ({bookings, users, spots}) => {
   const trips = [];
   for (let key in bookings) {
     trips.push({
