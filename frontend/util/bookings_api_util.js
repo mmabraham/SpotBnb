@@ -12,3 +12,10 @@ export const fetchTrips = () => {
     url: '/api/bookings',
   });
 };
+
+export const cancelBooking = id => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/bookings/${id}`
+  });
+};

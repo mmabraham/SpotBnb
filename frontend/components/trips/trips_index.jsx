@@ -15,7 +15,7 @@ import TripIndexItem from './trip_index_item';
        <TripIndexItem key={trip.id} trip={trip}/>
      ));
      return (
-       <ul>
+       <ul className="trip-index">
          {trips}
        </ul>
      );

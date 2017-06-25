@@ -19,3 +19,8 @@ export const fetchTrips = () => dispatch => {
   return BookingAPIUtil.fetchTrips()
     .then((res) => dispatch(receiveBookings(res)));
 };
+
+export const cancelBooking = id => dispatch => {
+  return BookingAPIUtil.cancelBooking(id)
+    .then(() => dispatch(fetchTrips()))
+};
