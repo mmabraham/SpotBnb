@@ -11,7 +11,9 @@ import TripIndexItem from './trip_index_item';
    }
 
    render() {
-     const trips = this.props.trips.map(trip => (<TripIndexItem trip={trip}/>));
+     const trips = this.props.trips.map(trip => (
+       <TripIndexItem key={trip.id} trip={trip}/>
+     ));
      return (
        <ul>
          {trips}

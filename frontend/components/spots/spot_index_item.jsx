@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Rating from 'react-rating';
 
 const SpotIndexItem = ({spot}) => (
-  <div className="grid-list-item" key={spot.id}>
+  <div className="grid-list-item">
     <Link to={`/spots/${spot.id}`}><img src={spot.img} /></Link>
     <div className="list-item-info">
       <div>{`$${spot.price}     ${spot.title}`}</div>
