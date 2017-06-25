@@ -8,7 +8,7 @@ export default class SpotIndex extends React.Component {
 
   render() {
     const spots = this.props.spots.map(spot => (
-      <SpotIndexItem key={spot.id} spot={spot}/>
+      <SpotIndexItem key={spot.id} spot={spot} />
     ));
     return (
       <div className="grid-list-container ">

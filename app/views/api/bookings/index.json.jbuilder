@@ -20,7 +20,7 @@ json.hosts do
   @bookings.each do |booking|
     json.set! booking.spot.host_id do
       json.extract! booking.host, :id, :username
-      json.img_url booking.host.avatar.url
+      json.img_url asset_path(booking.host.avatar)
     end
   end
 end
