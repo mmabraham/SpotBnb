@@ -1,8 +1,8 @@
 import React from 'react';
 import { DateRangePicker } from 'react-dates';
 
-const Picker = (props) => (
+const BookingForm = (props) => (
   <DateRangePicker />
 );
 
-export default Picker;
+export default BookingForm;

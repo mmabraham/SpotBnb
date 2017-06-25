@@ -1,4 +1,6 @@
 import RECEIVE_SPOT from '../actions/spot_actions';
+import RECEIVE_BOOKINGS from '../actions/booking_actions';
+
 
 const bookingsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -9,6 +11,6 @@ const bookingsReducer = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export default bookingsReducer;

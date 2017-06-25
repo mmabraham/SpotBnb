@@ -24,7 +24,7 @@ const Navbar = (props) => {
             <NavLink to="/spots/new">Become a Host</NavLink>
           </li>
           <li>
-            <NavLink to="#">Trips</NavLink>
+            <NavLink to="/mytrips">Trips</NavLink>
           </li>
           <li>
             <button

@@ -7,6 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Navbar from './navbar_container';
 import IndexPage from './index_page_container';
 import ShowPage from './spots/show_page_container';
+import TripsIndex from './trips/trips_index_container';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
       <AuthRoute path='/login' component={LoginForm} />
       <AuthRoute path='/signup' component={SignupForm} />
       <ProtectedRoute path='/spots/new' component={SpotForm} />
+      <ProtectedRoute path='/mytrips' component={TripsIndex} />
       <Route path='/spots/:id' component={ShowPage} />
       <Route exact path='/' component={IndexPage} />
     </Switch>

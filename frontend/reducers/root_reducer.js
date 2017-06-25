@@ -5,6 +5,8 @@ import errors from './errors_reducer';
 import users from './users_reducer';
 import reviews from './reviews_reducer';
 import reviewToggleState from './review_toggle_reducer';
+import bookings from './bookings_reducer';
+
 
 import { combineReducers } from 'redux';
 

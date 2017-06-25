@@ -20,5 +20,11 @@ class Booking < ActiveRecord::Base
     class_name: User
 
   belongs_to :spot, dependent: :destroy
+
   belongs_to :user
+
+  has_one :host,
+    through: :spot,
+    source: :host,
+    class_name: User
 end

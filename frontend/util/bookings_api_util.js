@@ -3,12 +3,12 @@ export const createBooking = booking => {
     method: 'POST',
     url: '/api/bookings',
     data: { booking },
-  })
-}
+  });
+};
 
 export const fetchTrips = () => {
   return $.ajax({
-    method: 'POST',
+    method: 'GET',
     url: '/api/bookings',
-  })
-}
+  });
+};
