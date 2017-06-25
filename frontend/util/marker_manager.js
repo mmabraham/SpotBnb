@@ -1,7 +1,8 @@
 export default class MarkerManager {
-  constructor(map) {
+  constructor(map, showSpot) {
     this.map = map;
     this.markers = {};
+    this.showSpot = showSpot;
   }
 
   handleHover(id) {
@@ -15,11 +16,10 @@ export default class MarkerManager {
       position: { lat, lng },
       map: this.map,
       label: `$${price}`,
-      title,
     };
 
     this.markers[id] = new google.maps.Marker(options);
-    this.markers[id].value = id;
+    this.markers[id].addListener('click', () => this.showSpot(id));
   }
 
   updateMarkers(newSpots) {

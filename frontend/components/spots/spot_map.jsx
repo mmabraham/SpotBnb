@@ -13,7 +13,7 @@ export default class SpotMap extends React.Component {
     };
 
     this.map = new google.maps.Map(this.mapNode, mapOptions);
-    this.markerManager = new MarkerManager(this.map);
+    this.markerManager = new MarkerManager(this.map, this.props.showSpot);
 
     this.map.addListener('idle', () => {
       const bounds = {
