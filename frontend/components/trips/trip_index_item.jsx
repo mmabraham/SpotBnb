@@ -9,6 +9,7 @@ const TripIndexItem = ({trip}) => {
       <SpotIndexItem spot={trip.spot}/>
       <div className="trip-info">
         <ul>
+          <li>{`${trip.duration} days`}</li>
           <li>Check in: {trip.start_date.toDateString()}</li>
           <li>Check out: {trip.end_date.toDateString()}</li>
           <li>Total: {`$${trip.duration * trip.spot.price}`}</li>
