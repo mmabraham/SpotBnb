@@ -23,18 +23,21 @@
   flex-direction: row;
   align-items: center;
   color: rgb(72, 72, 72);
-  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: $fonts;
+}
+
+nav > ul > li > a, .logout-button {
+  padding: 6px 0;
+  border-bottom: solid 2px transparent;
+  font-weight: normal;
   font-size: 14px;
 }
 
 nav > ul > li {
-  padding: 8px 0;
   margin: 30px;
-  border-bottom: solid 2px transparent;
-  font-weight: normal;
 }
 
-.main-nav > ul > li:hover {
+.main-nav > ul > li > a:hover, .logout-button:hover {
   border-bottom: solid 2px $blue-1;
 }
 
