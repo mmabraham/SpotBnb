@@ -12,7 +12,11 @@ import TripIndexItem from './trip_index_item';
 
    render() {
      const trips = this.props.trips.map(trip => (
-       <TripIndexItem key={trip.id} trip={trip}/>
+       <TripIndexItem
+         cancelBooking={this.props.cancelBooking}
+         key={trip.id}
+         trip={trip}
+        />
      ));
      return (
        <ul className="trip-index">

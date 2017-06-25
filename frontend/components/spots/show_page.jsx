@@ -5,8 +5,6 @@ import BookingForm from '../bookings/booking_form';
 export default class ShowPage extends React.Component {
   constructor(props) {
     super(props);
-
-
   }
 
   componentDidMount() {

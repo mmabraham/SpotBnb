@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchTrips } from '../../actions/booking_actions';
+import { fetchTrips, cancelBooking } from '../../actions/booking_actions';
 import { tripsInfo } from '../../reducers/selectors';
 import TripsIndex from './trips_index';
 
@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTrips: () => dispatch(fetchTrips()),
+    cancelBooking: (id) => dispatch(cancelBooking(id)),
   };
 };
 

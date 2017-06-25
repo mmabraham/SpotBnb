@@ -2,7 +2,7 @@ import React from 'react';
 import SpotIndexItem from '../spots/spot_index_item';
 import Avatar from 'material-ui/Avatar';
 
-const TripIndexItem = ({trip}) => {
+const TripIndexItem = ({trip, cancelBooking}) => {
 
   // aws not yet working
   const avatar = trip.host.img_url && false ? (
@@ -10,6 +10,7 @@ const TripIndexItem = ({trip}) => {
   ) : (
     <Avatar size={60}>{trip.host.username[0].toUpperCase()}</Avatar>
   );
+
   return (
     <li className="trip-item">
       <SpotIndexItem spot={trip.spot}/>
@@ -24,6 +25,9 @@ const TripIndexItem = ({trip}) => {
           <li>Check out: {trip.end_date.toDateString()}</li>
           <li>Total: {`$${trip.duration * trip.spot.price}`}</li>
         </ul>
+        <button onClick={() => cancelBooking(trip.id)}>
+          Cancel This Trip
+        </button>
       </div>
     </li>
   )
