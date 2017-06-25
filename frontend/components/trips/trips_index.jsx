@@ -2,7 +2,6 @@ import React from 'react';
 
  export default class TripsIndex extends React.Component {
    constructor(props) {
-     debugger
      super(props);
    }
 
@@ -11,7 +10,7 @@ import React from 'react';
    }
 
    render() {
-     console.log(this.props.bookings);
+     console.log(this.props.bookings());
      return null;
    }
  }

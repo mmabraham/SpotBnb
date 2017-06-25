@@ -6,7 +6,7 @@ export const createBooking = booking => dispatch => {
   return BookingAPIUtil.createBooking(booking);
 };
 
-export const receiveBookings = res => dispatch => {
+export const receiveBookings = res => {
   return {
     type: RECEIVE_BOOKINGS,
     bookings: res.bookings,

@@ -5,7 +5,7 @@ import TripsIndex from './trips_index';
 
 const mapStateToProps = state => {
   return {
-    bookings: bookingsInfo(state),
+    bookings: () => bookingsInfo(state),
   };
 };
 

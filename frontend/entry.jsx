@@ -11,6 +11,8 @@ import { login, logout } from './actions/session_actions';
 import * as spotActions from './actions/spot_actions';
 import * as sessionActions from './actions/session_actions';
 import * as filterActions from './actions/filter_actions';
+import * as bookingActions from './actions/booking_actions';
+
 
 
 
@@ -32,10 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- FOR TESTING ONLY ----------
   //   == REMOVE == BEFORE == FLIGHT ==
 
-  // window.dispatch = store.dispatch;
-  // window.spotActions = store.spotActions;
-  // window.sessionActions = store.sessionActions;
-  // window.filterActions = store.filterActions;
+  window.dispatch = store.dispatch;
+  window.spotActions = spotActions;
+  window.sessionActions = sessionActions;
+  window.filterActions = filterActions;
+  window.bookingActions = bookingActions;
+
 
 
 
