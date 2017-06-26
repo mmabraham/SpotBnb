@@ -11,15 +11,28 @@ export default class MarkerManager {
     };
   }
 
-  createMarkerFromSpot({ id, lat, lng, title, price }) {
-    const options = {
-      position: { lat, lng },
+  createMarkerFromSpot(spot) {
+    // const infoWindow = new google.maps.InfoWindow({
+    //   content: `
+    //       <img id="contentInsideMap class="iw-img" src="${spot.img}" >
+    //         <div class="iw-info">
+    //           <div>$${spot.price}     ${spot.title}</div>
+    //           <div>${spot.spot_type} · ${spot.capacity} beds</div>
+    //         </div>
+    //       </img>`
+    // });
+
+    const mapOptions = {
+      position: { lat: spot.lat, lng: spot.lng },
       map: this.map,
-      label: `$${price}`,
+      label: `$${spot.price}`,
     };
 
-    this.markers[id] = new google.maps.Marker(options);
-    this.markers[id].addListener('click', () => this.showSpot(id));
+    const marker = new google.maps.Marker(mapOptions);
+    marker.addListener('click', () => this.showSpot(spot.id));
+    // marker.addListener('click',() => infoWindow.open(this.map, this.markers[spot.id]));
+    // google.maps.event.addListener(infoWindow,"click",() => showSpot(spot.id))
+    this.markers[spot.id] = marker;
   }
 
   updateMarkers(newSpots) {
