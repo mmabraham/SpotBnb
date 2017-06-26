@@ -10,6 +10,7 @@ import TextField from 'material-ui/TextField';
 // import select from 'material-ui/select';
 import MenuItem from 'material-ui/MenuItem';
 import Slider from 'material-ui/Slider';
+import LocationPicker from '../search/location_picker';
 
 class SpotForm extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class SpotForm extends React.Component {
     this.handleSlide = this.handleSlide.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.errorsFor = this.errorsFor.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
   }
 
   defaultForm() {
@@ -41,17 +43,17 @@ class SpotForm extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setupAutocomplete();
-  }
+  // componentDidMount() {
+  //   this.setupAutocomplete();
+  // }
 
-  componentDidUpdate() {
-    if (this.state.stepIndex == 0) {
-      this.setupAutocomplete();
-    } else {
-
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.stepIndex == 0) {
+  //     this.setupAutocomplete();
+  //   } else {
+  //
+  //   }
+  // }
 
   handleSubmit(e) {
     const redirectTo = this.redirectTo.bind(this);
@@ -92,6 +94,10 @@ class SpotForm extends React.Component {
     return (e) => {
       this.setState({[formType]: e.target.value});
     };
+  }
+
+  handleLocationChange(loc) {
+    this.setState(loc);
   }
 
   handleNext() {
@@ -136,27 +142,24 @@ class SpotForm extends React.Component {
     }
   }
 
-  setupAutocomplete() {
-    const autocomplete = new google.maps.places.Autocomplete(this.place);
-    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      const location = autocomplete.getPlace().geometry.location;
-      const lat = location.lat();
-      const lng = location.lng();
-      this.setState({lat, lng, location: this.place.value});
-    });
-  }
+  // setupAutocomplete() {
+  //   const autocomplete = new google.maps.places.Autocomplete(this.place);
+  //   google.maps.event.addListener(autocomplete, 'place_changed', () => {
+  //     const location = autocomplete.getPlace().geometry.location;
+  //     const lat = location.lat();
+  //     const lng = location.lng();
+  //     this.setState({lat, lng, location: this.place.value});
+  //   });
+  // }
 
   step1() {
     return (
       <section className="form">
-        <label>
-          <input
-            ref={ref => this.place = ref}
-            placeholder={this.state.location || 'Address'}
-            className={this.props.errors && this.props.errors.lng ? 'invalid' : null}
-          />
-          <span className="errors" >{this.props.errors ? this.props.errors.lng : ''}</span>
-        </label>
+        <LocationPicker
+          errors={this.props.errors}
+          location={this.state.location}
+          handleChange={this.handleLocationChange}
+        />
         <section className="adjacent-input">
           <labal>
             <select

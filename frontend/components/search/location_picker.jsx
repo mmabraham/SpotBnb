@@ -1,8 +1,13 @@
 import React from 'react';
 
-export class LocationPicker extends React.Component {
+export default class LocationPicker extends React.Component {
   constructor(props) {
     super(props);
+
+    // props:
+    // errors
+    // location
+    // HandleChange({lat, lng, location})
 
     this.handler = this.props.HandleChange;
   }
@@ -26,7 +31,7 @@ export class LocationPicker extends React.Component {
       <label>
         <input
           ref={ref => this.place = ref}
-          placeholder={this.state.location || 'Address'}
+          placeholder={this.props.location || 'Address'}
           className={this.props.errors && this.props.errors.lng ? 'invalid' : null}
         />
         <span className="errors" >{this.props.errors ? this.props.errors.lng : ''}</span>
