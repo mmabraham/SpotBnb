@@ -12,7 +12,7 @@ class Api::BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.where(user_id: current_user.id).includes(spot: [:host])
     render :index
   end
 

@@ -21,6 +21,8 @@
 #
 
 class Spot < ActiveRecord::Base
+  # attr_accessor :average_rating, :num_reviews
+
   validates :host, :spot_type, :title, :description, :price, :lat, :lng,
     presence: true
 
@@ -35,8 +37,8 @@ class Spot < ActiveRecord::Base
   has_many :reviews
   has_many :bookings
 
-  def self.in_bounds(bounds)
-    return Spot.all unless bounds
+  def self.in_bounds(spots, bounds)
+    return spots unless bounds
     # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)
     #
     # if bounds[:southWest][:lng] < bounds[:northEast][:lng]
@@ -74,12 +76,25 @@ class Spot < ActiveRecord::Base
     Spot.in_bounds(spots, west_bounds).merge(Spot.in_bounds(spots, east_bounds))
   end
 
-  def average_rating
-    self.reviews.average(:rating)
+  def self.with_ratings(spots = Spot.all)
+    spots.find_by_sql(<<-SQL)
+      SELECT spots.*, COUNT(reviews.rating) as num_reviews, AVG(reviews.rating) as average_rating from
+        spots
+      JOIN
+        reviews on spots.id = reviews.spot_id
+      GROUP BY
+        spots.id
+      ORDER BY
+       average_rating desc
+    SQL
   end
 
   def num_reviews
     self.reviews.count
+  end
+
+  def average_rating
+    self.reviews.average(:rating)
   end
 
   def city
@@ -91,5 +106,4 @@ class Spot < ActiveRecord::Base
     return ' ' unless self.location
     self.location.split(',')[0...-3]
   end
-
 end

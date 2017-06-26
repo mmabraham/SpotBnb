@@ -16,7 +16,7 @@ import TripIndexItem from './trip_index_item';
          cancelBooking={this.props.cancelBooking}
          key={trip.id}
          trip={trip}
-        />
+      />
      ));
      return (
        <ul className="trip-index">

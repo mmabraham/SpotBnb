@@ -10,8 +10,10 @@ export default class BookingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  isDateBlocked(date) {
-
+  isDayBlocked(date) {
+    debugger
+    let foo = date;
+    return true;
   }
 
   validCapacities() {
@@ -40,7 +42,7 @@ export default class BookingForm extends React.Component {
       end_date: this.state.endDate.toDate(),
       spot_id: this.props.spot.id,
     })
-      .then(() => console.log('done'));
+      .then(() => this.props.history.push('/mytrips'));
   }
 
   render() {
@@ -64,6 +66,7 @@ export default class BookingForm extends React.Component {
           onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
           focusedInput={this.state.focusedInput}
           onFocusChange={focusedInput => this.setState({ focusedInput })}
+          isOutsideRange={this.isDateBlocked}
           />
 
         <label>
