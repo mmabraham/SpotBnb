@@ -1,0 +1,76 @@
+.booking-form {
+  border: 1px solid $gray-1;
+  width: 318px;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.booking-form label div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 0 20px;
+  width: 88%;
+}
+
+.booking-form select {
+  font-size: 19px;
+  line-height: 24px;
+  padding: 0 24px;
+  height: 44px;
+  border-radius: 2px;
+  border: 1px solid #484848;
+  width: 88%;
+  margin: 0 20px 0 20px;
+  color: $gray-1;
+}
+
+.check-in-out {
+  display: flex;
+  justify-content: space-around;
+}
+
+.booking-price {
+  display: block;
+  box-sizing: border-box;
+  background-color: rgba(60,63,64,0.9);
+  opacity: 10%;
+  color: white;
+  height: 50px;
+  line-height: 22px;
+  padding: 13px 20px 5px 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.booking-price > .price {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.booking-price .fa-bolt {
+  color: rgb(255, 180, 0);
+  height: 15px;
+  width: 15px;
+}
+
+.booking-form .btn {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 22px;
+  border: 2px solid transparent;
+  background-color: #FF5A5F;
+  padding: 12px;
+  border-radius: 4px;
+  width: 88%;
+}
+
+small {
+  font-size: 12px;
+  color: #767676;
+}
