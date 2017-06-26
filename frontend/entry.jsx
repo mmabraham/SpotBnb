@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- FOR TESTING ONLY ----------
   //   == REMOVE == BEFORE == FLIGHT ==
 
-  window.dispatch = store.dispatch;
-  window.spotActions = spotActions;
-  window.sessionActions = sessionActions;
-  window.filterActions = filterActions;
-  window.bookingActions = bookingActions;
+  // window.dispatch = store.dispatch;
+  // window.spotActions = spotActions;
+  // window.sessionActions = sessionActions;
+  // window.filterActions = filterActions;
+  // window.bookingActions = bookingActions;
 
 
 

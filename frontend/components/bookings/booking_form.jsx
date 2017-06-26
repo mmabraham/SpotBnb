@@ -9,7 +9,7 @@ export default class BookingForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.startDate);
+    // console.log(this.state.startDate);
     return (
       <DateRangePicker
         startDate={this.state.startDate}
