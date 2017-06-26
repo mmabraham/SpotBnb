@@ -1,3 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 570px;
+  padding: 34px;
+  box-sizing:border-box;
+  background-color: white;
+  // height: 230px;
+}
+
+.adjacent-input {
+  display: flex;
+}
+
+
 .errors {
   font-weight: lighter;
   color: #d93900;
@@ -8,4 +25,53 @@
 .invalid {
   background-color: #fff8f6;
   border: 1px solid #fc642d;
+}
+
+.form input {
+  font-size: 19px;
+  line-height: 24px;
+  padding: 12px 24px;
+  border-radius: 2px;
+  border: 1px solid #484848;
+}
+
+.form select {
+  height: 44px;
+  border-radius: 2px;
+  border: 1px solid #484848;
+  width: 230px;
+  margin: 10px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.adjacent-input label select, .adjacent-input label input {
+  display: block;
+  width: 250px;
+}
+
+.form span {
+  color: rgb(72, 72, 72);
+}
+
+.pac-item {
+  height: 40px;
+}
+
+.pac-item-query {
+  color: $gray-1;
+}
+
+.pac-item:nth-child(odd) {
+  background-color: #eee;
+}
+
+.pac-icon {
+  display: hidden;
+  z-index: -1;
+  color: transparent;
 }

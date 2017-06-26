@@ -7,7 +7,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
+// import select from 'material-ui/select';
 import MenuItem from 'material-ui/MenuItem';
 import Slider from 'material-ui/Slider';
 
@@ -116,7 +116,7 @@ class SpotForm extends React.Component {
   validCapacities() {
     const MAX_CAPACITY = 20, items = [];
     for (let i = 0; i < MAX_CAPACITY; i++) {
-      items.push(<MenuItem key={i} value={i} primaryText={`${i} guests`} />)
+      items.push(<option key={i} value={i} >{`${i} guests`}</option>)
     }
     return items;
   }
@@ -148,42 +148,47 @@ class SpotForm extends React.Component {
 
   step1() {
     return (
-      <section>
-        <input
-          ref={ref => this.place = ref}
-          placeholder={this.state.location || 'Address'}
-          className={this.props.errors && this.props.errors.lng ? 'invalid' : null}
-        />
-      <span className="errors" >{this.props.errors ? this.props.errors.lng : ''}</span>
-        <SelectField
-          floatingLabelText="Type"
-          value={this.state.spot_type}
-          onChange={this.handleSelect('spot_type')}
-          errorStyle={this.errorStyle()}
-        >
-          {this.allTypes().map((t, i) => (
-            <MenuItem key={i} value={t} primaryText={t} />
-          ))}
-        </SelectField>
-        <span className="errors" >{this.props.errors ? this.props.errors.spot_type : ''}</span>
+      <section className="form">
+        <label>
+          <input
+            ref={ref => this.place = ref}
+            placeholder={this.state.location || 'Address'}
+            className={this.props.errors && this.props.errors.lng ? 'invalid' : null}
+          />
+          <span className="errors" >{this.props.errors ? this.props.errors.lng : ''}</span>
+        </label>
+        <section className="adjacent-input">
+          <labal>
+            <select
+              value={this.state.spot_type}
+              onChange={this.handleSelect('spot_type')}
+              >
+              {this.allTypes().map((t, i) => (
+                <option key={i} value={t} >{t}</option>
+              ))}
+            </select>
+            <span className="errors" >{this.props.errors ? this.props.errors.spot_type : ''}</span>
+          </labal>
 
-        <SelectField
-          floatingLabelText="Place for"
-          value={this.state.capacity}
-          onChange={this.handleSelect('capacity')}
-          maxHeight={150}
-          errorStyle={this.errorStyle()}
-          >
-          {this.validCapacities()}
-        </SelectField>
-        <span className="errors" >{this.props.errors ? this.props.errors.capacity : ''}</span>
+          <label>
+            <select
+
+              value={this.state.capacity}
+              onChange={this.handleSelect('capacity')}
+
+              >
+              {this.validCapacities()}
+            </select>
+            <span className="errors" >{this.props.errors ? this.props.errors.capacity : ''}</span>
+          </label>
+        </section>
       </section>
     );
   }
 
   step2() {
     return (
-      <section>
+      <section className="form">
         <div>
           <TextField
             floatingLabelText="Title"

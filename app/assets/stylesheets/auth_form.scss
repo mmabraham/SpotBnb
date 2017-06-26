@@ -97,8 +97,8 @@ hr {
   &:before {
     border-top: 1px solid #dbdbdb;
     content:"";
-    margin: 0 auto; /* this centers the line to the full width specified */
-    position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    margin: 0 auto;
+    position: absolute;
     top: 50%; left: 0; right: 0; bottom: 0;
     width: 100%;
     z-index: -1;
