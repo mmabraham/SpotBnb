@@ -6,6 +6,8 @@ export default class BookingForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {startDate: moment.default(), endDate: moment.default()};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   isDateBlocked(date) {
@@ -25,9 +27,25 @@ export default class BookingForm extends React.Component {
     return this.state.endDate.diff(this.state.startDate, 'days');
   }
 
+  handleChange(formType) {
+    return (e) => {
+      this.setState({[formType]: e.target.value});
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createBooking({
+      start_date: this.state.startDate.toDate(),
+      end_date: this.state.endDate.toDate(),
+      spot_id: this.props.spot.id,
+    })
+      .then(() => console.log('done'));
+  }
+
   render() {
     return (
-      <form className="booking-form">
+      <form className="booking-form" onSubmit={this.handleSubmit}>
         <label className="booking-price">
           <i className="fa fa-bolt" aria-hidden="true"></i>
           <span className="price">
@@ -51,7 +69,7 @@ export default class BookingForm extends React.Component {
         <label>
           <div>Guests</div>
           <br />
-          <select>
+          <select onChange={this.handleChange('capacity')}>
             {this.validCapacities()}
           </select>
         </label>

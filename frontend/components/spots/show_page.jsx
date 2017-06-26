@@ -61,7 +61,7 @@ export default class ShowPage extends React.Component {
           <h2>About this listing</h2>
           <p>{spot.description}</p>
           <div>
-            <BookingForm spot={spot}/>
+            <BookingForm spot={spot} createBooking={this.props.createBooking}/>
           </div>
         </div>
       </main>
