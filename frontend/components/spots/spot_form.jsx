@@ -43,18 +43,6 @@ class SpotForm extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.setupAutocomplete();
-  // }
-
-  // componentDidUpdate() {
-  //   if (this.state.stepIndex == 0) {
-  //     this.setupAutocomplete();
-  //   } else {
-  //
-  //   }
-  // }
-
   handleSubmit(e) {
     const redirectTo = this.redirectTo.bind(this);
     e.preventDefault();
@@ -142,23 +130,13 @@ class SpotForm extends React.Component {
     }
   }
 
-  // setupAutocomplete() {
-  //   const autocomplete = new google.maps.places.Autocomplete(this.place);
-  //   google.maps.event.addListener(autocomplete, 'place_changed', () => {
-  //     const location = autocomplete.getPlace().geometry.location;
-  //     const lat = location.lat();
-  //     const lng = location.lng();
-  //     this.setState({lat, lng, location: this.place.value});
-  //   });
-  // }
-
   step1() {
     return (
       <section className="form">
         <LocationPicker
           errors={this.props.errors}
           location={this.state.location}
-          handleChange={this.handleLocationChange}
+          handler={this.handleLocationChange}
         />
         <section className="adjacent-input">
           <labal>

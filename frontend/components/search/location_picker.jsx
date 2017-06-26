@@ -9,17 +9,21 @@ export default class LocationPicker extends React.Component {
     // location
     // HandleChange({lat, lng, location})
 
-    this.handler = this.props.HandleChange;
+    this.handler = this.props.handler;
   }
 
   componentDidMount() {
     this.setupAutocomplete();
   }
 
+  componentWillUnmount() {
+    google.maps.event.clearInstanceListeners(this.autocomplete);
+  }
+
   setupAutocomplete() {
-    const autocomplete = new google.maps.places.Autocomplete(this.place);
-    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      const location = autocomplete.getPlace().geometry.location;
+    this.autocomplete = new google.maps.places.Autocomplete(this.place);
+    google.maps.event.addListener(this.autocomplete, 'place_changed', () => {
+      const location = this.autocomplete.getPlace().geometry.location;
       const lat = location.lat();
       const lng = location.lng();
       this.handler({lat, lng, location: this.place.value});
