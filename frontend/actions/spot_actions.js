@@ -11,7 +11,7 @@ export const receiveSpots = (spots) => {
   }
 }
 
-export const receiveSpot = ({spot, host}) => {
+export const receiveSpot = ({spot, host, bookings}) => {
   return {
     type: RECEIVE_SPOT,
     spot,
