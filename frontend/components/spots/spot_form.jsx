@@ -127,6 +127,15 @@ class SpotForm extends React.Component {
     }
   }
 
+  errorStyle() {
+    return {
+      fontWeight: 'lighter',
+      color: '#d93900',
+      fontSize: '14px',
+      lineHeight: '24px',
+    }
+  }
+
   setupAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.place);
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
@@ -140,24 +149,34 @@ class SpotForm extends React.Component {
   step1() {
     return (
       <section>
-        <input ref={ref => this.place = ref} placeholder={this.state.location}/>
+        <input
+          ref={ref => this.place = ref}
+          placeholder={this.state.location || 'Address'}
+          className={this.props.errors && this.props.errors.lng ? 'invalid' : null}
+        />
+      <span className="errors" >{this.props.errors ? this.props.errors.lng : ''}</span>
         <SelectField
           floatingLabelText="Type"
           value={this.state.spot_type}
           onChange={this.handleSelect('spot_type')}
+          errorStyle={this.errorStyle()}
         >
           {this.allTypes().map((t, i) => (
             <MenuItem key={i} value={t} primaryText={t} />
           ))}
         </SelectField>
+        <span className="errors" >{this.props.errors ? this.props.errors.spot_type : ''}</span>
+
         <SelectField
           floatingLabelText="Place for"
           value={this.state.capacity}
           onChange={this.handleSelect('capacity')}
           maxHeight={150}
+          errorStyle={this.errorStyle()}
           >
           {this.validCapacities()}
         </SelectField>
+        <span className="errors" >{this.props.errors ? this.props.errors.capacity : ''}</span>
       </section>
     );
   }
@@ -171,6 +190,7 @@ class SpotForm extends React.Component {
             onChange={this.handleChange('title')}
             value={this.state.title}
             errorText={this.errorsFor('title')}
+            errorStyle={this.errorStyle()}
           />
           <TextField
             floatingLabelText="Description"
@@ -179,6 +199,7 @@ class SpotForm extends React.Component {
             onChange={this.handleChange('description')}
             errorText={this.errorsFor('description')}
             value={this.state.description}
+            errorStyle={this.errorStyle()}
           />
         </div>
 

@@ -1,6 +1,6 @@
 import SignupForm from './signup_form';
 import { connect } from 'react-redux';
-import { signup } from '../../actions/session_actions';
+import { signup, receiveErrors } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     processForm: (user) => dispatch(signup(user)),
+    clearErrors: () => dispatch(receiveErrors({})),
   };
 };
 

@@ -14,6 +14,10 @@ class LoginForm extends React.Component {
 		this.demoLogin = this.demoLogin.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
