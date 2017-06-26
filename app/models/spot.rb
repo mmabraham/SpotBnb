@@ -37,7 +37,7 @@ class Spot < ActiveRecord::Base
   has_many :reviews
   has_many :bookings
 
-  def self.in_bounds(spots, bounds)
+  def self.in_bounds(bounds, spots = Spot.all)
     return spots unless bounds
     # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)
     #
@@ -46,7 +46,7 @@ class Spot < ActiveRecord::Base
     #   bounds[:northEast][:lng], bounds[:southWest][:lng] =  bounds[:southWest][:lng], bounds[:northEast][:lng]
     # end
 
-    Spot.where('lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?',
+    spots.where('lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?',
       bounds[:southWest][:lat],
       bounds[:northEast][:lat],
       bounds[:southWest][:lng],
@@ -73,15 +73,17 @@ class Spot < ActiveRecord::Base
       northEast: bounds[:northEast]
     }
 
-    Spot.in_bounds(spots, west_bounds).merge(Spot.in_bounds(spots, east_bounds))
+    spots.in_bounds(spots, west_bounds).merge(spots.in_bounds(spots, east_bounds))
   end
 
-  def self.with_ratings(spots = Spot.all)
-    spots.find_by_sql(<<-SQL)
+  def self.with_ratings(spots)
+    Spot.find_by_sql(<<-SQL, spots.pluck(:id))
       SELECT spots.*, COUNT(reviews.rating) as num_reviews, AVG(reviews.rating) as average_rating from
         spots
       JOIN
         reviews on spots.id = reviews.spot_id
+      -- WHERE
+      --   spots.id in (?)
       GROUP BY
         spots.id
       ORDER BY

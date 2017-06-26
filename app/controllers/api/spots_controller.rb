@@ -15,8 +15,8 @@ class Api::SpotsController < ApplicationController
       @spots = current_user.spots
     else
       # debugger
-      # @spots = Spot.with_ratings
-      @spots = Spot.in_bounds(@spots, params[:bounds])
+      @spots = Spot.in_bounds(params[:bounds])
+      # @spots = Spot.with_ratings(@spots)
       # more filters here ...
     end
     render :index
