@@ -114,9 +114,9 @@ class SpotForm extends React.Component {
   }
 
   validCapacities() {
-    const MAX_CAPACITY = 20, items = [];
+    const MAX_CAPACITY = 16, items = [];
     for (let i = 0; i < MAX_CAPACITY; i++) {
-      items.push(<option key={i} value={i} >{`${i} guests`}</option>)
+      items.push(<option key={i} value={i} >{`${i} Guests`}</option>)
     }
     return items;
   }
@@ -160,6 +160,7 @@ class SpotForm extends React.Component {
         <section className="adjacent-input">
           <labal>
             <select
+              className={this.props.errors && this.props.errors.spot_type ? 'invalid' : null}
               value={this.state.spot_type}
               onChange={this.handleSelect('spot_type')}
               >
@@ -172,12 +173,12 @@ class SpotForm extends React.Component {
 
           <label>
             <select
-
+              className={this.props.errors && this.props.errors.capacity ? 'invalid' : null}
               value={this.state.capacity}
               onChange={this.handleSelect('capacity')}
-
-              >
+            >
               {this.validCapacities()}
+              <option key={16} value={16} >16+ Guests</option>
             </select>
             <span className="errors" >{this.props.errors ? this.props.errors.capacity : ''}</span>
           </label>

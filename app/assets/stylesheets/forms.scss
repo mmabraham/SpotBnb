@@ -3,23 +3,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 570px;
-  padding: 34px;
+  width: 500px;
   box-sizing:border-box;
   background-color: white;
-  // height: 230px;
+  align-items: stretch;
 }
 
 .adjacent-input {
   display: flex;
-}
-
-
-.errors {
-  font-weight: lighter;
-  color: #d93900;
-  font-size: 14px;
-  line-height: 24px;
 }
 
 .invalid {
@@ -36,17 +27,22 @@
 }
 
 .form select {
+  font-size: 19px;
+  line-height: 24px;
+  padding: 0 24px;
   height: 44px;
   border-radius: 2px;
   border: 1px solid #484848;
   width: 230px;
-  margin: 10px;
+  margin: 0 20px 0 0;
+  color: $gray-1;
 }
 
 .form label {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .adjacent-input label select, .adjacent-input label input {
@@ -55,9 +51,15 @@
 }
 
 .form span {
-  color: rgb(72, 72, 72);
+  color: $gray-1;
 }
 
+.form .errors {
+  font-weight: lighter;
+  color: #d93900;
+  font-size: 14px;
+  line-height: 24px;
+}
 .pac-item {
   height: 40px;
 }
