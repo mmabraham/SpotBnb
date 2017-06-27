@@ -25,7 +25,7 @@ export default class LocationPicker extends React.Component {
   setupAutocomplete() {
     this.autocomplete = new google.maps.places.Autocomplete(this.place);
     google.maps.event.addListener(this.autocomplete, 'place_changed', () => {
-      const place = this.autocomplete.getPlace()
+      const place = this.autocomplete.getPlace();
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
       this.handler({lat, lng, location: this.place.value}, place);

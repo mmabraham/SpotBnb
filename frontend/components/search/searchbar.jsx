@@ -43,7 +43,7 @@ export default class Searchbar extends React.Component {
       <div className="searchbar">
         <label>
           <LocationPicker
-            handler={(loc) => this.props.history.push('/')}
+            handler={(_, place) => this.props.changeMap(place)}
           />
         </label>
         <label>

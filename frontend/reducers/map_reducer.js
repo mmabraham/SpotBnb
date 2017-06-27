@@ -1,4 +1,4 @@
-import { REGISTER_MAP_CONTROL } from '../actions.map_actions';
+import { REGISTER_MAP_CONTROL } from '../actions/map_actions';
 
 const mapsReducer = (state = {}, action) => {
   switch (action.type) {

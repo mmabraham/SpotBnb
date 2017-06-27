@@ -38,6 +38,5 @@ export const updateFilter = (filterType, filter) => (dispatch, getState) => {
     filterType,
     [filterType]: filter,
   });
-  debugger
   fetchAllSpots(getState().filters)(dispatch);
 };

@@ -6,7 +6,7 @@ import { updateFilter } from '../../actions/filter_actions';
 const mapStateToProps = state => {
   return {
     filters: state.filters,
-    changeMap: state.map.callback,
+    changeMap: state.changeMap,
   };
 };
 
