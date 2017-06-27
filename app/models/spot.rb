@@ -37,8 +37,9 @@ class Spot < ActiveRecord::Base
   has_many :reviews
   has_many :bookings
 
-  def self.filter(filters, spots = Spot.all)
-    return spots unless filters
+  def self.filter(filters)
+    spots = Spot.all
+    return Spot.all unless filters
     spots = Spot.by_bounds(filters[:bounds], spots) if filters[:bounds]
     spots = Spot.by_capacity(filters[:capacity], spots) if filters[:capacity]
     spots = Spot.by_dates(filters[:dates], spots) if filters[:dates]
@@ -50,29 +51,11 @@ class Spot < ActiveRecord::Base
   end
 
   def self.by_dates(dates, spots = Spot.all)
-    # spots.where(<<-SQL, Time.new(dates[:end_date]), Time.new(dates[:start_date]))
-    #   id IN (
-    #     SELECT
-    #       spot_id
-    #     FROM
-    #       bookings
-    #     WHERE
-    #       bookings.id IN (
-    #         SELECT
-    #           bookings.id
-    #         FROM
-    #           bookings
-    #         WHERE
-    #           start_date <= ? AND end_date >= ?
-    #       )
-    #     )
-    #   SQL
-    start = Time.new(dates[:start_date])
-    finish = Time.new(dates[:end_date])
-    # debugger
+    start = Time.parse(dates[:start_date])
+    finish = Time.parse(dates[:end_date])
 
     spots.where.not(
-      id: Booking.select('spot_id').where('NOT (start_date > ? OR ?  > end_date)', finish, start)
+      id: Booking.select('spot_id').where('start_date <= ? AND end_date >= ?', finish, start)
     )
   end
 

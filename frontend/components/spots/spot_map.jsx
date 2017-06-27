@@ -9,7 +9,7 @@ export default class SpotMap extends React.Component {
   componentDidMount() {
     const mapOptions = {
       center: { lat: 40.7072281, lng: -74.0084196 },
-      zoom: 5
+      zoom: 12
     };
 
     this.map = new google.maps.Map(this.mapNode, mapOptions);
