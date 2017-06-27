@@ -88,27 +88,28 @@ class Spot < ActiveRecord::Base
   end
 
   def self.with_ratings(spots)
-    Spot.find_by_sql(<<-SQL, spots.pluck(:id))
-      SELECT spots.*, COUNT(reviews.rating) as num_reviews, AVG(reviews.rating) as average_rating from
+    ids = spots.pluck(:id).join(', ')
+    Spot.find_by_sql(<<-SQL)
+      SELECT spots.*, COUNT(reviews.rating) AS num_reviews, AVG(reviews.rating) AS average_rating FROM
         spots
       JOIN
-        reviews on spots.id = reviews.spot_id
-      -- WHERE
-      --   spots.id in (?)
+        reviews ON spots.id = reviews.spot_id
+      WHERE
+        spots.id IN (#{ids})
       GROUP BY
         spots.id
       ORDER BY
-       average_rating desc
+       average_rating DESC
     SQL
   end
 
-  def num_reviews
-    self.reviews.count
-  end
-
-  def average_rating
-    self.reviews.average(:rating)
-  end
+  # def num_reviews
+  #   self.reviews.count
+  # end
+  #
+  # def average_rating
+  #   self.reviews.average(:rating)
+  # end
 
   def city
     return ' ' unless self.location

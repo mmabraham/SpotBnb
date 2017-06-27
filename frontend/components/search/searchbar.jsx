@@ -8,7 +8,7 @@ export default class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {startDate: moment.default(), endDate: moment.default()};
-    
+
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -24,8 +24,8 @@ export default class Searchbar extends React.Component {
     return (e) => {
       debugger
       e.preventDefault();
-      this.props.updateFilter(type, e.target.value)
-    }
+      this.props.updateFilter(type, e.target.value);
+    };
   }
 
   render() {
