@@ -9,7 +9,11 @@ const filtersReducer = (state = {}, action) => {
     case UPDATE_CAPACITY:
       return Object.assign({}, state, { capacity: action.capacity });
     case UPDATE_FILTER:
-      return Object.assign({}, state, { [action.filterType]: action.filter });
+      return Object.assign(
+        {},
+        state,
+        { [action.filterType]: action[action.filterType] }
+      );
     default:
       return state;
   }

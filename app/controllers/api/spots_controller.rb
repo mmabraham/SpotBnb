@@ -12,13 +12,10 @@ class Api::SpotsController < ApplicationController
 
   def index
     if params[:host_id]
-      # @spots = current_user.spots
+      @spots = current_user.spots
     else
-      # debugger
-      @spots = Spot.filter(params[:filters]) if params[:filters]
-      # @spots = Spot.in_bounds(params[:bounds], @spots)
-      @spots = Spot.with_ratings(@spots)
-      # more filters here ...
+      spots = Spot.filter(params[:filters])
+      @spots = Spot.with_ratings(spots)
     end
     render :index
   end

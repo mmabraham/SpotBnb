@@ -38,17 +38,46 @@ class Spot < ActiveRecord::Base
   has_many :bookings
 
   def self.filter(filters, spots = Spot.all)
-    spots = Spot.in_bounds(filters[:bounds], spots) if filters[:bounds]
-    spots = Spot.with_capacity(filters[:capacity], spots) if filters[:capacity]
+    return spots unless filters
+    spots = Spot.by_bounds(filters[:bounds], spots) if filters[:bounds]
+    spots = Spot.by_capacity(filters[:capacity], spots) if filters[:capacity]
+    spots = Spot.by_dates(filters[:dates], spots) if filters[:dates]
     spots
   end
 
-  def self.with_capacity(capacity, spots = Spot.all)
-    debugger
+  def self.by_capacity(capacity, spots = Spot.all)
     spots.where('capacity >= ?', capacity)
   end
 
-  def self.in_bounds(bounds, spots = Spot.all)
+  def self.by_dates(dates, spots = Spot.all)
+    # spots.where(<<-SQL, Time.new(dates[:end_date]), Time.new(dates[:start_date]))
+    #   id IN (
+    #     SELECT
+    #       spot_id
+    #     FROM
+    #       bookings
+    #     WHERE
+    #       bookings.id IN (
+    #         SELECT
+    #           bookings.id
+    #         FROM
+    #           bookings
+    #         WHERE
+    #           start_date <= ? AND end_date >= ?
+    #       )
+    #     )
+    #   SQL
+    start = Time.new(dates[:start_date])
+    finish = Time.new(dates[:end_date])
+    # debugger
+
+    spots.where.not(
+      id: Booking.select('spot_id').where('NOT (start_date > ? OR ?  > end_date)', finish, start)
+    )
+  end
+
+  def self.by_bounds(bounds, spots = nil)
+    spots ||= Spot.all
     return spots unless bounds
     # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)
     #
@@ -84,12 +113,14 @@ class Spot < ActiveRecord::Base
       northEast: bounds[:northEast]
     }
 
-    spots.in_bounds(spots, west_bounds).merge(spots.in_bounds(spots, east_bounds))
+    spots.by_bounds(spots, west_bounds).merge(spots.by_bounds(spots, east_bounds))
   end
 
-  def self.with_ratings(spots)
+  def self.with_ratings(spots = nil)
+    # spots ||= Spot.all
+    return spots if spots.empty?
     ids = spots.pluck(:id).join(', ')
-    Spot.find_by_sql(<<-SQL)
+    Spot.find_by_sql(<<-SQL )
       SELECT spots.*, COUNT(reviews.rating) AS num_reviews, AVG(reviews.rating) AS average_rating FROM
         spots
       JOIN

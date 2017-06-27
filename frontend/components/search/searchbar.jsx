@@ -7,7 +7,7 @@ import * as moment from 'moment';
 export default class Searchbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {startDate: moment.default(), endDate: moment.default()};
+    this.state = {startDate: moment.default(), endDate: moment.default().add(1,'days')};
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -22,10 +22,20 @@ export default class Searchbar extends React.Component {
 
   handleChange(type) {
     return (e) => {
-      debugger
       e.preventDefault();
       this.props.updateFilter(type, e.target.value);
     };
+  }
+
+  handleDatePick(dates) {
+    if (this.state.focusedInput === 'endDate') {
+      this.props.updateFilter(
+        'dates',
+        {start_date: dates.startDate.toDate(), end_date: dates.endDate.toDate()}
+      );
+    } else {
+      this.setState(dates);
+    }
   }
 
   render() {
@@ -40,7 +50,7 @@ export default class Searchbar extends React.Component {
           <DateRangePicker
             startDate={this.state.startDate}
             endDate={this.state.endDate}
-            onDatesChange={({ startDate, endDate }) => this.handleChange('dates')({ start_date: startDate, end_date: endDate })}
+            onDatesChange={(dates) => this.handleDatePick(dates)}
             focusedInput={this.state.focusedInput}
             onFocusChange={focusedInput => this.setState({ focusedInput })}
           />

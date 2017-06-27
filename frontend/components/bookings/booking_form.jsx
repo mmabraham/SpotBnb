@@ -8,12 +8,14 @@ export default class BookingForm extends React.Component {
     this.state = {startDate: moment.default(), endDate: moment.default()};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.isDateBlocked = this.isDateBlocked.bind(this);
   }
 
-  // isDayBlocked(date) {
-  //   let foo = date;
-  //   return true;
-  // }
+  isDateBlocked(date) {
+    return this.props.bookings.some(
+      b => date.isBetween(b.start_date, b.end_date, 'days', '[]')
+    );
+  }
 
   validCapacities() {
     const MAX_CAPACITY = this.props.spot.capacity, items = [];

@@ -2,15 +2,13 @@ json.spot do
   json.extract! @spot, :id, :host_id, :spot_type, :title, :description,
     :price, :lat, :lng, :capacity, :address, :city
   json.img asset_path(@spot.img)
-  json.rating @spot.average_rating
-  json.num_reviews @spot.num_reviews
+  json.rating @spot.reviews.average(:rating)
+  json.num_reviews @spot.reviews.count
 end
 
 json.bookings do
-  @spot.bookings.each do |booking|
-    json.set! booking.id do
-      json.extract! booking, :start_date, :end_date
-    end
+  json.array! @spot.bookings do |booking|
+    json.extract! booking, :start_date, :end_date
   end
 end
 

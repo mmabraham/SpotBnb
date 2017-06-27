@@ -31,6 +31,8 @@ export default class ShowPage extends React.Component {
               <a>Location </a>
             </div>
             <hr />
+            <i className="fa fa-home" aria-hidden="true"></i>
+            <i className="fa fa-users" aria-hidden="true"></i>
             <h1>{spot.title}</h1>
             <div className="reviews-container" onClick={this.props.handleToggle}>
               <div>
@@ -65,6 +67,7 @@ export default class ShowPage extends React.Component {
               spot={spot}
               createBooking={this.props.createBooking}
               history={this.props.history}
+              bookings={this.props.bookings}
             />
           </div>
         </div>
