@@ -6,6 +6,15 @@ export default class SpotMap extends React.Component {
     super(props);
   }
 
+  changeMap(place) {
+    if (place.geometry.viewport) {
+      this.map.fitBounds(place.geometry.viewport);
+    } else {
+      this.map.setCenter(place.geometry.location);
+      this.map.setZoom(17);
+    }
+  }
+
   componentDidMount() {
     const mapOptions = {
       center: { lat: 40.7072281, lng: -74.0084196 },
@@ -28,6 +37,8 @@ export default class SpotMap extends React.Component {
       };
       this.props.updateBounds(bounds);
     });
+
+    this.props.registerMapControl(this.changeMap.bind(this));
   }
 
   componentWillUpdate(nextProps) {
