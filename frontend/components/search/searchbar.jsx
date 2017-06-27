@@ -8,8 +8,8 @@ export default class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {startDate: moment.default(), endDate: moment.default()};
-
-    this.handleSelect = this.handleSelect.bind(this);
+    debugger
+    this.handleChange = this.handleChange.bind(this);
   }
 
   validCapacities() {
@@ -20,9 +20,12 @@ export default class Searchbar extends React.Component {
     return items;
   }
 
-  handleSelect(e) {
-    e.preventDefault();
-    this.setState({capacity: e.target.value});
+  handleChange(type) {
+    return (e) => {
+      debugger
+      e.preventDefault();
+      this.props.updateFilter(type, e.target.value)
+    }
   }
 
   render() {
@@ -30,14 +33,14 @@ export default class Searchbar extends React.Component {
       <div className="searchbar">
         <label>
           <LocationPicker
-            handler={(loc) => this.setState(loc)}
+            handler={(loc) => this.props.history.push('/')}
           />
         </label>
         <label>
           <DateRangePicker
             startDate={this.state.startDate}
             endDate={this.state.endDate}
-            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+            onDatesChange={({ startDate, endDate }) => this.handleChange('dates')({ start_date: startDate, end_date: endDate })}
             focusedInput={this.state.focusedInput}
             onFocusChange={focusedInput => this.setState({ focusedInput })}
           />
@@ -46,7 +49,7 @@ export default class Searchbar extends React.Component {
           <select
             className={this.props.errors && this.props.errors.capacity ? 'invalid' : null}
             value={this.state.capacity}
-            onChange={this.handleSelect}
+            onChange={this.handleChange('capacity')}
           >
             {this.validCapacities()}
             <option key={16} value={16} >16+ Guests</option>

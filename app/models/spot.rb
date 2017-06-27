@@ -37,6 +37,17 @@ class Spot < ActiveRecord::Base
   has_many :reviews
   has_many :bookings
 
+  def self.filter(filters, spots = Spot.all)
+    spots = Spot.in_bounds(filters[:bounds], spots) if filters[:bounds]
+    spots = Spot.with_capacity(filters[:capacity], spots) if filters[:capacity]
+    spots
+  end
+
+  def self.with_capacity(capacity, spots = Spot.all)
+    debugger
+    spots.where('capacity >= ?', capacity)
+  end
+
   def self.in_bounds(bounds, spots = Spot.all)
     return spots unless bounds
     # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)

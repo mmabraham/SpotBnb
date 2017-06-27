@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
-import Searchbar from './search/searchbar';
+import Searchbar from './search/searchbar_container';
 
 const Navbar = (props) => {
   if (props.currentUser) {
