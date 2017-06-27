@@ -1,5 +1,5 @@
 import React from 'react';
-import Searchbar from './searchbar';
+import Searchbar from './search/searchbar';
 
 const LandingPage = props => {
   return (

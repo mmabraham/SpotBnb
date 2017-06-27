@@ -10,11 +10,10 @@ export default class BookingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  isDayBlocked(date) {
-    debugger
-    let foo = date;
-    return true;
-  }
+  // isDayBlocked(date) {
+  //   let foo = date;
+  //   return true;
+  // }
 
   validCapacities() {
     const MAX_CAPACITY = this.props.spot.capacity, items = [];
@@ -67,7 +66,7 @@ export default class BookingForm extends React.Component {
           focusedInput={this.state.focusedInput}
           onFocusChange={focusedInput => this.setState({ focusedInput })}
           isOutsideRange={this.isDateBlocked}
-          />
+        />
 
         <label>
           <div>Guests</div>

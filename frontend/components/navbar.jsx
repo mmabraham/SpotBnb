@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
+import Searchbar from './search/searchbar';
 
 const Navbar = (props) => {
   if (props.currentUser) {
@@ -19,6 +20,7 @@ const Navbar = (props) => {
             </NavLink>
           </li>
         </ul>
+        <Searchbar />
         <ul className="right-nav-items">
           <li>
             <NavLink to="/spots/new">Become a Host</NavLink>

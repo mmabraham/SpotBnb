@@ -8,6 +8,7 @@ import Navbar from './navbar_container';
 import IndexPage from './index_page_container';
 import ShowPage from './spots/show_page_container';
 import TripsIndex from './trips/trips_index_container';
+import LandingPage from './landing_page';
 
 
 const App = () => {

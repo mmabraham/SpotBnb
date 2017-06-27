@@ -22,7 +22,7 @@ end
 
 # 30.times do
 #   Spot.create(
-#     spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
+#     spot_type: (['Entire place', 'Private room', 'Shared Room'].sample),
 #     title: Faker::Book.title,
 #     description: Faker::Lorem.paragraph,
 #     lat: Faker::Address.latitude,
@@ -30,14 +30,14 @@ end
 #     capacity: rand(1..15),
 #     price: rand(1..999),
 #     host_id: users.sample.id,
-#     img: File.open('app/assets/images/background1 copy.jpg')
+#     img: Faker::LoremPixel.image
 #   )
 # end
 
 spots = []
 150.times do
   spots << Spot.create(
-    spot_type: (%w{ full_home shared mattress_on_floor private }.sample),
+    spot_type: (['Entire place', 'Private room', 'Shared Room'].sample),
     title: Faker::Book.title,
     description: Faker::Lorem.paragraph,
     lat: Faker::Address.latitude,

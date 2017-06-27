@@ -1,0 +1,58 @@
+import React from 'react';
+import LocationPicker from './location_picker';
+import { DateRangePicker } from 'react-dates';
+import * as moment from 'moment';
+
+
+export default class Searchbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {startDate: moment.default(), endDate: moment.default()};
+
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  validCapacities() {
+    const MAX_CAPACITY = 16, items = [];
+    for (let i = 0; i < MAX_CAPACITY; i++) {
+      items.push(<option key={i} value={i} >{`${i} Guests`}</option>);
+    }
+    return items;
+  }
+
+  handleSelect(e) {
+    e.preventDefault();
+    this.setState({capacity: e.target.value});
+  }
+
+  render() {
+    return (
+      <div className="searchbar">
+        <label>
+          <LocationPicker
+            handler={(loc) => this.setState(loc)}
+          />
+        </label>
+        <label>
+          <DateRangePicker
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+            focusedInput={this.state.focusedInput}
+            onFocusChange={focusedInput => this.setState({ focusedInput })}
+          />
+        </label>
+        <label>
+          <select
+            className={this.props.errors && this.props.errors.capacity ? 'invalid' : null}
+            value={this.state.capacity}
+            onChange={this.handleSelect}
+          >
+            {this.validCapacities()}
+            <option key={16} value={16} >16+ Guests</option>
+          </select>
+        </label>
+      </div>
+    );
+  }
+}

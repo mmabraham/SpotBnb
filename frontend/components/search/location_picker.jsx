@@ -4,10 +4,12 @@ export default class LocationPicker extends React.Component {
   constructor(props) {
     super(props);
 
-    // props:
+    // optional props:
     // errors
     // location
-    // HandleChange({lat, lng, location})
+
+    // required props:
+    // handler({lat, lng, location})
 
     this.handler = this.props.handler;
   }

@@ -104,7 +104,7 @@ class SpotForm extends React.Component {
   };
 
   allTypes() {
-    return ['full home', 'shared home', 'mattress on the floor', 'private home'];
+    return ['Entire place', 'Private room', 'Shared Room'];
   }
 
   validCapacities() {
@@ -143,7 +143,7 @@ class SpotForm extends React.Component {
             <select
               className={this.props.errors && this.props.errors.spot_type ? 'invalid' : null}
               value={this.state.spot_type}
-              onChange={this.handleSelect('spot_type')}
+              onChange={this.handleChange('spot_type')}
               >
               {this.allTypes().map((t, i) => (
                 <option key={i} value={t} >{t}</option>
@@ -156,7 +156,7 @@ class SpotForm extends React.Component {
             <select
               className={this.props.errors && this.props.errors.capacity ? 'invalid' : null}
               value={this.state.capacity}
-              onChange={this.handleSelect('capacity')}
+              onChange={this.handleChange('capacity')}
             >
               {this.validCapacities()}
               <option key={16} value={16} >16+ Guests</option>
