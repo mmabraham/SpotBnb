@@ -1,7 +1,9 @@
-import { UPDATE_BOUNDS, UPDATE_DATES, UPDATE_CAPACITY, UPDATE_FILTER } from '../actions/filter_actions';
+import { UPDATE_BOUNDS, UPDATE_DATES, UPDATE_CAPACITY, UPDATE_FILTER, CLEAR_FILTERS } from '../actions/filter_actions';
 
 const filtersReducer = (state = {}, action) => {
   switch (action.type) {
+    case CLEAR_FILTERS:
+      return {}
     case UPDATE_BOUNDS:
       return Object.assign({}, state, { bounds: action.bounds });
     case UPDATE_DATES:

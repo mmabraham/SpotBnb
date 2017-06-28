@@ -4,6 +4,7 @@ export const UPDATE_BOUNDS = 'UPDATE_BOUNDS';
 export const UPDATE_DATES = 'UPDATE_DATES';
 export const UPDATE_CAPACITY = 'UPDATE_CAPACITY';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 
 // deprecated
 export const updateBounds = bounds => (dispatch, getState) => {
@@ -40,3 +41,9 @@ export const updateFilter = (filterType, filter) => (dispatch, getState) => {
   });
   fetchAllSpots(getState().filters)(dispatch);
 };
+
+export const clearFilters = () => {
+  return {
+    type: CLEAR_FILTERS,
+  }
+}
