@@ -9,9 +9,9 @@ export const createBooking = booking => dispatch => {
 export const receiveBookings = res => {
   return {
     type: RECEIVE_BOOKINGS,
-    bookings: res.bookings,
-    spots: res.spots,
-    hosts: res.hosts,
+    bookings: res.bookings || {},
+    spots: res.spots || {},
+    hosts: res.hosts || {},
   };
 };
 

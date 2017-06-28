@@ -39,8 +39,6 @@ export default class SpotMap extends React.Component {
     });
 
     this.props.registerMapControl(this.changeMap.bind(this));
-
-    window.map = this.map;
   }
 
   componentWillUpdate(nextProps) {

@@ -8,7 +8,6 @@ export default class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {startDate: moment.default(), endDate: moment.default().add(1,'days')};
-
     this.handleChange = this.handleChange.bind(this);
   }
 
