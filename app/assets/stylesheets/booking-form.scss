@@ -1,35 +1,62 @@
+.booking-form-container {
+  position: relative;
+}
+
 .booking-form {
-  border: 1px solid $gray-1;
+  position: absolute;
+  top: -98px;
   width: 318px;
   height: 430px;
+  font-size: 15px;
+  color: $gray-2;
+}
+
+.booking-form-form {
+  border: 1px solid $gray-3;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: stretch;
+  padding: 20px;
+}
+
+.booking-form > * {
+
+}
+
+.booking-form label {
+  margin-top: 20px;
 }
 
 .booking-form label div {
   display: flex;
   flex-direction: column;
-  padding: 20px 20px 0 20px;
-  width: 88%;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .booking-form select {
   font-size: 19px;
   line-height: 24px;
-  padding: 0 24px;
   height: 44px;
   border-radius: 2px;
-  border: 1px solid #484848;
-  width: 88%;
-  margin: 0 20px 0 20px;
-  color: $gray-1;
+  border: 1px solid $gray-2;
+  width: 276px;
+  margin-bottom: 20px;
 }
 
 .check-in-out {
   display: flex;
   justify-content: space-around;
+}
+
+.check-in-out > div {
+  padding: 0;
+  text-align: left;
+}
+
+.DateRangePickerInput__arrow svg {
+  width: 0;
+  height: 0;
 }
 
 .booking-price {
@@ -43,6 +70,7 @@
   padding: 13px 20px 5px 20px;
   width: 100%;
   text-align: center;
+  margin: 0;
 }
 
 .booking-price > .price {
@@ -57,6 +85,23 @@
   width: 15px;
 }
 
+.booking-pricing-info > div {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: $gray-2;
+  font-weight: 300;
+  border-bottom: 1px solid $gray-3;
+  letter-spacing: 0.2px;
+}
+
+.booking-pricing-info > div.total {
+  border: none;
+  font-weight: bold;
+  color: black;
+}
+
 .booking-form .btn {
   text-align: center;
   color: white;
@@ -66,11 +111,20 @@
   border: 2px solid transparent;
   background-color: #FF5A5F;
   padding: 12px;
+  margin-top: 20px;
   border-radius: 4px;
-  width: 88%;
+  color: white;
 }
 
-small {
+.booking-form small {
+  margin-top: 8px;
   font-size: 12px;
-  color: #767676;
+  color: $gray-2;
+  text-align: center;
+}
+
+.booking-form .DateInput {
+  padding: 8px 0px;
+  font-size: 15px;
+  text-align: center;
 }

@@ -49,54 +49,57 @@ export default class BookingForm extends React.Component {
   render() {
     return (
       <form className="booking-form" onSubmit={this.handleSubmit}>
-        <label className="booking-price">
+        <div className="booking-price">
           <i className="fa fa-bolt" aria-hidden="true"></i>
           <span className="price">
             {`$${this.props.spot.price} `}
           </span>
           <span>per night</span>
-        </label>
-        <label className="check-in-out">
-          <span>Check In</span>
-          <span>Check Out</span>
-        </label>
+        </div>
+        <div className="booking-form-form">
+          <label className="check-in-out">
+            <div>Check In</div>
+            <div>Check Out</div>
+          </label>
 
-        <DateRangePicker
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-          onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
-          focusedInput={this.state.focusedInput}
-          onFocusChange={focusedInput => this.setState({ focusedInput })}
-          isOutsideRange={this.isDateBlocked}
-        />
+          <DateRangePicker
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+            focusedInput={this.state.focusedInput}
+            onFocusChange={focusedInput => this.setState({ focusedInput })}
+            isOutsideRange={this.isDateBlocked}
+            />
 
-        <label>
-          <div>Guests</div>
-          <br />
-          <select onChange={this.handleChange('capacity')}>
-            {this.validCapacities()}
-          </select>
-        </label>
-        <div>
-          <span>{`$${this.props.spot.price} x ${this.duration()} nights `}</span>
-          <span>{` $${this.props.spot.price * this.duration()}`}</span>
+          <label>
+            <div>Guests</div>
+            <select onChange={this.handleChange('capacity')}>
+              {this.validCapacities()}
+            </select>
+          </label>
+          {this.state.startDate.isBefore(this.state.endDate) ? (
+            <div className="booking-pricing-info">
+              <div>
+                <span>{`$${this.props.spot.price} x ${this.duration()} nights `}</span>
+                <span>{` $${this.props.spot.price * this.duration()}`}</span>
+              </div>
+              <div>
+                <span>Service fee</span>
+                <span>{`$${25}`}</span>
+              </div>
+              <div className="total">
+                <span>Total</span>
+                <span>{`$${this.props.spot.price * this.duration() + 25}`}</span>
+              </div>
+            </div>
+          ) : null}
+          <button className="btn">
+            Book
+          </button>
+          <small>
+            You won't be charged yet
+          </small>
         </div>
-        <hr />
-        <div>
-          <span>Serivice fee</span>
-          <span>{`$${25}`}</span>
-        </div>
-        <hr />
-        <div>
-          <span>Total</span>
-          <span>{`$${this.props.spot.price * this.duration() + 25}`}</span>
-        </div>
-        <button className="btn">
-          Book
-        </button>
-        <small>
-          You won't be charged yet
-        </small>
       </form>
     );
   }

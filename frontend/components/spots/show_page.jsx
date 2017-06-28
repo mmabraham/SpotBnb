@@ -22,6 +22,7 @@ export default class ShowPage extends React.Component {
             <img src={spot.img}/>
           </div>
         </div>
+
         <div className="spot-details col-2-3">
           <div className="info">
             <div className="links">
@@ -30,10 +31,12 @@ export default class ShowPage extends React.Component {
               <a>The Host </a><span> · </span>
               <a>Location </a>
             </div>
+
             <hr />
             <i className="fa fa-home" aria-hidden="true"></i>
             <i className="fa fa-users" aria-hidden="true"></i>
             <h1>{spot.title}</h1>
+
             <div className="reviews-container" onClick={this.props.handleToggle}>
               <div>
                 {spot.location || null}
@@ -46,7 +49,7 @@ export default class ShowPage extends React.Component {
                   full="fa fa-star fa-2x"
                   readonly={true}
                 />
-              <span>{`${spot.num_reviews} Reviews`}</span>
+                <span>{`${spot.num_reviews} Reviews`}</span>
               </div>
               {
                 this.props.toggleState === 'on' ?
@@ -56,13 +59,14 @@ export default class ShowPage extends React.Component {
                 />) :
                 null
               }
-              </div>
             </div>
-          <h6>{`${spot.spot_type}  --  ${spot.capacity}`}</h6>
-          <hr />
-          <h2>About this listing</h2>
-          <p>{spot.description}</p>
-          <div>
+            <h6>{`${spot.spot_type}  --  ${spot.capacity}`}</h6>
+            <hr />
+            <h2>About this listing</h2>
+            <p>{spot.description}</p>
+          </div>
+
+          <div className="booking-form-container">
             <BookingForm
               spot={spot}
               createBooking={this.props.createBooking}
