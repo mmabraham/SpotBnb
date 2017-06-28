@@ -145,8 +145,9 @@ class SpotForm extends React.Component {
               value={this.state.spot_type}
               onChange={this.handleChange('spot_type')}
               >
+              <option key={0}>Type of home</option>
               {this.allTypes().map((t, i) => (
-                <option key={i} value={t} >{t}</option>
+                <option key={i + 1} value={t} >{t}</option>
               ))}
             </select>
             <span className="errors" >{this.props.errors ? this.props.errors.spot_type : ''}</span>
