@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import Searchbar from './search/searchbar_container';
@@ -20,7 +21,7 @@ const Navbar = (props) => {
             </NavLink>
           </li>
         </ul>
-        <Searchbar />
+        <Route path='/:xxx' component={Searchbar} />
         <ul className="right-nav-items">
           <li>
             <NavLink to="/spots/new">Become a Host</NavLink>
@@ -49,7 +50,7 @@ const Navbar = (props) => {
             <img src="" />
           </li>
         </ul>
-        <Searchbar />
+        <Route path='/:xxx' component={Searchbar} />
         <ul className="right-nav-items">
           <li>
             <NavLink to="/spots/new">Become a Host</NavLink>
