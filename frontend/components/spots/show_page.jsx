@@ -66,14 +66,16 @@ export default class ShowPage extends React.Component {
             <p>{spot.description}</p>
           </div>
 
-          <div className="booking-form-container">
-            <BookingForm
-              spot={spot}
-              createBooking={this.props.createBooking}
-              history={this.props.history}
-              bookings={this.props.bookings}
-            />
-          </div>
+          {spot.host_id === currentUser.id ? null : (
+            <div className="booking-form-container">
+              <BookingForm
+                spot={spot}
+                createBooking={this.props.createBooking}
+                history={this.props.history}
+                bookings={this.props.bookings}
+                />
+            </div>
+          )}
         </div>
       </main>
     );
