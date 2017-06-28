@@ -3,7 +3,6 @@
   border: 1px solid $gray-3;
   display: flex;
   align-items: center;
-  margin-right: 33%;
 }
 
 .searchbar > * {
@@ -17,7 +16,7 @@
 }
 
 .searchbar label > input {
-  width: 168px;
+  width: 60px;
   transition: border-bottom .5s, width .5s;
 }
 

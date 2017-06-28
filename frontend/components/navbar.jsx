@@ -20,8 +20,10 @@ const Navbar = (props) => {
               <img src="" />
             </NavLink>
           </li>
+          <li>
+            <Route path='/:xxx' component={Searchbar} />
+          </li>
         </ul>
-        <Route path='/:xxx' component={Searchbar} />
         <ul className="right-nav-items">
           <li>
             <NavLink to="/spots/new">Become a Host</NavLink>
@@ -49,8 +51,10 @@ const Navbar = (props) => {
           <li className="img-container logo-container">
             <img src="" />
           </li>
+          <li>
+            <Route path='/:xxx' component={Searchbar} />
+          </li>
         </ul>
-        <Route path='/:xxx' component={Searchbar} />
         <ul className="right-nav-items">
           <li>
             <NavLink to="/spots/new">Become a Host</NavLink>
