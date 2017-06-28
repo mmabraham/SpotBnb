@@ -26,6 +26,12 @@ export default class Searchbar extends React.Component {
     };
   }
 
+  handlePlaceChange(place) {
+    this.props.history.push('/spots');
+    debugger
+    setTimeout(this.props.changeMap(place), 1000);
+  }
+
   handleDatePick(dates) {
     if (this.state.focusedInput === 'endDate') {
       this.props.updateFilter(
@@ -41,7 +47,7 @@ export default class Searchbar extends React.Component {
     return (
       <div className="searchbar">
           <LocationPicker
-            handler={(_, place) => {this.props.history.push('/spots');setTimeout(this.props.changeMap(place), 1000)}}
+            handler={(_, place) => this.handlePlaceChange(place)}
           />
         <label>
           <DateRangePicker

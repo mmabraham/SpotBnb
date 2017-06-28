@@ -25,6 +25,7 @@ class SpotForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.errorsFor = this.errorsFor.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.redirectTo = this.redirectTo.bind(this);
   }
 
   defaultForm() {
@@ -44,11 +45,10 @@ class SpotForm extends React.Component {
   }
 
   handleSubmit(e) {
-    const redirectTo = this.redirectTo.bind(this);
     e.preventDefault();
     this.props.createSpot(this.state)
-    .then(redirectTo)
-    .fail((res) => this.props.receiveErrors(res.responseJSON));
+    .then(this.redirectTo)
+    .fail((res) => this.props.receiveErrors(res));
   }
 
   redirectTo(id) {
@@ -64,13 +64,14 @@ class SpotForm extends React.Component {
   }
 
   handleUpload(e) {
+    debugger
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () => {
       this.setState({ imageUrl: reader.result, imageFile: file});
+      console.log(this.state)
     }
 
-    // QUESTION -- what is this doing?
     if (file) {
       reader.readAsDataURL(file);
     } else {
@@ -145,8 +146,9 @@ class SpotForm extends React.Component {
               value={this.state.spot_type}
               onChange={this.handleChange('spot_type')}
               >
+              <option key={0}>Type of home</option>
               {this.allTypes().map((t, i) => (
-                <option key={i} value={t} >{t}</option>
+                <option key={i + 1} value={t} >{t}</option>
               ))}
             </select>
             <span className="errors" >{this.props.errors ? this.props.errors.spot_type : ''}</span>
@@ -208,7 +210,7 @@ class SpotForm extends React.Component {
 
   step3() {
     return (
-      <input type="file" id="input" onLoadStart={this.handleUpload}/>
+      <input type="file" id="input" onChange={this.handleUpload}/>
     )
   }
 
