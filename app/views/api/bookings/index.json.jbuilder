@@ -13,8 +13,8 @@ json.spots do
       json.extract! booking.spot, :id, :host_id, :spot_type, :title,
         :price, :capacity, :address, :city
       json.img asset_path(booking.spot.img)
-      json.rating booking.spot.reviews.average(:rating)
-      json.num_reviews booking.spot.reviews.count
+      json.rating booking.spot.average_of_ratings
+      json.num_reviews booking.spot.count_reviews
     end
   end
 end

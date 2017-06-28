@@ -110,13 +110,14 @@ class Spot < ActiveRecord::Base
     SQL
   end
 
-  # def num_reviews
-  #   self.reviews.count
-  # end
-  #
-  # def average_rating
-  #   self.reviews.average(:rating)
-  # end
+  def count_reviews
+    self.reviews.length
+  end
+
+  def average_of_ratings
+    return 0 if count_reviews == 0
+    reviews.inject(0) { |acc, rev| acc + rev.rating} / count_reviews
+  end
 
   def city
     return ' ' unless self.location

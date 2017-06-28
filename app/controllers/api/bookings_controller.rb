@@ -12,8 +12,6 @@ class Api::BookingsController < ApplicationController
   end
 
   def index
-    # @bookings = Booking
-    #   .where(user_id: current_user.id)
     @bookings = current_user.bookings.includes(spot: [:host, :reviews])
     render :index
   end
