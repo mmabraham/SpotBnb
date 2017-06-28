@@ -1,3 +1,29 @@
 .searchbar {
-  // margin-top: 300px;
+  height: 60px;
+  border: 1px solid $gray-3;
+  display: flex;
+  align-items: center;
+}
+
+.searchbar > * {
+
+}
+
+
+.searchbar input {
+  border: none;
+}
+
+.searchbar label > label > input:focus {
+  min-width: 300px;
+  border: none;
+  transition: width 2s;
+
+}
+
+.searchbar > label > select:focus {
+  border: none;
+  min-width: 200px;
+  -webkit-transition: width 2s, -webkit-transform 2s;
+  transition: width 2s, transform 2s;
 }

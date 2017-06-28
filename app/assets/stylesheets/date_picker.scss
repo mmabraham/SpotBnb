@@ -508,6 +508,11 @@
   border-radius: 3px;
   color: #007a87; }
 
+.searchbar .DateInput__display-text--focused {
+  color: #007a87;
+  background: white;
+}
+
 .DateInput__display-text--disabled {
   font-style: italic; }
 
@@ -575,8 +580,10 @@
 
 .DateRangePickerInput {
   background-color: #fff;
-  border: 1px solid #cacccd;
   display: inline-block; }
+
+.booking-form .DateRangePickerInput {
+    border: 1px solid #cacccd;}
 
 .DateRangePickerInput--disabled {
   background: #cacccd; }
