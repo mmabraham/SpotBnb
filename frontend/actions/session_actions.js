@@ -11,7 +11,7 @@ export const receiveUser = (user) => {
 
 export const login = (user) => (dispatch) => {
   return sessionApiUtil.login(user)
-    .then((res) => dispatch(receiveUser(res)))
+    .then((fetchedUser) => dispatch(receiveUser(fetchedUser)))
     .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 

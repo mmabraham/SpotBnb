@@ -9,7 +9,10 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render :show
     else
-      render json: {password: "Invalid Credentials"}, status: 422
+      render json: {
+        password: "Invalid Credentials",
+        username: "Invalid Credentials"
+        }, status: 422
     end
   end
 
