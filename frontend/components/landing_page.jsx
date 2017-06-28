@@ -3,7 +3,18 @@ import Searchbar from './search/searchbar';
 
 const LandingPage = props => {
   return (
-    <Searchbar />
+    <main className="landing">
+      <div>
+        <h1>
+          <span className="red">Spotbnb</span>
+          <div>
+            Book unique homes and experience a city like a local.
+          </div>
+        </h1>
+      </div>
+      <Searchbar />
+
+    </main>
   );
 };
 

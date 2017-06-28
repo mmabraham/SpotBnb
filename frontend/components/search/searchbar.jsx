@@ -40,11 +40,9 @@ export default class Searchbar extends React.Component {
   render() {
     return (
       <div className="searchbar">
-        <label>
           <LocationPicker
-            handler={(_, place) => {this.props.history.push('/');setTimeout(this.props.changeMap(place), 1000)}}
+            handler={(_, place) => {this.props.history.push('/spots');setTimeout(this.props.changeMap(place), 1000)}}
           />
-        </label>
         <label>
           <DateRangePicker
             startDate={this.state.startDate}

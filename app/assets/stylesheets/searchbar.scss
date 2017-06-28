@@ -3,6 +3,7 @@
   border: 1px solid $gray-3;
   display: flex;
   align-items: center;
+  float: left;
 }
 
 .searchbar > * {
@@ -12,18 +13,27 @@
 
 .searchbar input {
   border: none;
+  outline: none;
 }
 
-.searchbar label > label > input:focus {
-  min-width: 300px;
-  border: none;
-  transition: width 2s;
+.searchbar label > input {
+  width: 168px;
+  transition: border-bottom .5s, width .5s;
+}
 
+.searchbar select {
+  z-index: 1;
+  width: 105px;
+  -webkit-transition: border-bottom .5s, width .5s;
+}
+.searchbar label > input:focus {
+  width: 300px;
+  outline: none;
+  border-bottom: 2px solid $blue-1;
 }
 
 .searchbar > label > select:focus {
-  border: none;
-  min-width: 200px;
-  -webkit-transition: width 2s, -webkit-transform 2s;
-  transition: width 2s, transform 2s;
+  outline: none;
+  border-bottom: 2px solid $blue-1;
+  width: 200px;
 }

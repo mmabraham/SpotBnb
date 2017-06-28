@@ -29,9 +29,7 @@ module AirBnb
             :bucket => ENV['s3_bucket'],
             :s3_region => ENV['s3_region'],
             :access_key_id => ENV['s3_access_key_id'],
-            :secret_access_key => ENV['s3_secret_access_key'],
-            :s3_host_name => "s3-#{ENV["s3_region"]}.amazonaws.com",
-            :url => ":s3_host_name"
+            :secret_access_key => ENV['s3_secret_access_key']
           }
         }
   end

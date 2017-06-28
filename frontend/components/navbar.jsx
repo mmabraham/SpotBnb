@@ -15,7 +15,7 @@ const Navbar = (props) => {
       <nav className="main-nav nav-logged-in">
         <ul className="left-nav-items">
           <li className="img-container logo-container">
-            <NavLink to="/">
+            <NavLink to="/spots">
               <img src="" />
             </NavLink>
           </li>

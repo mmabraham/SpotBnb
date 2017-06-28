@@ -20,19 +20,19 @@ users = []
   )
 end
 
-# 30.times do
-#   Spot.create(
-#     spot_type: (['Entire place', 'Private room', 'Shared Room'].sample),
-#     title: Faker::Book.title,
-#     description: Faker::Lorem.paragraph,
-#     lat: Faker::Address.latitude,
-#     lng: Faker::Address.longitude,
-#     capacity: rand(1..15),
-#     price: rand(1..999),
-#     host_id: users.sample.id,
-#     img: Faker::LoremPixel.image
-#   )
-# end
+30.times do
+  Spot.create(
+    spot_type: (['Entire place', 'Private room', 'Shared Room'].sample),
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph,
+    lat: Faker::Address.latitude,
+    lng: Faker::Address.longitude,
+    capacity: rand(1..15),
+    price: rand(1..999),
+    host_id: User.first.id,
+    img: Faker::LoremPixel.image
+  )
+end
 
 spots = []
 150.times do

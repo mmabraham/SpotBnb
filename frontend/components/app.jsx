@@ -22,7 +22,8 @@ const App = () => {
       <ProtectedRoute path='/spots/new' component={SpotForm} />
       <ProtectedRoute path='/mytrips' component={TripsIndex} />
       <Route path='/spots/:id' component={ShowPage} />
-      <Route exact path='/' component={IndexPage} />
+      <Route exact path='/spots' component={IndexPage} />
+      <Route exact path='/' component={LandingPage} />
     </Switch>
   </header>
  </div>

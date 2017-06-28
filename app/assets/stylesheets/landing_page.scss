@@ -1,0 +1,24 @@
+.landing {
+  width: 50%;
+  height: 300px;
+  margin: 180px auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.landing > div {
+  margin-bottom: 55px;
+}
+
+.landing h1 {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: 0.8px;
+  color: $gray-1;
+  font-weight: 300;
+}
+
+.landing h1 > span.red {
+  font-weight: 700;
+  color: #FF5A5F;
+}
