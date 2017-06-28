@@ -39,7 +39,7 @@ class Spot < ActiveRecord::Base
 
   def self.filter(filters)
     spots = Spot.all
-    return Spot.all unless filters
+    return spots unless filters
     spots = Spot.by_bounds(filters[:bounds], spots) if filters[:bounds]
     spots = Spot.by_capacity(filters[:capacity], spots) if filters[:capacity]
     spots = Spot.by_dates(filters[:dates], spots) if filters[:dates]
@@ -62,19 +62,12 @@ class Spot < ActiveRecord::Base
   def self.by_bounds(bounds, spots = nil)
     spots ||= Spot.all
     return spots unless bounds
-    # return Spot.both_sides(spots, bounds) if Spot.split?(bounds)
-    #
-    # if bounds[:southWest][:lng] < bounds[:northEast][:lng]
-    #   p '-----------==================================-----------------'
-    #   bounds[:northEast][:lng], bounds[:southWest][:lng] =  bounds[:southWest][:lng], bounds[:northEast][:lng]
-    # end
+    return Spot.both_sides(bounds, spots) if Spot.split?(bounds)
 
-    spots.where('lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?',
-      bounds[:southWest][:lat],
-      bounds[:northEast][:lat],
-      bounds[:southWest][:lng],
-      bounds[:northEast][:lng]
-    ).limit(30)
+    self.where("lat < ?", bounds[:northEast][:lat])
+        .where("lat > ?", bounds[:southWest][:lat])
+        .where("lng > ?", bounds[:southWest][:lng])
+        .where("lng < ?", bounds[:northEast][:lng])
   end
 
 #            |ne -37
@@ -83,10 +76,10 @@ class Spot < ActiveRecord::Base
 #     sw -58 |
 
   def self.split?(bounds)
-    bounds[:northEast][:lng].to_s.to_i <= 0 && bounds[:southWest][:lng].to_s.to_i < 0
+    bounds[:northEast][:lng].to_s.to_f < bounds[:southWest][:lng].to_s.to_f
   end
 
-  def self.both_sides(spots, bounds)
+  def self.both_sides(bounds, spots)
     west_bounds = {
       southWest: bounds[:southWest],
       northEast: { lat: bounds[:northEast][:lat], lng: '179.999' }
@@ -96,11 +89,11 @@ class Spot < ActiveRecord::Base
       northEast: bounds[:northEast]
     }
 
-    spots.by_bounds(spots, west_bounds).merge(spots.by_bounds(spots, east_bounds))
+    spots.by_bounds(west_bounds, spots).union(spots.by_bounds(east_bounds, spots))
   end
 
   def self.with_ratings(spots = nil)
-    # spots ||= Spot.all
+    spots ||= Spot.all
     return spots if spots.empty?
     ids = spots.pluck(:id).join(', ')
     Spot.find_by_sql(<<-SQL )

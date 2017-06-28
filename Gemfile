@@ -35,6 +35,8 @@ gem 'aws-sdk', '>= 2.0'
 gem 'faker'
 gem 'font-awesome-sass'
 
+gem 'active_record_union'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
