@@ -19,7 +19,7 @@ import * as bookingActions from './actions/booking_actions';
 document.addEventListener('DOMContentLoaded', () => {
   const preloadedState = { session: { user: window.currentUser } };
   const store = window.currentUser ? configureStore(preloadedState) : configureStore();
-  // window.currentUser = null;
+  window.currentUser = null;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 

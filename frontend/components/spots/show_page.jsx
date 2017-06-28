@@ -33,7 +33,11 @@ export default class ShowPage extends React.Component {
             </div>
 
             <hr />
-            <i className="fa fa-home" aria-hidden="true"></i>
+            <img src='https://s3.amazonaws.com/spotbnb-pro/001-home-1.png' />
+            <img src='https://s3.amazonaws.com/spotbnb-pro/003-bed.png' />
+            <img src='https://s3.amazonaws.com/spotbnb-pro/002-group-of-students.png' />
+            <img src='https://s3.amazonaws.com/spotbnb-pro/004-home.png' />
+
             <i className="fa fa-users" aria-hidden="true"></i>
             <h1>{spot.title}</h1>
 
@@ -66,7 +70,7 @@ export default class ShowPage extends React.Component {
             <p>{spot.description}</p>
           </div>
 
-          {spot.host_id === currentUser.id ? null : (
+          { currentUser && currentUser.id === spot.host_id? null : (
             <div className="booking-form-container">
               <BookingForm
                 spot={spot}

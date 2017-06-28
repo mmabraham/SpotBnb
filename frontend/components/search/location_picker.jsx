@@ -32,6 +32,7 @@ export default class LocationPicker extends React.Component {
     });
   }
 
+  // <i className="fa fa-search" aria-hidden="true"></i>
   render() {
     return (
       <label>
