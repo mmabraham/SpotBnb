@@ -4,6 +4,8 @@ import MarkerManager from '../../util/marker_manager';
 export default class SpotMap extends React.Component {
   constructor(props) {
     super(props);
+
+    this.changeMap = this.changeMap.bind(this);
   }
 
   changeMap(place) {
@@ -39,6 +41,10 @@ export default class SpotMap extends React.Component {
     });
 
     this.props.registerMapControl(this.changeMap.bind(this));
+  }
+
+  componentWillRecieveProps(nextProps) {
+    this.changeMap(nextProps.place)
   }
 
   componentWillUpdate(nextProps) {

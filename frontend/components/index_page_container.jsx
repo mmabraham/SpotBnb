@@ -9,6 +9,7 @@ import IndexPage from './index_page';
 const mapStateToProps = (state) => {
   return {
       spots: asArray(state.spots),
+      place: state.maps.place,
   };
 };
 

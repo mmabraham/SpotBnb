@@ -9,6 +9,7 @@ export default class Searchbar extends React.Component {
     super(props);
     this.state = {startDate: moment.default(), endDate: moment.default().add(1,'days')};
     this.handleChange = this.handleChange.bind(this);
+    this.handlePlacechange = this.handlePlacechange.bind(this);
   }
 
   validCapacities() {
@@ -24,6 +25,11 @@ export default class Searchbar extends React.Component {
       e.preventDefault();
       this.props.updateFilter(type, e.target.value);
     };
+  }
+
+  handlePlacechange(place) {
+    this.setMapCenter(place);
+    this.props.history.push('/spots');
   }
 
   handleDatePick(dates) {
