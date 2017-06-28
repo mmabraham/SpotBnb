@@ -49,6 +49,7 @@ const Navbar = (props) => {
             <img src="" />
           </li>
         </ul>
+        <Searchbar />
         <ul className="right-nav-items">
           <li>
             <NavLink to="/spots/new">Become a Host</NavLink>
