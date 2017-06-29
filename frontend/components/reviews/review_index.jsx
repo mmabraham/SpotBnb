@@ -21,20 +21,21 @@ export default class ReviewIndex extends React.Component {
 
       return (
         <li key={review.id} className="review-item">
-          <div>
+          <div className="review-header">
             {avatar}
+            <span>{review.username}</span>
           </div>
-          <div>
+          <div className="review-stars">
             <Rating
               className="rating-stars"
-              placeholderRate={review.rating}
+              placeholderRate={parseFloat(review.rating)}
               placeholder="fa fa-star fa-2x"
               empty="fa fa-star-o fa-2x"
               full="fa fa-star fa-2x"
               readonly={true}
             />
           </div>
-          <div>
+          <div className="review-body">
             <p>
               {review.body}
             </p>
@@ -45,7 +46,6 @@ export default class ReviewIndex extends React.Component {
 
     return (
       <ul>
-        <li>testing</li>
         {reviews}
       </ul>
     );

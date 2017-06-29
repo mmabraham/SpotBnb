@@ -6,3 +6,12 @@
   color: $blue-1;
   font-size: 12px;
 }
+
+.review-item {
+  border-bottom: 1px solid $gray-3;
+}
+
+.review-item > .review-header {
+  display: flex;
+  flex-direction: row;
+}

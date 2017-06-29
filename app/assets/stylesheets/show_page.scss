@@ -5,6 +5,7 @@
 
 .full-width-image {
   height: 650px;
+  position: relative;
 }
 
 .spot-details {
@@ -100,4 +101,12 @@
   font-size: 17px;
   font-weight: 300;
   color: $gray-2;
+}
+
+span.review-count {
+  margin-left: 7px;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: .2px;
+  font-weight: 300;
 }

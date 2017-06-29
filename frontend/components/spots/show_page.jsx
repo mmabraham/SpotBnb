@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from 'react-rating';
 import BookingForm from '../bookings/booking_form';
-import ReviewIndex from './review_index';
+import ReviewIndex from '../reviews/review_index';
 
 export default class ShowPage extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class ShowPage extends React.Component {
       <main>
         <div className="full-width">
           <div className="full-width-image">
-            <img src={spot.img}/>
+            <img className="main-img" src={spot.img}/>
           </div>
         </div>
 
@@ -50,7 +50,7 @@ export default class ShowPage extends React.Component {
                   full="fa fa-star fa-2x"
                   readonly={true}
                   />
-                <span>{`${spot.num_reviews} Reviews`}</span>
+                <span className="review-count">{`${spot.num_reviews} Reviews`}</span>
               </div>
             </div>
 
@@ -76,7 +76,7 @@ export default class ShowPage extends React.Component {
             <h2>About this listing</h2>
             <p>{spot.description}</p>
 
-            <div className="reviews-container" onClick={this.props.toggle}>
+            <div className="reviews-container" onClick={this.props.toggle} >
               <div>
                 <Rating
                   className="rating-stars"
@@ -86,7 +86,7 @@ export default class ShowPage extends React.Component {
                   full="fa fa-star fa-2x"
                   readonly={true}
                   />
-                <span>{`${spot.num_reviews} Reviews`}</span>
+                <span className="review-count">{`${spot.num_reviews} Reviews`}</span>
                 <div className="review-index-container">
                   {
                     this.props.reviewToggleState === 'on' ?
