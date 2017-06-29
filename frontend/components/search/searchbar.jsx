@@ -9,6 +9,7 @@ export default class Searchbar extends React.Component {
     super(props);
     this.state = {startDate: moment.default(), endDate: moment.default().add(1,'days')};
     this.handleChange = this.handleChange.bind(this);
+    this.handlePlacechange = this.handlePlacechange.bind(this);
   }
 
   validCapacities() {
@@ -26,9 +27,9 @@ export default class Searchbar extends React.Component {
     };
   }
 
-  handlePlaceChange(place) {
+  handlePlacechange(place) {
+    this.props.setMapCenter(place);
     this.props.history.push('/spots');
-    setTimeout(this.props.changeMap()(place), 0);
   }
 
   handleDatePick(dates) {
@@ -46,7 +47,7 @@ export default class Searchbar extends React.Component {
     return (
       <div className="searchbar">
           <LocationPicker
-            handler={(_, place) => this.handlePlaceChange(place)}
+            handler={(_, place) => this.handlePlacechange(place)}
           />
         <label>
           <DateRangePicker

@@ -15,24 +15,6 @@ export const updateBounds = bounds => (dispatch, getState) => {
   fetchAllSpots(getState().filters)(dispatch);
 };
 
-// // deprecated
-// export const updateDates = dates => (dispatch, getState) => {
-//   dispatch({
-//     type: UPDATE_DATES,
-//     dates,
-//   });
-//   fetchAllSpots(getState().filters)(dispatch);
-// };
-//
-// // deprecated
-// export const updateCapacity = capacity => (dispatch, getState) => {
-//   dispatch({
-//     type: UPDATE_CAPACITY,
-//     capacity,
-//   });
-//   fetchAllSpots(getState().filters)(dispatch);
-// };
-
 export const updateFilter = (filterType, filter) => (dispatch, getState) => {
   dispatch({
     type: UPDATE_FILTER,
@@ -45,5 +27,5 @@ export const updateFilter = (filterType, filter) => (dispatch, getState) => {
 export const clearFilters = () => {
   return {
     type: CLEAR_FILTERS,
-  }
-}
+  };
+};

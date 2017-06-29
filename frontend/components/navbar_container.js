@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../actions/session_actions';
+import { clearFilters } from '../actions/filter_actions';
 import { withRouter } from 'react-router-dom';
 import Navbar from './navbar';
 
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    clearFilters: () => dispatch(clearFilters()),
   };
 };
 

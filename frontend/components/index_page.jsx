@@ -2,15 +2,17 @@ import React from 'react';
 import SpotIndex from './spots/spot_index';
 import SpotMap from './spots/spot_map'
 
-const IndexPage = ({spots, fetchAllSpots, updateBounds, showSpot, registerMapControl}) => {
+const IndexPage = (props) => {
   return (
     <main className="index-page-main">
-      <SpotIndex spots={spots} fetchAllSpots={fetchAllSpots} />
+      <SpotIndex spots={props.spots} fetchAllSpots={props.fetchAllSpots} />
       <SpotMap
-        spots={spots}
-        updateBounds={updateBounds}
-        showSpot={showSpot}
-        registerMapControl={registerMapControl}
+        spots={props.spots}
+        updateBounds={props.updateBounds}
+        showSpot={props.showSpot}
+        registerMapControl={props.registerMapControl}
+        place={props.place}
+        clearMapCenter={props.clearMapCenter}
       />
     </main>
   )

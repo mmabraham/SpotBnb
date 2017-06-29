@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Searchbar from './searchbar';
 import { updateFilter } from '../../actions/filter_actions';
+import { setMapCenter } from '../../actions/map_actions';
 
 const mapStateToProps = state => {
   return {
@@ -13,6 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updateFilter: (type, filter) => dispatch(updateFilter(type, filter)),
+    setMapCenter: (place) => dispatch(setMapCenter(place))
   };
 };
 

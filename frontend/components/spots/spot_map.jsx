@@ -4,6 +4,8 @@ import MarkerManager from '../../util/marker_manager';
 export default class SpotMap extends React.Component {
   constructor(props) {
     super(props);
+
+    this.changeMap = this.changeMap.bind(this);
   }
 
   changeMap(place) {
@@ -21,6 +23,7 @@ export default class SpotMap extends React.Component {
       zoom: 12
     };
 
+
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.markerManager = new MarkerManager(this.map, this.props.showSpot);
 
@@ -37,13 +40,19 @@ export default class SpotMap extends React.Component {
       };
       this.props.updateBounds(bounds);
     });
-
-    this.props.registerMapControl(this.changeMap.bind(this));
+  }
+  // && nextProps.place != this.props.place
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.place) {
+      this.changeMap(nextProps.place);
+      this.props.clearMapCenter();
+    }
   }
 
   componentWillUpdate(nextProps) {
     this.markerManager.updateMarkers(nextProps.spots);
   }
+
 
   render() {
     return (
