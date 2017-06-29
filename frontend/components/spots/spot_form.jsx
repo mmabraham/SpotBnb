@@ -46,7 +46,14 @@ class SpotForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createSpot(this.state)
+    const formData = new FormData();
+    for (let key in this.state) {
+      // debugger
+      formData.append(`spot[${key}]`, this.state[key])
+    }
+    formData.append("spot[img]", this.state.imageFile);
+
+    this.props.createSpot(formData)
     .then(this.redirectTo)
     .fail((res) => this.props.receiveErrors(res));
   }

@@ -28,8 +28,7 @@ export default class Searchbar extends React.Component {
 
   handlePlaceChange(place) {
     this.props.history.push('/spots');
-    debugger
-    setTimeout(this.props.changeMap(place), 1000);
+    setTimeout(this.props.changeMap(place), 0);
   }
 
   handleDatePick(dates) {

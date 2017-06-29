@@ -18,9 +18,8 @@ export const createSpot = (spot) => {
   return $.ajax({
     method: 'POST',
     url: 'api/spots',
-    dataType: 'json',
-    cache : false,
+    contentType: false,
     processData: false,
-    data: { spot },
+    data: spot,
   });
 };

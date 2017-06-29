@@ -21,7 +21,6 @@ class Api::SpotsController < ApplicationController
   end
 
   def create
-    debugger
     @spot = Spot.new(spot_params)
     @spot.host_id = current_user.id
     if @spot.save
