@@ -6,7 +6,7 @@ import Searchbar from './search/searchbar_container';
 
 const Navbar = (props) => {
   if (props.currentUser) {
-    const avatar = props.currentUser.avatar_url ? (
+    const avatar = props.currentUser.avatar_url  && false ? (
       <Avatar size={30} src={props.currentUser.avatar_url} />
     ) : (
       <Avatar size={30}>{props.currentUser.username[0].toUpperCase()}</Avatar>

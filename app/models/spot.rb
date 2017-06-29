@@ -107,6 +107,7 @@ class Spot < ActiveRecord::Base
         spots.id
       ORDER BY
        average_rating DESC
+      LIMIT 30
     SQL
   end
 
