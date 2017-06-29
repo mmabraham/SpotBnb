@@ -1,4 +1,4 @@
-import { REGISTER_MAP_CONTROL, SET_MAP_CENTER } from '../actions/map_actions';
+import { REGISTER_MAP_CONTROL, SET_MAP_CENTER, CLEAR_MAP_CENTER } from '../actions/map_actions';
 
 const mapsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -6,6 +6,8 @@ const mapsReducer = (state = {}, action) => {
       return Object.assign({state, cb: action.callback});
     case SET_MAP_CENTER:
       return Object.assign({state, place: action.place});
+    case CLEAR_MAP_CENTER:
+      return Object.assign({state, place: null});
     default:
       return state;
   }
