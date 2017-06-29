@@ -99,7 +99,7 @@ class Spot < ActiveRecord::Base
     Spot.find_by_sql(<<-SQL )
       SELECT spots.*, COUNT(reviews.rating) AS num_reviews, AVG(reviews.rating) AS average_rating FROM
         spots
-      JOIN
+      LEFT OUTER JOIN
         reviews ON spots.id = reviews.spot_id
       WHERE
         spots.id IN (#{ids})

@@ -11,7 +11,7 @@ class Api::SpotsController < ApplicationController
   end
 
   def index
-    if params[:host_id]
+    if params[:listings]
       @spots = current_user.spots
     else
       spots = Spot.filter(params[:filters])
