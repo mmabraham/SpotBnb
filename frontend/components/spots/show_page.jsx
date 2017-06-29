@@ -34,10 +34,12 @@ export default class ShowPage extends React.Component {
             </div>
 
             <hr />
-            <img src='https://s3.amazonaws.com/spotbnb-pro/001-home-1.png' />
-            <img src='https://s3.amazonaws.com/spotbnb-pro/003-bed.png' />
-            <img src='https://s3.amazonaws.com/spotbnb-pro/002-group-of-students.png' />
-            <img src='https://s3.amazonaws.com/spotbnb-pro/004-home.png' />
+            <img src={window.images.home} />
+            <img src={window.images.room} />
+            <img src={window.images.guests} />
+            <img src={window.images.bed} />
+
+
 
             <i className="fa fa-users" aria-hidden="true"></i>
             <h1>{spot.title}</h1>

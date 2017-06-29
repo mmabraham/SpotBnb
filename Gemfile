@@ -37,6 +37,8 @@ gem 'font-awesome-sass'
 
 gem 'active_record_union'
 
+gem 'seed_dump'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

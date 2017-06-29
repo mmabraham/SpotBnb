@@ -6,8 +6,8 @@ import Searchbar from './search/searchbar_container';
 
 const Navbar = (props) => {
   if (props.currentUser) {
-    const avatar = props.currentUser.image_url ? (
-      <Avatar size={30} src={props.currentUser.image_url} />
+    const avatar = props.currentUser.avatar_url ? (
+      <Avatar size={30} src={props.currentUser.avatar_url} />
     ) : (
       <Avatar size={30}>{props.currentUser.username[0].toUpperCase()}</Avatar>
     );
@@ -16,8 +16,8 @@ const Navbar = (props) => {
       <nav className="main-nav nav-logged-in">
         <ul className="left-nav-items">
           <li className="img-container logo-container">
-            <NavLink to="/spots">
-              <img src="" />
+            <NavLink to="/spots" className="img-container logo-container">
+              <img src={window.images.logo} />
             </NavLink>
           </li>
           <li>
@@ -48,8 +48,10 @@ const Navbar = (props) => {
     return (
       <nav className="main-nav nav-logged-out">
         <ul className="left-nav-items">
-          <li className="img-container logo-container">
-            <img src="" />
+          <li>
+            <NavLink to="/spots" className="img-container logo-container">
+              <img src={window.images.logo} />
+            </NavLink>
           </li>
           <li>
             <Route path='/:xxx' component={Searchbar} />
