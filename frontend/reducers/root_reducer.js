@@ -6,7 +6,7 @@ import users from './users_reducer';
 import reviews from './reviews_reducer';
 import reviewToggleState from './review_toggle_reducer';
 import bookings from './bookings_reducer';
-import changeMap from './map_reducer';
+import maps from './map_reducer';
 
 
 import { combineReducers } from 'redux';
@@ -20,5 +20,5 @@ export default combineReducers({
   reviews,
   reviewToggleState,
   bookings,
-  changeMap,
+  maps,
 });

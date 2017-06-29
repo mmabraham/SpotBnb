@@ -43,8 +43,10 @@ export default class SpotMap extends React.Component {
     this.props.registerMapControl(this.changeMap.bind(this));
   }
 
-  componentWillRecieveProps(nextProps) {
-    this.changeMap(nextProps.place)
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.place) {
+      this.changeMap(nextProps.place)
+    }
   }
 
   componentWillUpdate(nextProps) {

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Searchbar from './searchbar';
 import { updateFilter } from '../../actions/filter_actions';
-import { setMapCenter } from '.././actions/map_actions';
+import { setMapCenter } from '../../actions/map_actions';
 
 const mapStateToProps = state => {
   return {
