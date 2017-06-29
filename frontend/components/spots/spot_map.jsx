@@ -7,6 +7,7 @@ export default class SpotMap extends React.Component {
   }
 
   changeMap(place) {
+    debugger
     if (place.geometry.viewport) {
       this.map.fitBounds(place.geometry.viewport);
     } else {

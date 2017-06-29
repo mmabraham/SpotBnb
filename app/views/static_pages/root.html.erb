@@ -1,13 +1,15 @@
 <% if logged_in? %>
   <script type="text/javascript">
     window.currentUser = <%= (render 'api/users/user.json.jbuilder', user: current_user).html_safe %>;
+  </script>
+  <% end %>
+  <script type="text/javascript">
     window.images = {
       logo: "<%= (asset_path('logo.png')).html_safe %>",
-      home: "<%= (asset_path('004-home.png')).html_safe %>",
+      room: "<%= (asset_path('004-home.png')).html_safe %>",
       bed: "<%= (asset_path('003-bed.png')).html_safe %>",
       guests: "<%= (asset_path('002-group-of-students.png')).html_safe %>",
-      room: "<%= (asset_path('001-home-1.png')).html_safe %>",
-   };
+      home: "<%= (asset_path('001-home-1.png')).html_safe %>",
+    };
   </script>
-<% end %>
 <div id="root">NOT WORKING<div>

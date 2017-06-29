@@ -34,6 +34,27 @@
   margin-right: 18px;
 }
 
+.icons {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  color: $gray-2;
+  padding: 20px 0;
+  font-size: 15px;
+  line-height: 18px;
+  border-top: 1px solid $gray-3;
+  border-bottom: 1px solid $gray-3;
+}
+
+.icons > div {
+  width: 175px;
+  text-align: center;
+}
+
+.icons > div > img {
+  width: 30px;
+  margin: auto;
+}
 .links {
   display: flex;
   flex-direction: row;

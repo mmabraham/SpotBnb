@@ -111,7 +111,7 @@ class SpotForm extends React.Component {
   };
 
   allTypes() {
-    return ['Entire place', 'Private room', 'Shared Room'];
+    return ['Entire home/apt', 'Private room', 'Shared Room'];
   }
 
   validCapacities() {

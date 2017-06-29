@@ -48,7 +48,7 @@ const Navbar = (props) => {
     return (
       <nav className="main-nav nav-logged-out">
         <ul className="left-nav-items">
-          <li>
+          <li className="img-container logo-container">
             <NavLink to="/spots" className="img-container logo-container">
               <img src={window.images.logo} />
             </NavLink>

@@ -16,6 +16,10 @@ export default class ShowPage extends React.Component {
     const { spot } = this.props;
     if (!spot ) return null;
 
+    // temporary (until supported by db)
+    spot.rooms = Math.ceil(spot.capacity / 2.5);
+    spot.beds = Math.ceil(spot.capacity / 1.3 );
+
     return (
       <main>
         <div className="full-width">
@@ -33,20 +37,11 @@ export default class ShowPage extends React.Component {
               <a>Location </a>
             </div>
 
-            <hr />
-            <img src={window.images.home} />
-            <img src={window.images.room} />
-            <img src={window.images.guests} />
-            <img src={window.images.bed} />
-
-
-
-            <i className="fa fa-users" aria-hidden="true"></i>
             <h1>{spot.title}</h1>
 
             <div className="reviews-container" onClick={this.props.toggle}>
               <div>
-                {spot.location || null}
+                {spot.city || null}
                 <span>{`$`}</span>
                 <Rating
                   className="rating-stars"
@@ -55,7 +50,7 @@ export default class ShowPage extends React.Component {
                   empty="fa fa-star-o fa-2x"
                   full="fa fa-star fa-2x"
                   readonly={true}
-                />
+                  />
                 <span>{`${spot.num_reviews} Reviews`}</span>
               </div>
               {
@@ -63,11 +58,29 @@ export default class ShowPage extends React.Component {
                 (<ReviewIndex
                   reviews={this.props.reviews}
                   fetchReviews={() => this.props.fetchReviews(spot.id)}
-                />) :
-                null
-              }
-            </div>
-            <h6>{`${spot.spot_type}  --  ${spot.capacity}`}</h6>
+                  />) :
+                  null
+                }
+              </div>
+
+            <ul className="icons">
+              <div>
+                <img src={window.images.home} />
+                <span>{`${spot.spot_type}`}</span>
+              </div>
+              <div>
+                <img src={window.images.guests} />
+                <span>{`${spot.capacity} Guest${spot.capacity > 1 ? 's' : ''}`}</span>
+              </div>
+              <div>
+                <img src={window.images.room} />
+                <span>{`${spot.rooms} Bedroom${spot.rooms > 1 ? 's' : ''}`}</span>
+              </div>
+              <div>
+                <img src={window.images.bed} />
+                <span>{`${spot.beds} Bed${spot.beds > 1 ? 's' : ''}`}</span>
+              </div>
+            </ul>
             <hr />
             <h2>About this listing</h2>
             <p>{spot.description}</p>
