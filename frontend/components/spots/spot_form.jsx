@@ -48,7 +48,6 @@ class SpotForm extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     for (let key in this.state) {
-      // debugger
       formData.append(`spot[${key}]`, this.state[key])
     }
     formData.append("spot[img]", this.state.imageFile);

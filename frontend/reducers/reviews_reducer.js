@@ -1,6 +1,6 @@
-import RECIEVE_REVIEWS from '../actions/review_actions';
+import { RECIEVE_REVIEWS } from '../actions/review_actions';
 
-const reviewsReducer = (state = {}, action) => {
+const reviewsReducer = (state = [], action) => {
   switch (action.type) {
     case RECIEVE_REVIEWS:
       return action.reviews;

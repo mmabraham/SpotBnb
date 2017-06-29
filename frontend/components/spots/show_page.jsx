@@ -57,10 +57,10 @@ export default class ShowPage extends React.Component {
                 <span>{`${spot.num_reviews} Reviews`}</span>
               </div>
               {
-                this.props.toggleState === 'on' ?
+                this.props.reviewToggleState === 'on' ?
                 (<ReviewIndex
                   reviews={this.props.reviews}
-                  fetchReviews={this.props.fetchReviews}
+                  fetchReviews={() => this.props.fetchReviews(spot.id)}
                 />) :
                 null
               }

@@ -12,6 +12,7 @@ export default class ReviewIndex extends React.Component {
   }
 
   render() {
+    debugger
     const reviews = this.props.reviews.map((review) => {
       const avatar = review.user_img ? (
         <Avatar size={30} src={review.user_img} />
