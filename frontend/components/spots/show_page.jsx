@@ -1,6 +1,7 @@
 import React from 'react';
 import Rating from 'react-rating';
 import BookingForm from '../bookings/booking_form';
+import ReviewIndex from './review_index';
 
 export default class ShowPage extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class ShowPage extends React.Component {
             <i className="fa fa-users" aria-hidden="true"></i>
             <h1>{spot.title}</h1>
 
-            <div className="reviews-container" onClick={this.props.handleToggle}>
+            <div className="reviews-container" onClick={this.props.toggle}>
               <div>
                 {spot.location || null}
                 <span>{`$`}</span>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
-
+import Rating from 'react-rating';
 
 export default class ReviewIndex extends React.Component {
   constructor(props) {
@@ -24,11 +24,28 @@ export default class ReviewIndex extends React.Component {
           <div>
             {avatar}
           </div>
+          <div>
+            <Rating
+              className="rating-stars"
+              placeholderRate={review.rating}
+              placeholder="fa fa-star fa-2x"
+              empty="fa fa-star-o fa-2x"
+              full="fa fa-star fa-2x"
+              readonly={true}
+            />
+          </div>
+          <div>
+            <p>
+              {review.body}
+            </p>
+          </div>
         </li>
       );
     });
+
     return (
       <ul>
+        <li>testing</li>
         {reviews}
       </ul>
     );

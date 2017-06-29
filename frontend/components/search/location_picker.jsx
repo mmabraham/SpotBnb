@@ -15,7 +15,7 @@ export default class LocationPicker extends React.Component {
   }
 
   componentDidMount() {
-    this.setupAutocomplete();
+    // this.setupAutocomplete();
   }
 
   componentWillUnmount() {

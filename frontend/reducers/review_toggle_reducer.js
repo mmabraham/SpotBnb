@@ -1,4 +1,4 @@
-import TOGGLE from '../actions/review_actions';
+import { TOGGLE } from '../actions/review_actions';
 
 const ReviewToggleReducer = (state = 'off', action) => {
   switch (action.type) {
