@@ -34,12 +34,27 @@
   margin-right: 18px;
 }
 
+.spot-details > .info h2 {
+  font-size: 22px;
+  font-weight: normal;
+  height: auto;
+  letter-spacing: -0.2px;
+  line-height: 28px;
+  text-rendering: optimizeLegibility;
+  margin: 20px 0;
+}
+
+.spot-details > .info div {
+  margin: 20px 0;
+}
+
 .icons {
   list-style: none;
   display: flex;
   justify-content: flex-start;
   color: $gray-2;
   padding: 20px 0;
+  font-weight: 300;
   font-size: 15px;
   line-height: 18px;
   border-top: 1px solid $gray-3;
@@ -79,4 +94,10 @@
 
 .links > a:hover {
   border-bottom: solid 2px $blue-1;
+}
+
+.reviews-container {
+  font-size: 17px;
+  font-weight: 300;
+  color: $gray-2;
 }

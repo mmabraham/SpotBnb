@@ -40,9 +40,8 @@ export default class ShowPage extends React.Component {
             <h1>{spot.title}</h1>
 
             <div className="reviews-container" onClick={this.props.toggle}>
+              {spot.city || null}
               <div>
-                {spot.city || null}
-                <span>{`$`}</span>
                 <Rating
                   className="rating-stars"
                   placeholderRate={parseFloat(spot.rating)}
@@ -53,15 +52,7 @@ export default class ShowPage extends React.Component {
                   />
                 <span>{`${spot.num_reviews} Reviews`}</span>
               </div>
-              {
-                this.props.reviewToggleState === 'on' ?
-                (<ReviewIndex
-                  reviews={this.props.reviews}
-                  fetchReviews={() => this.props.fetchReviews(spot.id)}
-                  />) :
-                  null
-                }
-              </div>
+            </div>
 
             <ul className="icons">
               <div>
@@ -84,9 +75,35 @@ export default class ShowPage extends React.Component {
             <hr />
             <h2>About this listing</h2>
             <p>{spot.description}</p>
+
+            <div className="reviews-container" onClick={this.props.toggle}>
+              <div>
+                <Rating
+                  className="rating-stars"
+                  placeholderRate={parseFloat(spot.rating)}
+                  placeholder="fa fa-star fa-2x"
+                  empty="fa fa-star-o fa-2x"
+                  full="fa fa-star fa-2x"
+                  readonly={true}
+                  />
+                <span>{`${spot.num_reviews} Reviews`}</span>
+                <div className="review-index-container">
+                  {
+                    this.props.reviewToggleState === 'on' ?
+                    (<ReviewIndex
+                      reviews={this.props.reviews}
+                      fetchReviews={() => this.props.fetchReviews(spot.id)}
+                      />) :
+                      null
+                    }
+                </div>
+              </div>
+
+            </div>
           </div>
 
-          { currentUser && currentUser.id === spot.host_id? null : (
+
+          { currentUser && currentUser.id === spot.host_id ? null : (
             <div className="booking-form-container">
               <BookingForm
                 spot={spot}

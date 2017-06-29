@@ -70,7 +70,6 @@ class SpotForm extends React.Component {
   }
 
   handleUpload(e) {
-    debugger
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () => {
