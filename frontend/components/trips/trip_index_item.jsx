@@ -1,11 +1,11 @@
 import React from 'react';
-import SpotIndexItem from '../spots/spot_index_item';
 import Avatar from 'material-ui/Avatar';
+import SpotIndexItem from '../spots/spot_index_item';
+import ReviewForm from '../reviews/review_form';
 
 const TripIndexItem = ({trip, cancelBooking}) => {
 
-  // aws not yet working
-  const avatar = trip.host.img_url && false ? (
+  const avatar = trip.host.img_url ? (
     <Avatar size={60} src={trip.host.img_url} />
   ) : (
     <Avatar size={60}>{trip.host.username[0].toUpperCase()}</Avatar>
@@ -21,14 +21,21 @@ const TripIndexItem = ({trip, cancelBooking}) => {
       <div className="trip-info">
         <ul>
           <li>{`${trip.duration} days`}</li>
-          <li>Check in: {trip.start_date.toDateString()}</li>
-          <li>Check out: {trip.end_date.toDateString()}</li>
-          <li>Total: {`$${trip.duration * trip.spot.price}`}</li>
+          <li>
+            <span>Check in: </span><span>{trip.start_date.toDateString()}</span>
+          </li>
+          <li>
+            <span>Check out: </span><span>{trip.end_date.toDateString()}</span>
+          </li>
+          <li>
+            <span>Total: </span><span>{`$${trip.duration * trip.spot.price}`}</span>
+          </li>
         </ul>
-        <button onClick={() => cancelBooking(trip.id)}>
+        <button className="btn" onClick={() => cancelBooking(trip.id)}>
           Cancel This Trip
         </button>
       </div>
+      <ReviewForm />
     </li>
   )
 }

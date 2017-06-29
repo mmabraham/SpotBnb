@@ -15,3 +15,17 @@
   display: flex;
   flex-direction: row;
 }
+
+.trip-item .btn {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 22px;
+  border: 2px solid transparent;
+  background-color: #FF5A5F;
+  padding: 12px;
+  border-radius: 4px;
+  width: 60px;
+  width: 100%;
+}

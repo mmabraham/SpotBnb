@@ -5,10 +5,12 @@ export const tripsInfo = ({bookings, users, spots}) => {
   for (let key in bookings) {
     const start_date = new Date(bookings[key].start_date);
     const end_date = new Date(bookings[key].end_date);
+    const spot = spots[bookings[key].spot_id];
+    if (!spot) {debugger; ''}
     trips.push({
       id: key,
-      spot: spots[bookings[key].spot_id],
-      host: users[spots[bookings[key].spot_id].host_id],
+      spot,
+      host: users[spot.host_id],
       start_date,
       end_date,
       duration: Math.round((end_date.getTime() - start_date.getTime()) / (1000 * 60 * 60 * 24)),

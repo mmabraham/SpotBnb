@@ -5,14 +5,28 @@
 }
 
 .trip-info {
+  width: 220px;
+  border: 1px solid $gray-3;
+  border-radius: 2px;
+  padding: 20px;
+}
 
+.trip-info > ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-info > ul > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0 10px 0;
 }
 
 .host-info {
   position: relative;
-  left: -33px;
-  bottom: -120px;
-  text-align: center;
+  left: -100px;
+  bottom: -215px;
+  text-align: right;
 }
 
 .trip-index {

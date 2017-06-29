@@ -20,3 +20,7 @@ export const fetchReviews = spot_id => dispatch => {
   return APIUtil.fetchReviews(spot_id)
     .then((reviews) => dispatch(receiveReviews(reviews)));
 };
+
+export const createReview = review => dispatch => {
+  return APIUtil.createReview(review);
+};

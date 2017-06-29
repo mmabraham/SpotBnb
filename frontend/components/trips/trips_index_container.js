@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchTrips, cancelBooking } from '../../actions/booking_actions';
+import { createReview } from '../../actions/review_actions';
 import { tripsInfo } from '../../reducers/selectors';
 import TripsIndex from './trips_index';
 

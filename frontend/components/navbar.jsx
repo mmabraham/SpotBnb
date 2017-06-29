@@ -15,7 +15,7 @@ const Navbar = (props) => {
             onClick={() => props.logout().then(() => props.history.push('/login'))}>
             Logout</button></li>
           <li>
-            {props.currentUser.avatar_url  && false ? (
+            {props.currentUser.avatar_url ? (
               <Avatar size={30} src={props.currentUser.avatar_url} />
             ) : (
               <Avatar size={30}>{props.currentUser.username[0].toUpperCase()}</Avatar>
