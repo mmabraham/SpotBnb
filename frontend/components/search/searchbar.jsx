@@ -33,13 +33,12 @@ export default class Searchbar extends React.Component {
   }
 
   handleDatePick(dates) {
+    this.setState(dates);
     if (this.state.focusedInput === 'endDate') {
       this.props.updateFilter(
         'dates',
         {start_date: dates.startDate.toDate(), end_date: dates.endDate.toDate()}
       );
-    } else {
-      this.setState(dates);
     }
   }
 

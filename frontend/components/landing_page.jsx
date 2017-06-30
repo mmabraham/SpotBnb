@@ -1,5 +1,6 @@
 import React from 'react';
 import Searchbar from './search/searchbar_container';
+import Carousel from './spots/carousel_container';
 
 const LandingPage = props => {
   return (
@@ -13,7 +14,6 @@ const LandingPage = props => {
         </h1>
       </div>
       <Searchbar />
-
     </main>
   );
 };
