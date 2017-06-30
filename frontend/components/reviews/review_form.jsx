@@ -16,14 +16,29 @@ export default class ReviewForm extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.setState({hidden: !this.state.hidden})}>
-          review
-        </button>
-        {this.state.hidden ? null : (
+        {this.state.hidden ? (
+          <button
+            onClick={() => this.setState({hidden: !this.state.hidden})}
+            className="btn"
+          >
+            Review
+          </button>
+        ) : (
           <form
             className="review-form"
             onSubmit={() => this.props.createReview(this.state)}
           >
+          <label
+            onClick={() => this.setState({hidden: !this.state.hidden})}
+            className="ex"
+          >
+            ╳
+          </label>
+          <textArea
+            onChange={this.handleChange('body')}
+            value={this.state.body}
+            placeholder="Tell us about this trip"
+          />
             <Rating
               className="rating-stars"
               placeholderRate={this.state.rating}
@@ -32,12 +47,8 @@ export default class ReviewForm extends React.Component {
               full="fa fa-star fa-2x"
               onChange={rating => this.setState({ rating })}
             />
-            <textArea
-              onChange={this.handleChange('body')}
-              value={this.state.body}
-              />
-            <button className="review-submit" >
-              Post review
+            <button className="review-submit btn" >
+              Leave a review
             </button>
           </form>
         )}

@@ -41,7 +41,7 @@ export default class ShowPage extends React.Component {
 
             <div className="reviews-container" onClick={this.props.toggle}>
               {spot.city || null}
-              <div>
+              <div className="rating-line">
                 <Rating
                   className="rating-stars"
                   placeholderRate={parseFloat(spot.rating)}
@@ -77,7 +77,7 @@ export default class ShowPage extends React.Component {
             <p>{spot.description}</p>
 
             <div className="reviews-container" onClick={this.props.toggle} >
-              <div>
+              <div className="rating-line">
                 <Rating
                   className="rating-stars"
                   placeholderRate={parseFloat(spot.rating)}
@@ -85,7 +85,7 @@ export default class ShowPage extends React.Component {
                   empty="fa fa-star-o fa-2x"
                   full="fa fa-star fa-2x"
                   readonly={true}
-                  />
+                />
                 <span className="review-count">{`${spot.num_reviews} Reviews`}</span>
                 <div className="review-index-container">
                   {

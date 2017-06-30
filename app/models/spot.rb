@@ -122,11 +122,11 @@ class Spot < ActiveRecord::Base
 
   def city
     return ' ' unless self.location
-    self.location.split(',')[-3..-1]
+    self.location.split(',')[-3..-1].join(',')
   end
 
   def address
     return ' ' unless self.location
-    self.location.split(',')[0...-3]
+    self.location.split(',')[0...-3].join(',')
   end
 end

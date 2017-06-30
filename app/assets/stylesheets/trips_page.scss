@@ -3,6 +3,15 @@
   justify-content: space-between;
 }
 
+.trip-item .grid-list-item {
+  width: 98%;
+  padding: 0 0 20px 0;
+}
+
+.grid-list-item a img {
+  height: 70%;
+}
+
 .trip-info {
   width: 220px;
   border: 1px solid $gray-3;
@@ -23,8 +32,8 @@
 
 .host-info {
   position: relative;
-  left: -100px;
-  bottom: -215px;
+  left: -9px;
+  bottom: -394px;
   text-align: right;
 }
 

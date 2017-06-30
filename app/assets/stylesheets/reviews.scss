@@ -1,10 +1,23 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.review-form {
+  // padding: 20px;
+}
 
 .fa-star, .fa-star-o {
   color: $blue-1;
   font-size: 12px;
+}
+
+.ex {
+  padding: 20px 0;
+  display: block;
+}
+
+.rating-line > span:hover {
+  cursor: pointer;
+  color: $blue-1;
 }
 
 .review-item {
@@ -28,6 +41,7 @@
   border-radius: 4px;
   width: 20px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .review-form .review-submit {
@@ -38,4 +52,14 @@
   color: gold;
   font-size: 20px;
   padding: 1px;
+}
+
+.review-form .rating-stars {
+  display: block;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.review-form textarea {
+  width: 100%;
 }
