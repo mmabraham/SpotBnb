@@ -23,7 +23,7 @@
 class Spot < ActiveRecord::Base
   # attr_accessor :average_rating, :num_reviews
 
-  validates :host, :spot_type, :title, :description, :price, :lat, :lng,
+  validates :spot_type, :title, :description, :price, :lat, :lng,
     presence: true
 
   has_attached_file :img, default_url: "default_img.jpg"
@@ -32,7 +32,8 @@ class Spot < ActiveRecord::Base
   belongs_to :host,
     primary_key: :id,
     foreign_key: :host_id,
-    class_name: User
+    class_name: User#,
+    # dependent: :destroy
 
   has_many :reviews
   has_many :bookings

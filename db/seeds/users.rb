@@ -1,3 +1,5 @@
+User.destroy_all
+
 guest = User.create(
   username: 'Guest',
   password: 'password',

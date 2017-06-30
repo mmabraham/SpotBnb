@@ -1,21 +1,21 @@
-User.destroy_all
+# User.destroy_all
 Spot.destroy_all
 Review.destroy_all
 Booking.destroy_all
 
-guest = User.create(
-  username: 'Guest',
-  password: 'password',
-  avatar: File.open('app/assets/images/default-avatar.png')
-)
-
-users = []
-20.times do
-  users << User.create(
-    username: Faker::Internet.user_name,
-    password: Faker::Internet.password
-  )
-end
+# guest = User.create(
+#   username: 'Guest',
+#   password: 'password',
+#   avatar: File.open('app/assets/images/default-avatar.png')
+# )
+#
+# users = []
+# 20.times do
+#   users << User.create(
+#     username: Faker::Internet.user_name,
+#     password: Faker::Internet.password
+#   )
+# end
 
 # 30.times do
 #   Spot.create(
