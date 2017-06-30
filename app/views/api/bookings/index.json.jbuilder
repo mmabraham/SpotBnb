@@ -15,6 +15,7 @@ json.spots do
       json.img asset_path(booking.spot.img)
       json.rating booking.spot.average_of_ratings
       json.num_reviews booking.spot.count_reviews
+      json.has_reviewed booking.reviews.any? { |r| r.id == current_user.id}
     end
   end
 end
