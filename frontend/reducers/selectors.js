@@ -6,7 +6,7 @@ export const tripsInfo = ({bookings, users, spots}) => {
     const start_date = new Date(bookings[key].start_date);
     const end_date = new Date(bookings[key].end_date);
     const spot = spots[bookings[key].spot_id];
-    if (!spot) {debugger; ''}
+    if (!spot) continue;
     trips.push({
       id: key,
       spot,

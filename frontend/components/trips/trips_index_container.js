@@ -14,6 +14,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTrips: () => dispatch(fetchTrips()),
     cancelBooking: (id) => dispatch(cancelBooking(id)),
+    createReview: (review) => dispatch(createReview(review)),
   };
 };
 

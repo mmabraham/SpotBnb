@@ -16,7 +16,7 @@ export const receiveBookings = res => {
 };
 
 export const fetchTrips = () => dispatch => {
-  return BookingAPIUtil.fetchTrips()
+  return BookingAPIUtil.fetchTrips({trips: true})
     .then((res) => dispatch(receiveBookings(res)));
 };
 

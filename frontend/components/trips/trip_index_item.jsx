@@ -3,8 +3,7 @@ import Avatar from 'material-ui/Avatar';
 import SpotIndexItem from '../spots/spot_index_item';
 import ReviewForm from '../reviews/review_form';
 
-const TripIndexItem = ({trip, cancelBooking}) => {
-
+const TripIndexItem = ({trip, cancelBooking, createReview}) => {
   const avatar = trip.host.img_url ? (
     <Avatar size={60} src={trip.host.img_url} />
   ) : (
@@ -13,10 +12,16 @@ const TripIndexItem = ({trip, cancelBooking}) => {
 
   return (
     <li className="trip-item">
-      <SpotIndexItem spot={trip.spot}/>
-      <div className="host-info">
-        {avatar}
-        <h6>{trip.host.username}</h6>
+      <div>
+        <SpotIndexItem spot={trip.spot}/>
+        <div className="host-info">
+          {avatar}
+          <h6>{trip.host.username}</h6>
+        </div>
+        <ReviewForm
+          createReview={createReview}
+          spot={trip.spot}
+        />
       </div>
       <div className="trip-info">
         <ul>
@@ -35,7 +40,6 @@ const TripIndexItem = ({trip, cancelBooking}) => {
           Cancel This Trip
         </button>
       </div>
-      <ReviewForm />
     </li>
   )
 }

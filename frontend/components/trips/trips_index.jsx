@@ -16,10 +16,11 @@ import TripIndexItem from './trip_index_item';
          cancelBooking={this.props.cancelBooking}
          key={trip.id}
          trip={trip}
+         createReview={this.props.createReview}
       />
      ));
      return (
-       <ul className="trip-index">
+       <ul className="trip-index col-2-3">
          {trips}
        </ul>
      );

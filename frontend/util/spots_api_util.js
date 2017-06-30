@@ -1,8 +1,8 @@
-export const fetchAllSpots = (filters) => {
+export const fetchAllSpots = (data) => {
   return $.ajax({
     method: 'GET',
     url: 'api/spots',
-    data: { filters },
+    data,
   });
 };
 

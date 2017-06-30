@@ -21,7 +21,7 @@ export const receiveSpot = ({spot, host, bookings}) => {
 }
 
 export const fetchAllSpots = (filters) => dispatch => {
-  return APIUtil.fetchAllSpots(filters)
+  return APIUtil.fetchAllSpots({ filters })
     .then((spots) => dispatch(receiveSpots(spots)))
 }
 
