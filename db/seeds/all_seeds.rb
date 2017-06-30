@@ -113,7 +113,7 @@ spots = all_spots[0..40]
   )
 end
 
-
+spots = Spot.all
 1000.times do
   end_date = Faker::Time.forward(200)
   Booking.create(
