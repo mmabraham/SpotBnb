@@ -12,7 +12,7 @@ const TripIndexItem = ({trip, cancelBooking, createReview}) => {
 
   return (
     <li className="trip-item">
-      <div>
+      <div className="grid-list-item-container">
         <SpotIndexItem spot={trip.spot}/>
         <div className="host-info">
           {avatar}

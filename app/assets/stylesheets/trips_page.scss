@@ -3,6 +3,14 @@
   justify-content: space-between;
 }
 
+.trip-item > .grid-list-item-container {
+  width: 100%;
+}
+
+.trip-item > .grid-list-item-container a {
+  max-height: 400px;
+}
+
 .trip-item .grid-list-item {
   width: 98%;
   padding: 0 0 20px 0;
@@ -13,7 +21,7 @@
 }
 
 .trip-info {
-  width: 220px;
+  width: 320px;
   border: 1px solid $gray-3;
   border-radius: 2px;
   padding: 20px;
@@ -32,8 +40,8 @@
 
 .host-info {
   position: relative;
-  left: -9px;
-  bottom: -394px;
+  right: 22px;
+  top: -115px;
   text-align: right;
 }
 
