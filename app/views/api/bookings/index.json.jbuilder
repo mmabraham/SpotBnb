@@ -21,7 +21,7 @@ json.spots do
 end
 json.hosts do
   @bookings.each do |booking|
-      next unless booking.host
+      debugger unless booking.host
       json.set! booking.host.id do
       json.extract! booking.host, :id, :username
       json.img_url asset_path(booking.host.avatar)

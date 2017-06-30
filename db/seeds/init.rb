@@ -37,7 +37,7 @@ require_relative 'titles'
 # end
 
 users = User.all.to_a
-
+debugger
 all_spots = []
 140.times do |i|
   all_spots << Spot.create(

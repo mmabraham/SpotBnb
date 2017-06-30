@@ -23,7 +23,7 @@ export default class MarkerManager {
     // });
 
     const mapOptions = {
-      position: { lat: spot.lat, lng: spot.lng },
+      position: { lat: parseFloat(spot.lat), lng: parseFloat(spot.lng) },
       map: this.map,
       label: `$${spot.price}`,
     };

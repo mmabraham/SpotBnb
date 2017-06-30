@@ -8,7 +8,7 @@ guest = User.create(
 
 images = []
 Dir.foreach('seed-images/avatars') do |fname|
-  next if fname == '.' || fname == '..'
+  next if fname == '..' || fname[0] == '.'
   images << File.open("seed-images/avatars/#{fname}")
 end
 

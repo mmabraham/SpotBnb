@@ -32,11 +32,10 @@ class Spot < ActiveRecord::Base
   belongs_to :host,
     primary_key: :id,
     foreign_key: :host_id,
-    class_name: User,
-    dependent: :destroy
+    class_name: User
 
-  has_many :reviews
-  has_many :bookings
+  has_many :reviews, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   def self.filter(filters)
     spots = Spot.all

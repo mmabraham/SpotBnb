@@ -14,17 +14,16 @@
 class Booking < ActiveRecord::Base
   validates :user, :spot, :start_date, :end_date, presence: true
 
-  belongs_to :visitor,
-    primary_key: :id,
-    foreign_key: :user_id,
-    class_name: User
+  # belongs_to :visitor,
+  #   primary_key: :id,
+  #   foreign_key: :user_id,
+  #   class_name: User
 
-  belongs_to :spot, dependent: :destroy
+  belongs_to :spot
 
   belongs_to :user
 
   has_one :host,
     through: :spot,
-    source: :host,
-    class_name: User
+    source: :host
 end
