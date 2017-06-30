@@ -35,10 +35,12 @@ const TripIndexItem = ({trip, cancelBooking, createReview}) => {
         <button className="btn" onClick={() => cancelBooking(trip.id)}>
           Cancel This Trip
         </button>
-        <ReviewForm
-          createReview={createReview}
-          spot={trip.spot}
+        {trip.spot.has_reviewed ? null : (
+          <ReviewForm
+            createReview={createReview}
+            spot={trip.spot}
           />
+        )}
       </div>
     </li>
   )
