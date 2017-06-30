@@ -1,4 +1,4 @@
-users = User.all
+users = User.all.to_a
 
 spots = []
 150.times do

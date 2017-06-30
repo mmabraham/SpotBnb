@@ -1,4 +1,4 @@
-User.destroy_all
+# User.destroy_all
 
 guest = User.create(
   username: 'Guest',
