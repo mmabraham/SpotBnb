@@ -26,6 +26,8 @@ export default class MarkerManager {
       position: { lat: parseFloat(spot.lat), lng: parseFloat(spot.lng) },
       map: this.map,
       label: `$${spot.price}`,
+      icon: `${window.images.balloon}`,
+      // animation: google.maps.Animation.DROP,
     };
 
     const marker = new google.maps.Marker(mapOptions);

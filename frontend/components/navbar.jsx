@@ -25,7 +25,7 @@ const Navbar = (props) => {
       ) : (
         <ul className="right-nav-items">
           <li><NavLink to="/spots/new">Become a Host</NavLink></li>
-          <li><NavLink to="">Trips</NavLink></li>
+          <li><NavLink to="/spots">Browse</NavLink></li>
           <li><NavLink to="/login">Log In</NavLink></li>
           <li><NavLink to="/signup">Sign Up</NavLink></li>
         </ul>
@@ -36,7 +36,7 @@ const Navbar = (props) => {
       <ul className="left-nav-items">
         <li className="img-container logo-container">
           <NavLink
-            to="/spots"
+            to="/"
             className="img-container logo-container"
             onClick={props.clearFilters}
           >

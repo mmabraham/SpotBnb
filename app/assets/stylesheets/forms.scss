@@ -62,6 +62,7 @@
 }
 .pac-item {
   height: 40px;
+  padding-left: 20px;
 }
 
 .pac-item-query {
@@ -73,7 +74,5 @@
 }
 
 .pac-icon {
-  display: hidden;
-  z-index: -1;
-  color: transparent;
+  display: none;
 }
