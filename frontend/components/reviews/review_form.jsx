@@ -15,7 +15,7 @@ export default class ReviewForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="review-form-conatainer">
         {this.state.hidden ? (
           <button
             onClick={() => this.setState({hidden: !this.state.hidden})}

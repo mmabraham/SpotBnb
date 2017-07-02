@@ -1,7 +1,7 @@
 .landing {
   width: 50%;
-  height: 300px;
-  margin: 180px auto;
+  height: 275px;
+  margin: 115px auto 0;
   padding-top: 8px;
   padding-bottom: 8px;
 }
@@ -16,9 +16,14 @@
   letter-spacing: 0.8px;
   color: $gray-1;
   font-weight: 300;
+  margin-bottom: 20px;
 }
 
 .landing h1 > span.red {
   font-weight: 700;
   color: #FF5A5F;
+}
+
+.main-nav {
+  height: 70px;
 }

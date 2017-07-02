@@ -1,0 +1,26 @@
+.carousel {
+  display: flex;
+  position: relative;
+}
+
+.arrow {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 31%;
+  font-size: 34px;
+  text-align: center;
+  border: 2px solid transparent;
+  line-height: 39px;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+.right-arrow {
+  right: 14px;
+}
+
+.left-arrow {
+}
