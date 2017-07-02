@@ -55,7 +55,7 @@ class SignupForm extends React.Component {
         <button className="btn">Sign Up</button>
 				<hr />
 				<div className="alt-form">
-					<span>Already have an ------ account?</span>
+					<span>Already have a SpotBnb account?</span>
 					<NavLink to="/login" className="green-link">Log in</NavLink>
 				</div>
       </form>
