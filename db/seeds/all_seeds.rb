@@ -21,7 +21,6 @@ end
 
 users = []
 20.times do |idx|
-  p images[idx].class
   users << User.create(
     username: Faker::Internet.user_name,
     password: Faker::Internet.password,
@@ -60,7 +59,6 @@ Dir.foreach('seed-images/houses') do |fname|
   break unless spots[idx]
   next if fname[0] == '.'
   spots[idx].img = File.new("seed-images/houses/#{fname}")
-  p spots[idx].img.url
   spots[idx].save!
   idx += 1
 end
