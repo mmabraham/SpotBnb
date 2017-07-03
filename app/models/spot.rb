@@ -76,7 +76,7 @@ class Spot < ActiveRecord::Base
 #     sw -58 |
 
   def self.split?(bounds)
-    bounds[:northEast][:lng].to_s.to_f < bounds[:southWest][:lng].to_s.to_f
+    bounds[:northEast][:lng].to_f < bounds[:southWest][:lng].to_f
   end
 
   def self.both_sides(bounds, spots)
@@ -88,7 +88,6 @@ class Spot < ActiveRecord::Base
       southWest: { lat: bounds[:southWest][:lat], lng: '-179.999' },
       northEast: bounds[:northEast]
     }
-
     spots.by_bounds(west_bounds, spots).union(spots.by_bounds(east_bounds, spots))
   end
 
