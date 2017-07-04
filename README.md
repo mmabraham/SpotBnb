@@ -4,7 +4,7 @@ SpotBnb is a single page web application inspired by Airbnb. It was designed to 
 
 SpotBnb [live link][heroku]
 
-[heroku]: http://www.spotbnb.herokuapp.com
+[heroku]: http://spotbnb.herokuapp.com
 
 ## Features
 Users can:
@@ -14,13 +14,13 @@ Users can:
 - [ ] Search for spots by location, availability and accommodation
 - [ ] Book a spot with an easy to use calendar showing the unavailable dates disabled and clearly greyed out.
 - [ ] View and control their booked trips.
-- [ ]leave reviews with a rating score for their booked spots to improve search priority.
+- [ ] leave reviews with a rating score for their booked spots to improve search priority.
 
-##Techical details
-- [ ]Picture uploads handled by paperclip and stored remotely on AWS for faster load time.
-- [ ]Basic custom implementation of back and front end auth.
-- [ ]All search parameters are persisted within the redux store to allow for multi-filter searches.
-- [ ]Location search parameters are parsed to check and correct for bounds that cross the date line.
+## Techical details
+- [ ] Picture uploads handled by paperclip and stored remotely on AWS for faster load time.
+- [ ] Basic custom implementation of back and front end auth.
+- [ ] All search parameters are persisted within the redux store to allow for multi-filter searches.
+- [ ] Location search parameters are parsed to check and correct for bounds that cross the date line.
 ```ruby
   def self.split?(bounds)
     bounds[:northEast][:lng].to_f < bounds[:southWest][:lng].to_f
@@ -38,7 +38,7 @@ Users can:
     spots.by_bounds(west_bounds, spots).union(spots.by_bounds(east_bounds, spots))
   end
 ```
-- [ ]A custom SQL query gets the rating data for all search results to avoid N+1 queries and allow for scalability.
+- [ ] A custom SQL query gets the rating data for all search results to avoid N+1 queries and allow for scalability.
 
 ### Todo
 - [ ] Users/Host profiles
