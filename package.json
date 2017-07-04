@@ -37,6 +37,7 @@
     "material-ui": "^0.18.3",
     "moment": "^2.18.1",
     "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.1.2",
     "react-dom": "^15.6.1",
@@ -51,6 +52,6 @@
     "webpack": "^2.6.1"
   },
   "devDependencies": {
-  "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6"
   }
 }
