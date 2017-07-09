@@ -16,6 +16,8 @@ Users can:
 - [ ] View and control their booked trips.
 - [ ] leave reviews with a rating score for their booked spots to improve search priority.
 
+![screen shot](docs/screen_shot.png)
+
 ## Techical details
 - [ ] Picture uploads handled by paperclip and stored remotely on AWS for faster load time.
 - [ ] Basic custom implementation of back and front end auth.
