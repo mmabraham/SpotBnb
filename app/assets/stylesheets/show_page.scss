@@ -5,7 +5,10 @@
 
 .full-width-image {
   height: 650px;
-  // position: relative;
+}
+
+.full-width-image > img {
+  height: 650px;
 }
 
 .spot-details {
