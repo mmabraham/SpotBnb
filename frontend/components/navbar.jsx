@@ -9,6 +9,7 @@ const Navbar = (props) => {
     props.currentUser ? (
         <ul className="right-nav-items">
           <li><NavLink to="/spots/new">Become a Host</NavLink></li>
+          <li><NavLink to="/spots">Browse</NavLink></li>
           <li><NavLink to="/mytrips">Trips</NavLink></li>
           <li><button
             className="logout-button"
