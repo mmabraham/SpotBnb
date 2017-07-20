@@ -7,7 +7,6 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-// import select from 'material-ui/select';
 import MenuItem from 'material-ui/MenuItem';
 import Slider from 'material-ui/Slider';
 import LocationPicker from '../search/location_picker';
@@ -188,7 +187,7 @@ class SpotForm extends React.Component {
           <TextField
             floatingLabelText="Description"
             multiLine={true}
-            rows={2}
+            rows={1}
             onChange={this.handleChange('description')}
             errorText={this.errorsFor('description')}
             value={this.state.description}

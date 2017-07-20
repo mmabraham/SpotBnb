@@ -23,7 +23,6 @@ export default class SpotMap extends React.Component {
       zoom: 12
     };
 
-
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.markerManager = new MarkerManager(this.map, this.props.showSpot);
 
@@ -41,7 +40,7 @@ export default class SpotMap extends React.Component {
       this.props.updateBounds(bounds);
     });
   }
-  // && nextProps.place != this.props.place
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.place) {
       this.changeMap(nextProps.place);
@@ -52,7 +51,6 @@ export default class SpotMap extends React.Component {
   componentWillUpdate(nextProps) {
     this.markerManager.updateMarkers(nextProps.spots);
   }
-
 
   render() {
     return (
