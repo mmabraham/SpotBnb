@@ -11,11 +11,17 @@ class SignupForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleModalChange = this.handleModalChange.bind(this);
   }
 
   componentDidMount() {
     this.props.clearErrors();
   }
+
+	handleModalChange(e) {
+		e.preventDefault()
+		this.props.displayModal();
+	}
 
   handleSubmit(e) {
     e.preventDefault();
@@ -56,7 +62,7 @@ class SignupForm extends React.Component {
 				<hr />
 				<div className="alt-form">
 					<span>Already have a SpotBnb account?</span>
-					<NavLink to="/login" className="green-link">Log in</NavLink>
+					<button onClick={this.handleModalChange} className="green-link">Log in</button>
 				</div>
       </form>
   );

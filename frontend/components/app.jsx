@@ -17,8 +17,6 @@ const App = () => {
   <header>
     <Navbar />
     <Switch>
-      <AuthRoute path='/login' component={LoginForm} />
-      <AuthRoute path='/signup' component={SignupForm} />
       <ProtectedRoute path='/spots/new' component={SpotForm} />
       <ProtectedRoute path='/mytrips' component={TripsIndex} />
       <Route path='/spots/:id' component={ShowPage} />

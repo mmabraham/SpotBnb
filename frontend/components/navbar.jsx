@@ -4,7 +4,11 @@ import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import Searchbar from './search/searchbar_container';
 
+import LoginForm from './session/login_form';
+import SignupForm from './session/signup_form_container';
+
 const Navbar = (props) => {
+  const Modal = props.modal;
   const rightNav = (
     props.currentUser ? (
         <ul className="right-nav-items">
@@ -27,8 +31,8 @@ const Navbar = (props) => {
         <ul className="right-nav-items">
           <li><NavLink to="/spots/new">Become a Host</NavLink></li>
           <li><NavLink to="/spots">Browse</NavLink></li>
-          <li><NavLink to="/login">Log In</NavLink></li>
-          <li><NavLink to="/signup">Sign Up</NavLink></li>
+          <li><button onClick={props.displayLogin}>Log In</button></li>
+          <li><button onClick={props.displaySignup}>Sign Up</button></li>
         </ul>
       )
     );
@@ -49,6 +53,7 @@ const Navbar = (props) => {
         </li>
       </ul>
       {rightNav}
+      {Modal}
     </nav>
   );
 };
