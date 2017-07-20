@@ -7,7 +7,6 @@ const Protected = (props) => {
   const Component = props.component;
   return (
     <Route path={props.path} render={() => {
-      debugger
       if (!props.loggedIn) {
         props.popupModal();
       }

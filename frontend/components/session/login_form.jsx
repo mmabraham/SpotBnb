@@ -21,17 +21,22 @@ export default class LoginForm extends React.Component {
 
 	handleModalChange(e) {
 		e.preventDefault();
+		e.stopPropagation();
 		this.props.displayModal();
 	}
 
   handleSubmit(e) {
     e.preventDefault();
+		e.stopPropagation();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   }
 
   handleChange(field) {
-    return (e) => { this.setState({[field]: e.target.value}); };
+    return (e) => {
+			e.stopPropagation();
+			this.setState({[field]: e.target.value});
+		};
   }
 
 	demoLogin(e) {

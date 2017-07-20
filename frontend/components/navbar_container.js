@@ -16,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
     clearFilters: () => dispatch(clearFilters()),
-    displayLogin: () => dispatch(displayModal('LoginForm')),
-    displaySignup: () => dispatch(displayModal('SignupForm')),
+    displayLogin: (e) => {e.stopPropagation(); dispatch(displayModal('LoginForm'))},
+    displaySignup: (e) => {e.stopPropagation(); dispatch(displayModal('SignupForm'))},
   };
 };
 
