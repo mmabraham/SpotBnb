@@ -3,8 +3,6 @@ import { logout } from '../actions/session_actions';
 import { clearFilters } from '../actions/filter_actions';
 import { withRouter } from 'react-router-dom';
 import { displayModal } from '../actions/modal_actions';
-import LoginForm from './session/login_form';
-import SignupForm from './session/signup_form_container';
 import Navbar from './navbar';
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
     clearFilters: () => dispatch(clearFilters()),
-    displayLogin: () => dispatch(displayModal(LoginForm)),
-    displaySignup: () => dispatch(displayModal(SignupForm)),
+    displayLogin: () => dispatch(displayModal('LoginForm')),
+    displaySignup: () => dispatch(displayModal('SignupForm')),
   };
 };
 

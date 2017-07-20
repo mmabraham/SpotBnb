@@ -43,7 +43,8 @@ export default class BookingForm extends React.Component {
       end_date: this.state.endDate.toDate(),
       spot_id: this.props.spot.id,
     })
-      .always(() => this.props.history.push('/mytrips'));
+      .then(() => this.props.history.push('/mytrips'))
+      .fail((e) => this.props.displayModal()) ;
   }
 
   render() {

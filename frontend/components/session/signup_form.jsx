@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-class SignupForm extends React.Component {
+export default class SignupForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -37,36 +37,36 @@ class SignupForm extends React.Component {
 		const errors = this.props.errors;
 
     return (
-      <form className="auth-form signup-form" onSubmit={this.handleSubmit}>
-        <label><NavLink to="/">╳</NavLink></label>
-        <label>
-          <input
-						placeholder="Username"
-						onChange={this.handleChange('username')}
-						value={this.state.username}
-						className={`${errors.username ? 'invalid' : ''}`}
-					/>
-					<span className="errors" >{ errors ? errors.username : '' }</span>
-        </label>
-        <label>
-          <input
-						placeholder="Password"
-						type='password'
-						onChange={this.handleChange('password')}
-						className={`${errors.password ? 'invalid' : ''}`}
-						value={this.state.password}
-					/>
-				<span className="errors" >{errors ? errors.password : ''}</span>
-        </label>
-        <button className="btn">Sign Up</button>
-				<hr />
-				<div className="alt-form">
-					<span>Already have a SpotBnb account?</span>
-					<button onClick={this.handleModalChange} className="green-link">Log in</button>
-				</div>
-      </form>
-  );
+			<div className="modal-container">
+	      <form className="auth-form signup-form" onSubmit={this.handleSubmit}>
+	        <label><span onClick={this.props.closeModel}>╳</span></label>
+	        <label>
+	          <input
+							placeholder="Username"
+							onChange={this.handleChange('username')}
+							value={this.state.username}
+							className={`${errors.username ? 'invalid' : ''}`}
+						/>
+						<span className="errors" >{ errors ? errors.username : '' }</span>
+	        </label>
+	        <label>
+	          <input
+							placeholder="Password"
+							type='password'
+							onChange={this.handleChange('password')}
+							className={`${errors.password ? 'invalid' : ''}`}
+							value={this.state.password}
+						/>
+					<span className="errors" >{errors ? errors.password : ''}</span>
+	        </label>
+	        <button className="btn">Sign Up</button>
+					<hr />
+					<div className="alt-form">
+						<span>Already have a SpotBnb account?</span>
+						<button onClick={this.handleModalChange} className="green-link">Log in</button>
+					</div>
+	      </form>
+			</div>
+	  );
   }
 }
-
-export default SignupForm;

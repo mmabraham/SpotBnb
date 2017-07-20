@@ -26,7 +26,7 @@
   font-family: $fonts;
 }
 
-nav > ul > li > a, .logout-button {
+nav > ul > li > a, .modal-button {
   padding: 6px 0;
   border-bottom: solid 2px transparent;
   font-weight: normal;
@@ -37,7 +37,7 @@ nav > ul > li {
   margin: 30px;
 }
 
-.main-nav > ul > li > a:hover, .logout-button:hover {
+.main-nav > ul > li > a:hover, .modal-button:hover {
   border-bottom: solid 2px $blue-1;
 }
 

@@ -4,11 +4,10 @@ import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import Searchbar from './search/searchbar_container';
 
-import LoginForm from './session/login_form';
+import LoginForm from './session/login_form_container';
 import SignupForm from './session/signup_form_container';
 
 const Navbar = (props) => {
-  const Modal = props.modal;
   const rightNav = (
     props.currentUser ? (
         <ul className="right-nav-items">
@@ -16,8 +15,8 @@ const Navbar = (props) => {
           <li><NavLink to="/spots">Browse</NavLink></li>
           <li><NavLink to="/mytrips">Trips</NavLink></li>
           <li><button
-            className="logout-button"
-            onClick={() => props.logout().then(() => props.history.push('/login'))}>
+            className="modal-button"
+            onClick={props.logout}>
             Logout</button></li>
           <li>
             {props.currentUser.avatar_url ? (
@@ -31,8 +30,12 @@ const Navbar = (props) => {
         <ul className="right-nav-items">
           <li><NavLink to="/spots/new">Become a Host</NavLink></li>
           <li><NavLink to="/spots">Browse</NavLink></li>
-          <li><button onClick={props.displayLogin}>Log In</button></li>
-          <li><button onClick={props.displaySignup}>Sign Up</button></li>
+          <li><button className="modal-button" onClick={props.displayLogin}>
+            Log In
+          </button></li>
+          <li><button className="modal-button" onClick={props.displaySignup}>
+            Sign Up
+          </button></li>
         </ul>
       )
     );
@@ -53,7 +56,8 @@ const Navbar = (props) => {
         </li>
       </ul>
       {rightNav}
-      {Modal}
+      { props.modal === 'LoginForm' ? <LoginForm /> : null }
+      { props.modal === 'SignupForm' ? <SignupForm /> : null }
     </nav>
   );
 };

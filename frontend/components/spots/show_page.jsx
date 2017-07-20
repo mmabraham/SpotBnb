@@ -110,6 +110,8 @@ export default class ShowPage extends React.Component {
                 createBooking={this.props.createBooking}
                 history={this.props.history}
                 bookings={this.props.bookings}
+                displayModal={this.props.displayModal}
+                modal={this.props.modal}
                 />
             </div>
           )}

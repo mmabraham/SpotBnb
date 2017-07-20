@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class LoginForm extends React.Component {
+export default class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
     return (
 			<div className="modal-container">
 	      <form className="auth-form login-form" onSubmit={this.handleSubmit}>
-					<label><Link to="/">╳</Link></label>
+					<label><span onClick={this.props.closeModel}>╳</span></label>
 					<h2>Log in to continue</h2>
 					<button onClick={this.demoLogin} className="btn">Sign in as guest</button>
 					<div className="rule-container"><span className="rule">or</span></div>
@@ -79,5 +79,3 @@ class LoginForm extends React.Component {
   	);
   }
 }
-
-export default LoginForm;

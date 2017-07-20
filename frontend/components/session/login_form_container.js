@@ -1,4 +1,4 @@
-// import LoginForm from './login_form';
+import LoginForm from './login_form';
 // import SignupForm from './signup_form_container';
 import { connect } from 'react-redux';
 import { displayModal } from '../../actions/modal_actions';
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     processForm: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(receiveErrors({})),
     displayModal: () => dispatch(displayModal('SignupForm')),
+    closeModel: () => dispatch(displayModal('')),
   };
 };
 
