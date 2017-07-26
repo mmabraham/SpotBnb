@@ -1,16 +1,16 @@
 import React from 'react';
 
+// optional props:
+// errors
+// location
+// placeholder
+
+// required props:
+// handler({lat, lng, location}, DOMInputElement)
+
 export default class LocationPicker extends React.Component {
   constructor(props) {
     super(props);
-
-    // optional props:
-    // errors
-    // location
-    // placeholder
-
-    // required props:
-    // handler({lat, lng, location}, DOMInputElement)
 
     this.handler = this.props.handler;
   }
@@ -32,7 +32,7 @@ export default class LocationPicker extends React.Component {
       this.handler({lat, lng, location: this.place.value}, place);
     });
   }
-  
+
   render() {
     return (
       <label>

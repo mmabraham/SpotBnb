@@ -47,6 +47,7 @@ export default class Searchbar extends React.Component {
       <div className="searchbar">
           <LocationPicker
             handler={(_, place) => this.handlePlacechange(place)}
+            placeholder={'' && '\u2315'}
           />
         <label>
           <DateRangePicker
