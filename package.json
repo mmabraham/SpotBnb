@@ -38,6 +38,7 @@
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dates": "^12.1.2",
+    "react-addons-shallow-compare": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-rating": "^0.8.0",
     "react-redux": "^5.0.5",
