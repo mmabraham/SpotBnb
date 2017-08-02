@@ -584,7 +584,9 @@
   display: inline-block; }
 
 .booking-form .DateRangePickerInput {
-    border: 1px solid #cacccd;}
+  border: 1px solid #cacccd;
+  min-width: 274px;
+}
 
 .DateRangePickerInput--disabled {
   background: #cacccd; }
