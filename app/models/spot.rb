@@ -21,8 +21,6 @@
 #
 
 class Spot < ActiveRecord::Base
-  # attr_accessor :average_rating, :num_reviews
-
   validates :host, :spot_type, :title, :description, :price, :lat, :lng,
     presence: true
 
