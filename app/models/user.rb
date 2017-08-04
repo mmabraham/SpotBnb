@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
     dependent: :destroy
 
   has_many :bookings, dependent: :destroy
+  has_many :booked_spots, through: :bookings, source: :spot
+  has_many :booked_spot_reviews, through: :booked_spots, source: :reviews
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64

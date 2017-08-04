@@ -34,6 +34,7 @@ class Spot < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  scope :average_rating, -> { joins(:reviews).group(:id).average(:rating) }
 
   def self.filter(filters)
     spots = Spot.all
@@ -109,7 +110,7 @@ class Spot < ActiveRecord::Base
   end
 
   def count_reviews
-    self.reviews.length
+    self.reviews.count
   end
 
   def average_of_ratings
