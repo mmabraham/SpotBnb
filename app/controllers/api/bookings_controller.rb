@@ -13,6 +13,7 @@ class Api::BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings.includes(spot: [:host, :reviews])
+    @average_ratings = current_user.booked_spots.average_ratings
     render :index
   end
 

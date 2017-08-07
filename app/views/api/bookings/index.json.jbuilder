@@ -5,16 +5,15 @@ json.bookings do
     end
   end
 end
-# QUESTION is this possible somehow?
-# spots = @bookings.spot.with_ratings(spots) # for efficiency
+
 json.spots do
   @bookings.each do |booking|
-    json.set! booking.spot.id do
+    json.set! booking.spot_id do
       json.extract! booking.spot, :id, :host_id, :spot_type, :title,
         :price, :capacity, :address, :city
       json.img asset_path(booking.spot.img)
-      json.rating booking.spot.average_of_ratings
-      json.num_reviews booking.spot.count_reviews
+      json.rating @average_ratings[booking.spot_id]
+      json.num_reviews booking.spot.reviews.length
       json.has_reviewed booking.spot.reviews.any? { |r| r.user_id == current_user.id}
     end
   end

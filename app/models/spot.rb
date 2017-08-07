@@ -34,7 +34,8 @@ class Spot < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
-  scope :average_rating, -> { joins(:reviews).group(:id).average(:rating) }
+  scope :average_ratings, -> { joins(:reviews).group(:id).average(:rating) }
+  scope :num_reviews, -> { joins(:reviews).group(:id).count(:rating) }
 
   def self.filter(filters)
     spots = Spot.all
@@ -113,10 +114,10 @@ class Spot < ActiveRecord::Base
     self.reviews.count
   end
 
-  def average_of_ratings
-    return 0 if count_reviews == 0
-    reviews.inject(0) { |acc, rev| acc + rev.rating} / count_reviews
-  end
+  # def average_of_ratings
+  #   return 0 if count_reviews == 0
+  #   reviews.inject(0) { |acc, rev| acc + rev.rating} / count_reviews
+  # end
 
   def city
     return ' ' unless self.location
