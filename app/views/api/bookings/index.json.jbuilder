@@ -5,7 +5,6 @@ json.bookings do
     end
   end
 end
-
 json.spots do
   @bookings.each do |booking|
     json.set! booking.spot_id do

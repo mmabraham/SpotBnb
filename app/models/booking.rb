@@ -13,7 +13,6 @@
 
 class Booking < ActiveRecord::Base
   validates :user, :spot, :start_date, :end_date, presence: true
-  scope :spots, -> { select(:spots).joins(:spot) }
 
   belongs_to :spot
   belongs_to :user
